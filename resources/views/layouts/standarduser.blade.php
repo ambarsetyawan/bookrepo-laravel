@@ -54,10 +54,10 @@
                 <ul class="nav navbar-nav">
                   <!-- Authentication Links -->
                   @if (Auth::guest())
+                  <li><a href="{{ url('/home') }}"><i class="fa fa-pencil-square-o"></i> DashBoard</a></li>
+                  @else
                   <li><a href="{{ url('/request') }}"><i class="fa fa-retweet"></i> Request Book</a></li>
                   <li><a href="{{ url('/contact') }}"><i class="fa fa-envelope-square"></i> Contact Admin</a></li>
-                  @else
-                  <li><a href="{{ url('/admindash') }}"><i class="fa fa-pencil-square-o"></i> DashBoard</a></li>
                   @endif
                 </ul>
 

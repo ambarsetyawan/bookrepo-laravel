@@ -26,6 +26,9 @@
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
+    Route::get('/admindash', function () {
+    return view('admindash');
+    });
 
     Route::get('/', function () {
     return view('welcome');
@@ -34,6 +37,7 @@ Route::group(['middleware' => 'web'], function () {
 Route::get('/request', function () {
 return view('request');
 });
+
 
 Route::get('/contact', function () {
 return view('contact');

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.standarduser')
 
 @section('content')
 <div class="container">
@@ -8,7 +8,7 @@
                 <div class="panel-heading">Standard User Dashboard</div>
 
                 <div class="panel-body">
-                    Hello  {{ Auth::user()->name }} <span class="#"></span> ! </p>You can start commenting on books and rate them.
+                    Hello  {{ Auth::user()->name }} <span class="#"></span> ! </p>You can start commenting on books and rating them.
                 </div>
             </div>
         </div>

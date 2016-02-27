@@ -55,6 +55,16 @@ class AuthController extends Controller
         ]);
     }
 
+    protected function authenticated($request,$user){
+    if($user->email === 'ibrahim_345@outlook.com'){ //role is the user role as saved in DB
+        return redirect()->intended('admindash'); //redirect to admin panel
+    }
+
+    return redirect()->intended('/home'); //redirect to standard user homepage
+}
+
+
+
     /**
      * Create a new user instance after a valid registration.
      *
