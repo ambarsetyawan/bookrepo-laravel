@@ -39,13 +39,12 @@
                 </button>
 
                 <!-- Branding Image -->
-                @if (Auth::guest())
-                <a class="navbar-brand" href="{{ url('/') }}">
+
+
+                <a class="navbar-brand" href="{{ url('/') }}"><i class="fa fa-home"></i>
                     Home
                 </a>
-                @else
 
-                @endif
 
             </div>
 
@@ -53,12 +52,11 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                   <!-- Authentication Links -->
-                  @if (Auth::guest())
-                  <li><a href="{{ url('/request') }}"><i class="fa fa-retweet"></i> Request Book</a></li>
+
+                  <li><a href="{{ url('/request') }}"><i class="fa fa-retweet"></i></i> Request Book</a></li>
                   <li><a href="{{ url('/contact') }}"><i class="fa fa-envelope-square"></i> Contact Admin</a></li>
-                  @else
-                  <li><a href="{{ url('/admindash') }}"><i class="fa fa-pencil-square-o"></i> DashBoard</a></li>
-                  @endif
+                  <li><a href="{{ url('/about') }}"><i class="fa fa-question-circle"></i> About</a></li>
+
                 </ul>
 
                 <!-- Right Side Of Navbar -->

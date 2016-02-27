@@ -30,20 +30,27 @@ Route::group(['middleware' => 'web'], function () {
     return view('admindash');
     });
 
+    Route::get('/standarddash', function () {
+    return view('standarddash');
+    });
+
     Route::get('/', function () {
     return view('welcome');
+
+
 });
 
-Route::get('/request', function () {
+Route::get ('/request', function () {
 return view('request');
 });
-
 
 Route::get('/contact', function () {
 return view('contact');
 });
 
-
+Route::get('/about', function () {
+return view('about');
+});
 
     Route::get('/home', 'HomeController@index');
 });

@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">   Welcome to Bookrepo! </div>
+                <div class="panel-heading"><i class="fa fa-info-circle"></i>   Welcome to Bookrepo! </div>
                     <div class="panel-body">
                         On this Website you can browse books and find information about them. Such as:</p>
                         - Summary and titles,</p>

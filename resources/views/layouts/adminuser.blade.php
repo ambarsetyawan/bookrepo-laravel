@@ -39,13 +39,9 @@
                 </button>
 
                 <!-- Branding Image -->
-                @if (Auth::guest())
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Home
+                <a class="navbar-brand" href="{{ url('/admindash') }}"><i class="fa fa-home"></i>
+                    Admin
                 </a>
-                @else
-
-                @endif
 
             </div>
 
@@ -54,10 +50,9 @@
                 <ul class="nav navbar-nav">
                   <!-- Authentication Links -->
                   @if (Auth::guest())
-                  <li><a href="{{ url('/home') }}"><i class="fa fa-pencil-square-o"></i> DashBoard</a></li>
+
                   @else
-                  <li><a href="{{ url('/request') }}"><i class="fa fa-retweet"></i> Request Book</a></li>
-                  <li><a href="{{ url('/contact') }}"><i class="fa fa-envelope-square"></i> Contact Admin</a></li>
+                  <li><a href="{{ url('/admindash') }}"><i class="fa fa-pencil-square-o"></i> DashBoard</a></li>
                   @endif
                 </ul>
 
@@ -65,8 +60,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}"><i class="fa fa-sign-in"></i> Login</a></li>
-                        <li><a href="{{ url('/register') }}"><i class="fa fa-book"></i> Register</a></li>
+
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

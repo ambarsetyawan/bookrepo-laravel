@@ -56,11 +56,11 @@ class AuthController extends Controller
     }
 
     protected function authenticated($request,$user){
-    if($user->email === 'ibrahim_345@outlook.com'){ //role is the user role as saved in DB
-        return redirect()->intended('admindash'); //redirect to admin panel
+    if($user->admin === 'yes'){ //role is the user role as saved in DB
+        return redirect()->intended('admindash'); //redirect to admin view
     }
 
-    return redirect()->intended('/home'); //redirect to standard user homepage
+    return redirect()->intended('/standarddash'); //redirect to standard user view
 }
 
 
