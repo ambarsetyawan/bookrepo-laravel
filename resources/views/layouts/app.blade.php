@@ -53,9 +53,10 @@
                 <ul class="nav navbar-nav">
                   <!-- Authentication Links -->
 
+                  <li><a href="{{ url('/books') }}"><i class="fa fa-book"></i> Browse Books</a></li>
                   <li><a href="{{ url('/request') }}"><i class="fa fa-retweet"></i></i> Request Book</a></li>
                   <li><a href="{{ url('/contact') }}"><i class="fa fa-envelope-square"></i> Contact Admin</a></li>
-                  <li><a href="{{ url('/about') }}"><i class="fa fa-question-circle"></i> About</a></li>
+
 
                 </ul>
 
@@ -83,9 +84,14 @@
 
     @yield('content')
 
+    <div class="panel-heading" align="center">
+            @include('footer')
+    </div>
+
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+
 </body>
 </html>

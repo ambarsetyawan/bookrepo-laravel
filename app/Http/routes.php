@@ -6,7 +6,7 @@
 |--------------------------------------------------------------------------
 |
 | Here is where you will register all of the routes in an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond t
+| It's a breeze. Simply tell Laravel the URIs it should respond to
 | and give it the controller to call when that URI is requested.
 |
 */
@@ -34,10 +34,26 @@ Route::group(['middleware' => 'web'], function () {
     return view('standarddash');
     });
 
+    Route::get('/addbooks', function () {
+    return view('addbooks');
+    });
+
+    Route::get('/statistics', function () {
+    return view('statistics');
+    });
+
+    Route::get('/onlineusers', function () {
+    return view('onlineusers');
+    });
+
     Route::get('/', function () {
     return view('welcome');
 
 
+});
+
+Route::get('/books', function () {
+return view('books');
 });
 
 Route::get ('/request', function () {
@@ -48,9 +64,5 @@ Route::get('/contact', function () {
 return view('contact');
 });
 
-Route::get('/about', function () {
-return view('about');
-});
-
-    Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 });

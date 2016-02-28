@@ -18,8 +18,8 @@
                     </div>
                     <div class="panel-heading"><i class="fa fa-exclamation"></i>     Important Information! </div>
                     <div class="panel-body">
-                    </p>* As a regular user, you can only browse books, read the information and click on links.</p>
-                        * But if you are a registered user, you can have the advantages of adding comments and rating the books.
+                    </p>* As a regular user, you can only browse books, read the information and see comments by other users.</p>
+                        * But if you are a registered user, you can have the advantages of adding comments, rating the books and clicking links to retail sites.
                           </br>
                     </div>
                     <div class="panel-heading"><i class="fa fa-gavel"></i>     Rules To Follow! </div>
@@ -33,9 +33,12 @@
                         - Redirecting other users through fake links.
                           </br>
                     </div>
+
                 </div>
                 </div>
         </div>
     </div>
+
 </div>
+
 @endsection
