@@ -7,6 +7,7 @@
             <div class="panel panel-default">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <div class="panel-heading"><i class="fa fa-info-circle"></i>   Welcome to Bookrepo! </div>
                     <div class="panel-body">
                         On this Website you can browse books and find information about them. Such as:</p>
@@ -39,13 +40,18 @@
 =======
 =======
 >>>>>>> parent of c21a325... Dashboard and welcome screen changes
+=======
+>>>>>>> parent of c21a325... Dashboard and welcome screen changes
                 <div class="panel-heading">Welcome</div>
 
                 <div class="panel-body">
                     Your Application's Landing Page.
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> parent of c21a325... Dashboard and welcome screen changes
                 </div>
+=======
+>>>>>>> parent of c21a325... Dashboard and welcome screen changes
 =======
 >>>>>>> parent of c21a325... Dashboard and welcome screen changes
                 </div>
