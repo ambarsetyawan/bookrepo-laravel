@@ -17,6 +17,10 @@
                         - and links to buy from retail websites.
                     </br>
                     </div>
+
+
+
+
                     <div class="panel-heading"><i class="fa fa-exclamation"></i>     Important Information! </div>
                     <div class="panel-body">
                     </p>* As a regular user, you can only browse books, read the information and see comments by other users.</p>

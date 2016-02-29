@@ -53,7 +53,7 @@
 
                   @else
                   <li><a href="{{ url('/admindash') }}"><i class="fa fa-pencil-square-o"></i> DashBoard</a></li>
-                  <li><a href="{{ url('addbooks') }}"><i class="fa fa-book"></i> Add Book</a></li>
+                  <li><a href="{{ url('addbooks') }}"><i class="fa fa-plus"></i> Add Book</a></li>
                   <li><a href="{{ url('statistics') }}"><i class="fa fa-bar-chart"></i> Statistics</a></li>
                   <li><a href="{{ url('onlineusers') }}"><i class="fa fa-users"></i> Online Users</a></li>
                   @endif
@@ -86,7 +86,7 @@
             @include('footer')
     </div>
 
-    
+
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

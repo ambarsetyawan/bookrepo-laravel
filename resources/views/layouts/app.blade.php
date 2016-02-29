@@ -13,7 +13,16 @@
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+
+
+    <!-- JavaScripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="java/java.js"></script>
+    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+
 
     <style>
         body {
@@ -24,6 +33,7 @@
             margin-right: 6px;
         }
     </style>
+
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default">
@@ -60,6 +70,9 @@
                   <li><a href="{{ url('/contact') }}"><i class="fa fa-envelope-square"></i> Contact Admin</a></li>
                 </ul>
 
+
+
+
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
@@ -84,14 +97,13 @@
 
     @yield('content')
 
+
+
+
     <div class="panel-heading" align="center">
             @include('footer')
     </div>
 
-    <!-- JavaScripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
 </body>
 </html>
