@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>BookRepo</title>
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
@@ -39,21 +39,11 @@
                 </button>
 
                 <!-- Branding Image -->
-<<<<<<< HEAD
 
 
                 <a class="navbar-brand" href="{{ url('/') }}"><i class="fa fa-home"></i>
                     Home
-=======
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of c21a325... Dashboard and welcome screen changes
-=======
->>>>>>> parent of c21a325... Dashboard and welcome screen changes
-=======
->>>>>>> parent of c21a325... Dashboard and welcome screen changes
+
                 </a>
 
 
@@ -62,25 +52,12 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
                   <!-- Authentication Links -->
 
                   <li><a href="{{ url('/books') }}"><i class="fa fa-book"></i> Browse Books</a></li>
                   <li><a href="{{ url('/request') }}"><i class="fa fa-retweet"></i></i> Request Book</a></li>
                   <li><a href="{{ url('/contact') }}"><i class="fa fa-envelope-square"></i> Contact Admin</a></li>
-
-
-=======
-                    <li><a href="{{ url('/home') }}">Home</a></li>
->>>>>>> parent of c21a325... Dashboard and welcome screen changes
-=======
-                    <li><a href="{{ url('/home') }}">Home</a></li>
->>>>>>> parent of c21a325... Dashboard and welcome screen changes
-=======
-                    <li><a href="{{ url('/home') }}">Home</a></li>
->>>>>>> parent of c21a325... Dashboard and welcome screen changes
                 </ul>
 
                 <!-- Right Side Of Navbar -->
