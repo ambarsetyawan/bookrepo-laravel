@@ -5,6 +5,7 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
+<<<<<<< HEAD
                 <div class="panel-heading"><i class="fa fa-info-circle"></i>   Welcome to Bookrepo! </div>
                     <div class="panel-body">
                         On this Website you can browse books and find information about them. Such as:</p>
@@ -34,6 +35,12 @@
                           </br>
                     </div>
 
+=======
+                <div class="panel-heading">Welcome</div>
+
+                <div class="panel-body">
+                    Your Application's Landing Page.
+>>>>>>> parent of c21a325... Dashboard and welcome screen changes
                 </div>
                 </div>
         </div>
