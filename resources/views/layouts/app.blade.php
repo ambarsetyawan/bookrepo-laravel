@@ -47,6 +47,9 @@
 =======
                 <a class="navbar-brand" href="{{ url('/') }}">
                     Laravel
+<<<<<<< HEAD
+>>>>>>> parent of c21a325... Dashboard and welcome screen changes
+=======
 >>>>>>> parent of c21a325... Dashboard and welcome screen changes
                 </a>
 
@@ -57,6 +60,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
 <<<<<<< HEAD
+<<<<<<< HEAD
                   <!-- Authentication Links -->
 
                   <li><a href="{{ url('/books') }}"><i class="fa fa-book"></i> Browse Books</a></li>
@@ -64,6 +68,9 @@
                   <li><a href="{{ url('/contact') }}"><i class="fa fa-envelope-square"></i> Contact Admin</a></li>
 
 
+=======
+                    <li><a href="{{ url('/home') }}">Home</a></li>
+>>>>>>> parent of c21a325... Dashboard and welcome screen changes
 =======
                     <li><a href="{{ url('/home') }}">Home</a></li>
 >>>>>>> parent of c21a325... Dashboard and welcome screen changes
