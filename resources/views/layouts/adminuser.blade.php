@@ -53,7 +53,7 @@
 
                   @else
                   <li><a href="{{ url('/admindash') }}"><i class="fa fa-pencil-square-o"></i> DashBoard</a></li>
-                  <li><a href="{{ url('addbooks') }}"><i class="fa fa-plus"></i> Add Book</a></li>
+                  <li><a href="{{ url('addbooks') }}"><i class="fa fa-plus"></i> Books</a></li>
                   <li><a href="{{ url('statistics') }}"><i class="fa fa-bar-chart"></i> Statistics</a></li>
                   <li><a href="{{ url('onlineusers') }}"><i class="fa fa-users"></i> Online Users</a></li>
                   @endif

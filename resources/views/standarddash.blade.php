@@ -11,7 +11,7 @@
                 <div class="panel-body">
                     Hello  {{ Auth::user()->name }} <span class="#"></span> !
                   </p>Thanks for joining us.
-                </p>You now have the ability to comment on books and give them a rating.
+                </p>You now have the ability to comment on books, give them a rating and go on retail links.
 
                   </div>
             </div>

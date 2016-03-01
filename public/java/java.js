@@ -30,7 +30,7 @@ $(function() {
     }
 
     $slideContainer
-        .on('mouseenter', pauseSlider)
+    /*    .on('mouseenter', pauseSlider) */
         .on('mouseleave', startSlider);
 
     startSlider();

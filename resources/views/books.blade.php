@@ -5,19 +5,31 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">   This is the books page.<th>
+                <div class="panel-heading">   Book Repository<th>
 
                 </th> </div>
                     <div class="panel-body">
-                             <div id="slider">
-                                 <ul class="slides">
-                                     <li class="slide"><img src="images/pjackson.png"></li>
-                                     <li class="slide"><img src="images/hgames.png"></li>
-                                      <li class="slide"><img src="images/divergent.png"></li>
-                                 </ul>
-                             </div>
 
-                         </div>
+                      <div class="table-responsive">
+                          <table class="table table-bordered table-striped">
+
+                              <thead>
+                                  <tr>
+                                      <th>Title</th>
+                                      <th>Authur</th>
+                                      <th>Description</th>
+                                      <th>Published On</th>
+                                      <th>Shop Link</th>
+                                  </tr>
+                              </thead>
+
+
+
+                          </table>
+                      </div>
+
+
+                    </div>
         </div>
     </div>
 </div>

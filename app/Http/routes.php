@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -34,9 +38,12 @@ Route::group(['middleware' => 'web'], function () {
     return view('standarddash');
     });
 
-    Route::get('/addbooks', function () {
+    Route::get('addbooks', function () {
     return view('addbooks');
     });
+
+  
+
 
     Route::get('/statistics', function () {
     return view('statistics');
@@ -46,8 +53,11 @@ Route::group(['middleware' => 'web'], function () {
     return view('onlineusers');
     });
 
+
+
     Route::get('/', function () {
     return view('welcome');
+
 
 
 });
@@ -56,13 +66,15 @@ Route::get('/books', function () {
 return view('books');
 });
 
-Route::get ('/request', function () {
+Route::get('/request', function () {
 return view('request');
 });
 
 Route::get('/contact', function () {
 return view('contact');
 });
+
+Route::resource('/index', 'UserController');
 
 Route::get('/home', 'HomeController@index');
 });

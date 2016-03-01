@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Add Books</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/addbooks') }}">
+                    <form class="form-horizontal" role="form" method="post">
                         {!! csrf_field() !!}
 
                         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -70,7 +70,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-5">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" value="Add" class="btn btn-primary">
                                   <i class="fa fa-plus"></i>Add Book
                                 </button>
                             </div>
