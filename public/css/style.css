@@ -1,3 +1,9 @@
+body {
+    background-image: url("https://images2.alphacoders.com/261/26102.jpg");
+    background-repeat: no-repeat;
+}
+
+
 #slider {
     width: 373px;
     height: 550px;

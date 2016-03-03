@@ -56,6 +56,10 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('manageusers', 'UserController@GetUsers');
 
+    Route::get('recieverequests', function () {
+    return view('recieverequests');
+    });
+
     Route::get('/', function () {
     return view('welcome');
 });

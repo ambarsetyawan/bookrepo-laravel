@@ -23,7 +23,14 @@
         .fa-btn {
             margin-right: 6px;
         }
-    </style>
+
+        body {
+            background-image: url("https://images2.alphacoders.com/261/26102.jpg");
+
+            background-attachment: fixed;
+            }    </style>
+
+
 </head>
 <body id="app-layout">
     <nav class="navbar navbar-default">
@@ -56,6 +63,7 @@
                   <li><a href="{{ url('addbooks') }}"><i class="fa fa-plus"></i> Add Books</a></li>
                   <li><a href="{{ url('statistics') }}"><i class="fa fa-bar-chart"></i> Statistics</a></li>
                   <li><a href="{{ url('manageusers') }}"><i class="fa fa-users"></i> Manage Users</a></li>
+                  <li><a href="{{ url('recieverequests') }}"><i class="fa fa-exclamation"></i> Requests</a></li>
                   @endif
                 </ul>
 

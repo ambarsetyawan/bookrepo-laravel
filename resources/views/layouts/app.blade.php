@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <body background="https://images2.alphacoders.com/261/26102.jpg">
+
+
     <title>BookRepo</title>
 
     <!-- Fonts -->
@@ -32,6 +35,13 @@
         .fa-btn {
             margin-right: 6px;
         }
+
+        body {
+            background-image: url("https://images2.alphacoders.com/261/26102.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            }
+
     </style>
 
 </head>
