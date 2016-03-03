@@ -4,7 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AddBooks extends Model
+class Addbooks extends Model
 {
-    //
+    protected $table = 'books';
+    protected $fillable = array('title', 'authur', 'description', 'published');
 }

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Input;
+use Redirect;
 
 class UserController extends Controller
 {
@@ -18,10 +20,10 @@ class UserController extends Controller
      protected $users;
 
 
-    public function index()
+    public function GetUsers()
     {
-      $users = user::all();
-	  	return View::make('this.index', ['users' => $users]);
+      $Users = \App\User::all();
+	  	return view('manageusers')->with('Users',$Users);
     }
 
 
@@ -42,18 +44,18 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-      $user = new User;
-
+    $user = new \App\User;
 		$user->name = Input::get('name');
-		$user->email      = Input::get('email');
-		$user->password   = Hash::make(Input::get('password'));
+		$user->email = Input::get('email');
+		$user->password = Input::get('password');
 
 		$user->save();
 
-		return Redirect::to('/user');
+		return Redirect::to('manageusers');
     }
+
 
     /**
      * Display the specified resource.
@@ -96,7 +98,7 @@ class UserController extends Controller
 
       $user->save();
 
-  return Redirect::to('/user');
+  return Redirect::to('manageusers');
     }
 
     /**
@@ -109,7 +111,7 @@ class UserController extends Controller
     {
       User::destroy($id);
 
-		return Redirect::to('/user');
+		return Redirect::to('manageusers');
     }
 
 

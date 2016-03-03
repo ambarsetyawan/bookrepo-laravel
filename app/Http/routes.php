@@ -30,37 +30,36 @@ Route::get('/', function () {
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    Route::get('/admindash', function () {
-    return view('admindash');
-    });
-
     Route::get('/standarddash', function () {
     return view('standarddash');
+    });
+
+    Route::get('admindash', function () {
+    return view('admindash');
     });
 
     Route::get('addbooks', function () {
     return view('addbooks');
     });
 
-  
+    Route::post('addbooks', 'BooksController@store');
 
+    Route::get('addbooks', 'BooksController@GetBooks');
 
-    Route::get('/statistics', function () {
+    Route::get('statistics', function () {
     return view('statistics');
     });
 
-    Route::get('/onlineusers', function () {
-    return view('onlineusers');
+    Route::get('manageusers', function () {
+    return view('manageusers');
     });
 
-
+    Route::get('manageusers', 'UserController@GetUsers');
 
     Route::get('/', function () {
     return view('welcome');
-
-
-
 });
+
 
 Route::get('/books', function () {
 return view('books');
@@ -74,7 +73,7 @@ Route::get('/contact', function () {
 return view('contact');
 });
 
-Route::resource('/index', 'UserController');
+Route::get('books', 'BooksController@RetrieveBooks');
 
 Route::get('/home', 'HomeController@index');
 });

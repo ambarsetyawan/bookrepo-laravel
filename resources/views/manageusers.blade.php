@@ -12,7 +12,7 @@
                     <div class="panel-body">
 
 
-                                        <h2><i class="fa fa-users"></i> Users Management</h2>
+                                        <h2><i class="fa fa-users"></i> Management Users</h2>
 
                                         <div class="table-responsive">
                                             <table class="table table-bordered table-striped">
@@ -20,16 +20,23 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Name</th>
-                                                        <th>Username</th>
                                                         <th>Email</th>
+                                                        <th>Password</th>
                                                         <th>Joined On</th>
-                                                        <th></th>
+                                                        <th>Manage</th>
                                                     </tr>
                                                 </thead>
+                                                @foreach($Users as $key => $user)
+                                                <tr>
+                                                  <td>{{ $user->name }}</th>
+                                                  <td>{{ $user->email }}</th>
+                                                  <td>{{ $user->password }}</th>
+                                                  <td>{{ $user->created_at }}</th>
+                                                  <td></th>
+                                                </tr>
+                                                @endforeach
+                                              </table>
 
-
-
-                                            </table>
                                         </div>
 
         </div>
