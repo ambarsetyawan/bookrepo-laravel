@@ -6,6 +6,8 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Add A New Book</div>
+
+
                 <div class="panel-body">
 
                   {!! Form::open() !!}
@@ -29,6 +31,11 @@
                   <div class="form-group">
                       {!! Form::label('published', 'Publish Date:') !!}
                       {!! Form::text('published', null, ['class' => 'form-control']) !!}
+                  </div>
+
+                  <div class="form-group">
+                      {!! Form::label('retail', 'Retail Link:') !!}
+                      {!! Form::text('retail', null, ['class' => 'form-control']) !!}
                   </div>
 
                 {{ Form::submit('ADD BOOK', array('class' => 'btn')) }}
@@ -55,6 +62,7 @@
                       <td>{{ $book->authur }}</th>
                       <td>{{ $book->description }}</th>
                       <td>{{ $book->published }}</th>
+                      <td>{{ $book->retail }}</th>
                       <td></th>
                     </tr>
                     @endforeach

@@ -5,10 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <body background="https://images2.alphacoders.com/261/26102.jpg">
-
-
-    <title>BookRepo</title>
+    <title>Welcome To BookRepo</title>
 
     <!-- Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
@@ -26,23 +23,6 @@
     <script type="text/javascript" src="java/java.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
-
-    <style>
-        body {
-            font-family: 'Lato';
-        }
-
-        .fa-btn {
-            margin-right: 6px;
-        }
-
-        body {
-            background-image: url("https://images2.alphacoders.com/261/26102.jpg");
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            }
-
-    </style>
 
 </head>
 <body id="app-layout">

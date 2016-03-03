@@ -60,6 +60,9 @@ Route::group(['middleware' => 'web'], function () {
     return view('recieverequests');
     });
 
+    Route::get('recieverequests', 'RequestsController@GetRequests');
+
+
     Route::get('/', function () {
     return view('welcome');
 });
@@ -72,6 +75,8 @@ return view('books');
 Route::get('/request', function () {
 return view('request');
 });
+
+Route::post('request', 'RequestsController@store');
 
 Route::get('/contact', function () {
 return view('contact');

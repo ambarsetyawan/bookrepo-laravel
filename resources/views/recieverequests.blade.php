@@ -23,9 +23,20 @@
                                                         <th>Email</th>
                                                         <th>Book Title</th>
                                                         <th>Book Authur</th>
+                                                        <th>Requested At</th>
+                                                        <th></th>
                                                     </tr>
                                                 </thead>
-
+                                                @foreach($Requests as $key => $requested)
+                                                <tr>
+                                                  <td>{{ $requested->username }}</th>
+                                                  <td>{{ $requested->email }}</th>
+                                                  <td>{{ $requested->booktitle }}</th>
+                                                  <td>{{ $requested->bookauthur }}</th>
+                                                  <td>{{ $requested->created_at }}</th>
+                                                  <td></th>
+                                                </tr>
+                                                @endforeach
 
                                               </table>
 

@@ -31,7 +31,8 @@ class BooksController extends Controller
         'title' => 'required',
         'authur' => 'required',
         'description' => 'required',
-        'published' => 'required'
+        'published' => 'required',
+        'retail' => 'required'
       );
 
       $validator = Validator::make(Input::all(), $rules);
@@ -49,9 +50,9 @@ class BooksController extends Controller
               $class->authur = Input::get('authur');
               $class->description = Input::get('description');
               $class->published = Input::get('published');
+              $class->retail = Input::get('retail');
 
               $class -> save();
-
 
               Session::flash('message', 'Added Successfully');
               return Redirect::to('addbooks');

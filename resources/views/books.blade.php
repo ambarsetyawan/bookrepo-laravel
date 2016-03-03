@@ -31,7 +31,7 @@
                                   <td>{{ $book->authur }}</th>
                                   <td>{{ $book->description }}</th>
                                   <td>{{ $book->published }}</th>
-                                  <td></th>
+                                  <td>{{ $book->retail }}</th>
                                 </tr>
                                 @endforeach
                             </table>

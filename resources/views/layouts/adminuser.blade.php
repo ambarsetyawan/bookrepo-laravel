@@ -13,25 +13,11 @@
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
-
-    <style>
-        body {
-            font-family: 'Lato';
-        }
-
-        .fa-btn {
-            margin-right: 6px;
-        }
-
-        body {
-            background-image: url("https://images2.alphacoders.com/261/26102.jpg");
-
-            background-attachment: fixed;
-            }    </style>
-
-
 </head>
+
+
 <body id="app-layout">
     <nav class="navbar navbar-default">
         <div class="container">

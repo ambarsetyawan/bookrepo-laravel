@@ -9,81 +9,34 @@
 
                 </th> </div>
                 <div class="panel-body">
+                  {!! Form::open() !!}
+
+                  <!-- Title form input -->
+                  <div class="form-group">
+                      {!! Form::label('username', 'Name') !!}
+                      {!! Form::text('username', null, ['class' => 'form-control']) !!}
+                  </div>
+
+                  <div class="form-group">
+                      {!! Form::label('email', 'Email:') !!}
+                      {!! Form::text('email', null, ['class' => 'form-control']) !!}
+                  </div>
+                  <!-- Content form input -->
+                  <div class="form-group">
+                      {!! Form::label('booktitle', 'Book Title:') !!}
+                      {!! Form::text('booktitle', null, ['class' => 'form-control']) !!}
+                  </div>
+
+                  <div class="form-group">
+                      {!! Form::label('bookauthur', 'Book Authur:') !!}
+                      {!! Form::text('bookauthur', null, ['class' => 'form-control']) !!}
+                  </div>
 
 
-                  <form class="form-horizontal" role="form" method="POST" action="{{ url('/request') }}">
-                      {!! csrf_field() !!}
+                {{ Form::submit('REQUEST', array('class' => 'btn')) }}
 
-                      <div class="form-group{{ $errors->has('yourname') ? ' has-error' : '' }}">
-                          <label class="col-md-4 control-label">Your Name</label>
+                {!! Form::close() !!}
 
-                          <div class="col-md-6">
-                              <input type="text" class="form-control" name="yourname" value="{{ old('yourname') }}">
-
-                              @if ($errors->has('yourname'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('yourname') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
-
-                      <div class="form-group{{ $errors->has('youremail') ? ' has-error' : '' }}">
-                          <label class="col-md-4 control-label">Your E-Mail Address</label>
-
-                          <div class="col-md-6">
-                              <input type="email" class="form-control" name="youremail" value="{{ old('youremail') }}">
-
-                              @if ($errors->has('youremail'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('youremail') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
-
-
-                      <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                          <label class="col-md-4 control-label">Book Title</label>
-
-                          <div class="col-md-6">
-                              <input type="text" class="form-control" name="title" value="{{ old('title') }}">
-
-                              @if ($errors->has('title'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('title') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
-
-
-                      <div class="form-group{{ $errors->has('authur') ? ' has-error' : '' }}">
-                          <label class="col-md-4 control-label">Book Authur</label>
-
-                          <div class="col-md-6">
-                              <input type="text" class="form-control" name="authur" value="{{ old('authur') }}">
-
-                              @if ($errors->has('authur'))
-                                  <span class="help-block">
-                                      <strong>{{ $errors->first('authur') }}</strong>
-                                  </span>
-                              @endif
-                          </div>
-                      </div>
-
-
-                      <div class="form-group">
-                          <div class="col-md-6 col-md-offset-5">
-                              <button type="submit" class="btn btn-primary">
-                                <i class="fa fa-envelope-o"></i> Request
-                              </button>
-
-                          </div>
-                      </div>
-                  </form>
-
-                </br>
                     </div>
 
                 </div>
