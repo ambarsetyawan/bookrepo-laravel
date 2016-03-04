@@ -9,69 +9,48 @@
                 </th> </div>
                     <div class="panel-body">
 
-                    </br>
-                      <form class="form-horizontal" role="form" method="POST" action="{{ url('/contact') }}">
-                          {!! csrf_field() !!}
-
-                          <div class="form-group{{ $errors->has('yourname') ? ' has-error' : '' }}">
-                              <label class="col-md-4 control-label">Your Name</label>
-
-                              <div class="col-md-5">
-                                  <input type="text" class="form-control" name="yourname" value="{{ old('yourname') }}">
-
-                                  @if ($errors->has('yourname'))
-                                      <span class="help-block">
-                                          <strong>{{ $errors->first('yourname') }}</strong>
-                                      </span>
-                                  @endif
-                              </div>
+                      @if (count($errors) > 0)
+                          <div class="alert alert-danger">
+                              <ul>
+                                  @foreach ($errors->all() as $error)
+                                      <li>{{ $error }}</li>
+                                  @endforeach
+                              </ul>
                           </div>
+                      @endif
 
-                          <div class="form-group{{ $errors->has('youremail') ? ' has-error' : '' }}">
-                              <label class="col-md-4 control-label">Your E-Mail Address</label>
-
-                              <div class="col-md-5">
-                                  <input type="email" class="form-control" name="youremail" value="{{ old('youremail') }}">
-
-                                  @if ($errors->has('youremail'))
-                                      <span class="help-block">
-                                          <strong>{{ $errors->first('youremail') }}</strong>
-                                      </span>
-                                  @endif
-                              </div>
+                      @if(Session::has('sentmessage'))
+                          <div class="alert alert-success">
+                              {{ Session::get('sentmessage') }}
                           </div>
+                      @endif
 
 
+                      {!! Form::open() !!}
 
-                          <div class="form-group{{ $errors->has('yourmessage') ? ' has-error' : '' }}">
-                              <label class="col-md-4 control-label">Type Message</label>
+                      <!-- Title form input -->
+                      <div class="form-group">
+                          {!! Form::label('name', 'Name:') !!}
+                          {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                      </div>
 
-                              <div class="col-md-5">
-                                  <textarea rows="8" cols="45">
-                                 </textarea>
-
-                                  @if ($errors->has('yourmessage'))
-                                      <span class="help-block">
-                                          <strong>{{ $errors->first('yourmessage') }}</strong>
-                                      </span>
-                                  @endif
-                              </div>
-                            </div>
-                          </div>
+                      <div class="form-group">
+                          {!! Form::label('email', 'Email:') !!}
+                          {!! Form::text('email', null, ['class' => 'form-control']) !!}
+                      </div>
+                      <!-- Content form input -->
+                      <div class="form-group">
+                          {!! Form::label('message', 'Message:') !!}
+                          {!! Form::textarea('message', null, ['class' => 'form-control']) !!}
+                      </div>
 
 
-                          <div class="form-group">
-                              <div class="col-md-6 col-md-offset-5">
-                                  <button type="submit" align="center" class="btn btn-primary" >
-                                    <i class="fa fa-envelope-o"></i> Send Message
-                                  </button>
+                    {{ Form::submit('Send', array('class' => 'btn')) }}
 
-                              </div>
-                            </br>
-                          </div>
-                      </form>
+                    {!! Form::close() !!}
 
-                    </br>
+                    </div>
+
                     </div>
 
                 </div>

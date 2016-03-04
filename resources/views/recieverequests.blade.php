@@ -10,12 +10,17 @@
 
                 </th> </div>
                     <div class="panel-body">
-
-
                                         <h2><i class="fa fa-users"></i> Recieved Requests</h2>
-
                                         <div class="table-responsive">
                                             <table class="table table-bordered table-striped">
+
+                                              @if(Session::has('flash_message'))
+                                                          <div class="alert alert-success">
+                                                              {{ Session::get('flash_message') }}
+                                                          </div>
+                                                      @endif
+
+                                                      @yield('content')
 
                                                 <thead>
                                                     <tr>
@@ -34,7 +39,7 @@
                                                   <td>{{ $requested->booktitle }}</th>
                                                   <td>{{ $requested->bookauthur }}</th>
                                                   <td>{{ $requested->created_at }}</th>
-                                                  <td></th>
+                                                <td> </th>
                                                 </tr>
                                                 @endforeach
 

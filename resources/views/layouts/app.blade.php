@@ -38,13 +38,8 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <!-- Branding Image -->
 
-
-                <a class="navbar-brand" href="{{ url('/') }}"><i class="fa fa-home"></i>
-                    Home
-
-                </a>
+                <a class="navbar-brand" href="{{ url('/') }}"><i class="fa fa-home"></i>HOME</a>
 
 
             </div>
@@ -90,9 +85,9 @@
 
 
 
-    <div class="panel-heading" align="center">
+      <div id="footar" align="center">
             @include('footer')
-    </div>
+      </div>
 
 
 </body>

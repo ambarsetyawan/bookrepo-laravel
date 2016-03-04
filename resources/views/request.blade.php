@@ -9,6 +9,23 @@
 
                 </th> </div>
                 <div class="panel-body">
+
+                  @if (count($errors) > 0)
+                      <div class="alert alert-danger">
+                          <ul>
+                              @foreach ($errors->all() as $error)
+                                  <li>{{ $error }}</li>
+                              @endforeach
+                          </ul>
+                      </div>
+                  @endif
+
+                  @if(Session::has('successmessage'))
+                      <div class="alert alert-success">
+                          {{ Session::get('successmessage') }}
+                      </div>
+                  @endif
+
                   {!! Form::open() !!}
 
                   <!-- Title form input -->

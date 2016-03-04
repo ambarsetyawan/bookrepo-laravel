@@ -45,11 +45,11 @@
                   @if (Auth::guest())
 
                   @else
-                  <li><a href="{{ url('/admindash') }}"><i class="fa fa-pencil-square-o"></i> DashBoard</a></li>
                   <li><a href="{{ url('addbooks') }}"><i class="fa fa-plus"></i> Add Books</a></li>
                   <li><a href="{{ url('statistics') }}"><i class="fa fa-bar-chart"></i> Statistics</a></li>
                   <li><a href="{{ url('manageusers') }}"><i class="fa fa-users"></i> Manage Users</a></li>
-                  <li><a href="{{ url('recieverequests') }}"><i class="fa fa-exclamation"></i> Requests</a></li>
+                  <li><a href="{{ url('recieverequests') }}"><i class="fa fa-exclamation"></i> Book Requests</a></li>
+                  <li><a href="{{ url('/admindash') }}"><i class="fa fa-pencil-square-o"></i> Messages</a></li>
                   @endif
                 </ul>
 
@@ -64,7 +64,7 @@
                               <i class="fa fa-user"></i>   {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
-                            <ul class="dropdown-menu" role="menu">
+
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> Logout</a></li>
                             </ul>
                         </li>
@@ -76,8 +76,8 @@
 
     @yield('content')
 
-    <div class="panel-heading" align="center">
-            @include('footer')
+    <div id="footar" align="center">
+          @include('footer')
     </div>
 
 

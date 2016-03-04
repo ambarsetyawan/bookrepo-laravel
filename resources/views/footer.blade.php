@@ -1,2 +1,2 @@
 
-<div id="copyright text-right">© Copyright 2016 BookRepo</div>
+  <div id="footer">© Copyright 2016 BookRepo</div>

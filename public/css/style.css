@@ -1,8 +1,16 @@
+html{
+    position: relative;
+    min-height: 100%;
+
+}
+
 body {
     background-image: url("https://images2.alphacoders.com/261/26102.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-repeat:space;
+    background-attachment:inherit;
+    background-position: center;
     font-family: 'Lato';
+    margin: 0 0 100px;
 }
 
 
@@ -25,4 +33,15 @@ body {
     list-style-type: none;
     width: 373px;
     height: 400px;
+}
+
+#footer{
+  background:#FFFFFF;
+  padding:15px 30px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 45px;
+  width: 100%;
+  overflow:hidden;
 }

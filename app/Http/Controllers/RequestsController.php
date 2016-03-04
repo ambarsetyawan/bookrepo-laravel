@@ -20,37 +20,50 @@ class RequestsController extends Controller
   }
 
 
+  public function destroy($id)
+  {
+      $task = Task::findOrFail($id);
+
+      $task->delete();
+
+      Session::flash('flash_message', 'Requests Deleted Successfully!');
+
+      return redirect()->route('recieverequests');
+  }
+
 
   public function store()
   {
 
       $rules = array(
-        'username' => 'required',
+
+
+        'name' => 'required',
         'email' => 'required',
-        'booktitle' => 'required',
-        'bookauthur' => 'required',
+        'message' => 'required',
+
       );
+
 
       $validator = Validator::make(Input::all(), $rules);
 
         if ($validator-> fails())
             {
-              return redirect('request')
+              return redirect('contact')
               ->withErrors($validator)
               ->withInput();
             }
         else
             {
-              $class = new \App\Requests;
-              $class->username = Input::get('username');
+              $class = new \App\Contact;
+              $class->name = Input::get('name');
               $class->email = Input::get('email');
-              $class->booktitle = Input::get('booktitle');
-              $class->bookauthur = Input::get('bookauthur');
+              $class->message = Input::get('message');
 
               $class -> save();
 
-              Session::flash('message', 'Added Successfully');
-              return Redirect::to('request');
+              Session::flash('sentmessage', 'Message Sent!');
+              return Redirect::to('contact');
             }
 
     }
