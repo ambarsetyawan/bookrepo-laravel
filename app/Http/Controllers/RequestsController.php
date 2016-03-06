@@ -32,39 +32,43 @@ class RequestsController extends Controller
   }
 
 
+
   public function store()
   {
 
       $rules = array(
 
 
-        'name' => 'required',
+        'username' => 'required',
         'email' => 'required',
-        'message' => 'required',
-
+        'booktitle' => 'required',
+        'bookauthur' => 'required',
       );
+
 
 
       $validator = Validator::make(Input::all(), $rules);
 
         if ($validator-> fails())
             {
-              return redirect('contact')
+              return redirect('request')
               ->withErrors($validator)
               ->withInput();
             }
         else
             {
-              $class = new \App\Contact;
-              $class->name = Input::get('name');
+              $class = new \App\Requests;
+              $class->username = Input::get('username');
               $class->email = Input::get('email');
-              $class->message = Input::get('message');
+              $class->booktitle = Input::get('booktitle');
+              $class->bookauthur = Input::get('bookauthur');
 
               $class -> save();
 
-              Session::flash('sentmessage', 'Message Sent!');
-              return Redirect::to('contact');
+              Session::flash('successmessage', 'Request Sent!');
+              return Redirect::to('request');
             }
 
     }
+
 }
