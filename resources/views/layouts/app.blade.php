@@ -23,8 +23,15 @@
     <script type="text/javascript" src="java/java.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
+    <script src="js/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+    <script src="js/jquery.mousewheel.min.js" type="text/javascript"></script>
+    <script src="js/jquery.smoothdivscroll-1.3-min.js" type="text/javascript"></script>
+    <script src="js/jqueryautoscroll.js" type="text/javascript"></script>
 
 </head>
+<body>
+
+
 <body id="app-layout">
     <nav class="navbar navbar-default">
         <div class="container">
@@ -81,8 +88,6 @@
     </nav>
 
     @yield('content')
-
-
 
 
       <div id="footar" align="center">

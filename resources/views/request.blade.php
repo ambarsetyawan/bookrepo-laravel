@@ -2,12 +2,12 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">   Found A Book Thats Not On The Website? Make A Request To The Admin!<th>
+    <div class="row" align="center">
 
-                </th> </div>
+        <div class="col-md-4 col-md-offset-4">
+            <div class="panel panel-default">
+
+                <div class="panel-heading">   Found A Book Thats Not On The Website? Make A Request!</div>
                 <div class="panel-body">
 
 

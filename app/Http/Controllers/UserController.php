@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Validator;
 use Input;
 use Redirect;
+use Session;
 
 class UserController extends Controller
 {
@@ -110,9 +113,8 @@ class UserController extends Controller
     {
       User::destroy($id);
 
-		return Redirect::to('manageusers');
+      Session::flash('delete_message', 'User Deleted Successfully!');
+	  	return Redirect::to('manageusers');
     }
-
-
 
 }

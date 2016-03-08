@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\BookRequest;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -20,22 +21,18 @@ public function __construct()
 
 
   public function GetRequests(){
-    $Requests =   \App\Requests::all();
-    return view('recieverequests')->with('Requests', $Requests);
+    $BookRequest =   \App\BookRequest::all();
+    return view('recieverequests')->with('Requests', $BookRequest);
   }
 
 
   public function destroy($id)
   {
-      $task = Task::findOrFail($id);
+    BookRequest::destroy($id);
 
-      $task->delete();
-
-      Session::flash('delete_message', 'Requests Deleted Successfully!');
-
-      return redirect()->route('recieverequests');
+    Session::flash('delete_message', 'Request Deleted Successfully!');
+    return Redirect::to('recieverequests');
   }
-
 
 
   public function store()
@@ -62,7 +59,7 @@ public function __construct()
             }
         else
             {
-              $class = new \App\Requests;
+              $class = new \App\BookRequest;
               $class->username = Input::get('username');
               $class->email = Input::get('email');
               $class->booktitle = Input::get('booktitle');

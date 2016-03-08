@@ -2,25 +2,30 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+    <div class="row" align="center">
+
+        <div class="col-md-12 col-md-offset-0">
             <div class="panel panel-default">
-                <div class="panel-heading">   This is where you can view and manage users of the website.<th>
 
-
-                </th> </div>
+                <div class="panel-heading">   This is where you can view and manage users of the website. </div>
                     <div class="panel-body">
 
+                      @if(Session::has('delete_message'))
+                                  <div class="alert alert-success">
+                                      {{ Session::get('delete_message') }}
+                                  </div>
+                              @endif
 
                                         <h2><i class="fa fa-users"></i> Management Users</h2>
 
-                                        <div class="table-responsive">
+                                        <div class="table-responsive" >
                                             <table class="table table-bordered table-striped">
 
                                                 <thead>
                                                     <tr>
                                                         <th>Name</th>
                                                         <th>Email</th>
+                                                        <th>Password</th>
                                                         <th>Joined On</th>
                                                         <th>Manage</th>
                                                     </tr>
@@ -29,12 +34,12 @@
                                                 <tr>
                                                   <td>{{ $user->name }}</th>
                                                   <td>{{ $user->email }}</th>
+                                                  <td>{{ $user->password }}</th>
                                                   <td>{{ $user->created_at }}</th>
-                                                  <td> <form action="/manageusers/delete/{{ $user->id }}" method="POST">
-                                                        <input type="hidden" name="_method" value="DELETE">
-                                                        {{ csrf_field() }}
-                                                        {{ method_field('DELETE') }}
-                                                        <button type="submit" class="btn btn-danger btn-mini">Delete</button></th>
+                                                  <td> {{ Form::open(['route' => ['manageusers', $user->id], 'method' => 'delete']) }}
+                                                       <input type="hidden" name="_method" value="DELETE">
+                                                       <button type="submit"class="btn btn-danger btn-mini">Delete</button>
+                                                       {{ Form::close() }}</th>
                                                 </tr>
                                                 @endforeach
                                               </table>

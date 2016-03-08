@@ -2,13 +2,12 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
+    <div class="row"  align="center">
+
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
-                <div class="panel-heading">   This is where you can view the requests made by users.<th>
 
-
-                </th> </div>
+                <div class="panel-heading">   This is where you can view the requests made by users. </div>
                     <div class="panel-body">
                                         <h2><i class="fa fa-users"></i> Recieved Requests</h2>
                                         <div class="table-responsive">
@@ -39,7 +38,10 @@
                                                   <td>{{ $requested->booktitle }}</th>
                                                   <td>{{ $requested->bookauthur }}</th>
                                                   <td>{{ $requested->created_at }}</th>
-                                                  <td></th>
+                                                  <td>{{ Form::open(['route' => ['recieverequests', $requested->id], 'method' => 'delete']) }}
+                                                       <input type="hidden" name="_method" value="DELETE">
+                                                       <button type="submit"class="btn btn-danger btn-mini">Delete</button>
+                                                       {{ Form::close() }}</th>
                                                 </tr>
                                                 @endforeach
 

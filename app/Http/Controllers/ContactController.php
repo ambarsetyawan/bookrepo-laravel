@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Contact;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -55,6 +56,15 @@ class ContactController extends Controller
               return Redirect::to('contact');
             }
 
+    }
+
+
+    public function destroy($id)
+    {
+      Contact::destroy($id);
+
+      Session::flash('delete_message', 'Message Deleted!');
+      return Redirect::to('messages');
     }
 
 }

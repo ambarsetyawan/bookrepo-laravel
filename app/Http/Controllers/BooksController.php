@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\AddBooks;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -16,7 +17,7 @@ class BooksController extends Controller
 
   public function GetBooks(){
     $AddedBooks =   \App\Addbooks::all();
-    return view('addbooks')->with('AddedBooks', $AddedBooks);
+    return view('managebooks')->with('AddedBooks', $AddedBooks);
   }
 
   public function RetrieveBooks(){
@@ -39,7 +40,7 @@ class BooksController extends Controller
 
         if ($validator-> fails())
             {
-              return redirect('addbooks')
+              return redirect('managebooks')
               ->withErrors($validator)
               ->withInput();
             }
@@ -54,9 +55,19 @@ class BooksController extends Controller
 
               $class -> save();
 
-              Session::flash('message', 'Added Successfully');
-              return Redirect::to('addbooks');
+              Session::flash('bookaddedmessage', 'Book Added!');
+              return Redirect::to('managebooks');
             }
 
     }
+
+
+
+        public function destroy($id)
+        {
+          AddBooks::destroy($id);
+
+          Session::flash('delete_message', 'Book Deleted!');
+          return Redirect::to('managebooks');
+        }
 }

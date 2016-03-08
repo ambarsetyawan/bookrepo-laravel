@@ -38,12 +38,13 @@ Route::group(['middleware' => 'web'], function () {
     return view('admindash');
     });
 
-    Route::get('addbooks', function () {
-    return view('addbooks');
+    Route::get('managebooks', function () {
+    return view('managebooks');
     });
 
-    Route::post('addbooks', 'BooksController@store');
-    Route::get('addbooks', 'BooksController@GetBooks');
+    Route::post('managebooks', 'BooksController@store');
+    Route::get('managebooks', 'BooksController@GetBooks');
+    Route::delete('managebooks/delete/{id}',array('uses' => 'BooksController@destroy', 'as' => 'managebooks'));
 
 
     Route::get('statistics', function () {
@@ -55,7 +56,7 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     Route::get('manageusers', 'UserController@GetUsers');
-
+    Route::delete('manageusers/delete/{id}',array('uses' => 'UserController@destroy', 'as' => 'manageusers'));
 
 
     Route::get('/request', function () {
@@ -65,13 +66,12 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('request', 'RequestsController@store');
 
 
-
     Route::get('recieverequests', function () {
     return view('recieverequests');
     });
 
     Route::get('recieverequests', 'RequestsController@GetRequests');
-
+    Route::delete('recieverequests/delete/{id}',array('uses' => 'RequestsController@destroy', 'as' => 'recieverequests'));
 
 
     Route::get('messages', function () {
@@ -79,6 +79,7 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     Route::get('messages', 'ContactController@GetMessages');
+    Route::delete('messages/delete/{id}',array('uses' => 'ContactController@destroy', 'as' => 'messages'));
 
 
 
