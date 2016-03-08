@@ -6,9 +6,20 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Validator;
+use Input;
+use Redirect;
+use Session;
 
 class ContactController extends Controller
 {
+
+
+  public function GetMessages(){
+    $Messages =   \App\Contact::all();
+    return view('messages')->with('Messages', $Messages);
+  }
+
 
   public function store()
   {

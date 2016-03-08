@@ -52,7 +52,7 @@
 
                   <li><a href="{{ url('/books') }}"><i class="fa fa-book"></i> Browse Books</a></li>
                   <li><a href="{{ url('/request') }}"><i class="fa fa-retweet"></i></i> Request Book</a></li>
-                  <li><a href="{{ url('/contact') }}"><i class="fa fa-envelope-square"></i> Contact Admin</a></li>
+                  <li><a href="{{ url('contact') }}"><i class="fa fa-envelope-square"></i> Contact Admin</a></li>
                 </ul>
 
 

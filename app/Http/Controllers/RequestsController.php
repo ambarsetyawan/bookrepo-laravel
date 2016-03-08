@@ -13,6 +13,11 @@ use Session;
 
 class RequestsController extends Controller
 {
+public function __construct()
+{
+    $this->middleware('auth');
+}
+
 
   public function GetRequests(){
     $Requests =   \App\Requests::all();
@@ -26,7 +31,7 @@ class RequestsController extends Controller
 
       $task->delete();
 
-      Session::flash('flash_message', 'Requests Deleted Successfully!');
+      Session::flash('delete_message', 'Requests Deleted Successfully!');
 
       return redirect()->route('recieverequests');
   }

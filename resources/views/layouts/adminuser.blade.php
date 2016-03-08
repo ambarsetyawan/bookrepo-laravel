@@ -49,8 +49,6 @@
                   <li><a href="{{ url('statistics') }}"><i class="fa fa-bar-chart"></i> Statistics</a></li>
                   <li><a href="{{ url('manageusers') }}"><i class="fa fa-users"></i> Manage Users</a></li>
                   <li><a href="{{ url('recieverequests') }}"><i class="fa fa-exclamation"></i> Book Requests</a></li>
-                  <li><a href="{{ url('/admindash') }}"><i class="fa fa-pencil-square-o"></i> Messages</a></li>
-                  @endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -64,8 +62,10 @@
                               <i class="fa fa-user"></i>   {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
-
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{{ url('/messages') }}"><i class="fa fa-pencil-square-o"></i> Messages</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> Logout</a></li>
+                                @endif
                             </ul>
                         </li>
                     @endif

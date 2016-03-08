@@ -43,8 +43,8 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     Route::post('addbooks', 'BooksController@store');
-
     Route::get('addbooks', 'BooksController@GetBooks');
+
 
     Route::get('statistics', function () {
     return view('statistics');
@@ -56,11 +56,30 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('manageusers', 'UserController@GetUsers');
 
+
+
+    Route::get('/request', function () {
+    return view('request');
+    });
+
+    Route::post('request', 'RequestsController@store');
+
+
+
     Route::get('recieverequests', function () {
     return view('recieverequests');
     });
 
     Route::get('recieverequests', 'RequestsController@GetRequests');
+
+
+
+    Route::get('messages', function () {
+    return view('messages');
+    });
+
+    Route::get('messages', 'ContactController@GetMessages');
+
 
 
     Route::get('/', function () {
@@ -72,15 +91,12 @@ Route::get('/books', function () {
 return view('books');
 });
 
-Route::get('/request', function () {
-return view('request');
-});
-
-Route::post('request', 'RequestsController@store');
 
 Route::get('/contact', function () {
 return view('contact');
 });
+
+Route::post('contact', 'ContactController@store');
 
 Route::get('books', 'BooksController@RetrieveBooks');
 

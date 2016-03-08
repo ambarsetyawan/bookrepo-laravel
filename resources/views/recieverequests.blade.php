@@ -14,9 +14,9 @@
                                         <div class="table-responsive">
                                             <table class="table table-bordered table-striped">
 
-                                              @if(Session::has('flash_message'))
+                                              @if(Session::has('delete_message'))
                                                           <div class="alert alert-success">
-                                                              {{ Session::get('flash_message') }}
+                                                              {{ Session::get('delete_message') }}
                                                           </div>
                                                       @endif
 
@@ -29,7 +29,7 @@
                                                         <th>Book Title</th>
                                                         <th>Book Authur</th>
                                                         <th>Requested At</th>
-                                                        <th></th>
+                                                        <th>Manage</th>
                                                     </tr>
                                                 </thead>
                                                 @foreach($Requests as $key => $requested)
@@ -39,7 +39,7 @@
                                                   <td>{{ $requested->booktitle }}</th>
                                                   <td>{{ $requested->bookauthur }}</th>
                                                   <td>{{ $requested->created_at }}</th>
-                                                <td> </th>
+                                                  <td></th>
                                                 </tr>
                                                 @endforeach
 

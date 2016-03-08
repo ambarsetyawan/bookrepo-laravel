@@ -49,21 +49,28 @@
 
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Title</th>
                             <th>Authur</th>
                             <th>Description</th>
                             <th>Published On</th>
                             <th>Retail Link</th>
+                            <th>Manage</th>
                         </tr>
                     </thead>
                     @foreach($AddedBooks as $key => $book)
                     <tr>
+                      <td>{{ $book->id }}</th>
                       <td>{{ $book->title }}</th>
                       <td>{{ $book->authur }}</th>
                       <td>{{ $book->description }}</th>
                       <td>{{ $book->published }}</th>
                       <td>{{ $book->retail }}</th>
-                      <td></th>
+                      <td> <form action="/messages/delete/{{ $book->id }}" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <button type="submit" class="btn btn-danger btn-mini">Delete</button></th>
                     </tr>
                     @endforeach
                 </table>
