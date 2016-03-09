@@ -5,86 +5,37 @@
     <div class="row" align="center">
         <div class="col-md-12 col-md-offset-0">
             <div class="panel panel-default">
-                <div class="panel-heading"><h2>ADMIN DASHBOARD</h2></div>
-
-                <div class="panel-body">
-                    Hello  {{ Auth::user()->name }} <span class="#"></span> !
-                    </p>You can start publishing books, editing existing entries or delete old entries.
-                  </p>On this page you can also keep track of your website using features such as statictics, number of users online and number of books.
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 col-md-offset-0">
-            <div class="panel panel-default">
-                <div class="panel-heading">STATISTICS</div>
-
-                  <div class="panel-body">
-                  <img src="images/bg.jpg" border="1">
-                  </div>
-
+                <div class="panel-heading"><h2><i class="fa fa-pencil-square-o"></i> ADMIN DASHBOARD</h2></div>
             </div>
         </div>
 
 
         <div class="col-md-3 col-md-offset-0">
-            <div class="panel panel-default">
-                <div class="panel-heading">MANAGE BOOKS</div>
+             <a href="{{ url('statistics') }}"><img class="img-zoom" src="images/statistics.png" alt="Statistics"/></a>
+        </div>
 
-                <div class="panel-body">
-                  <img src="images/bg.jpg" border="1">
-                </div>
 
-            </div>
+        <div class="col-md-3 col-md-offset-0">
+             <a href="{{ url('managebooks') }}"><img class="img-zoom" src="images/managebooks.png" alt="Books"/></a>
         </div>
 
         <div class="col-md-3 col-md-offset-0">
-            <div class="panel panel-default">
-                <div class="panel-heading">MANAGE USERS</div>
-
-
-
-                  <div class="panel-body">
-                    <img src="images/bg.jpg" border="1">
-                  </div>
-
-
-            </div>
+             <a href="{{ url('manageusers') }}"><img class="img-zoom" src="images/manageusers.png" alt="Users"/></a>
         </div>
 
         <div class="col-md-3 col-md-offset-0">
-            <div class="panel panel-default">
-                <div class="panel-heading">BOOK REQUESTS</div>
-
-
-                  <div class="panel-body">
-                    <img src="images/bg.jpg" border="1">
-                  </div>
-
-            </div>
+            <a href="{{ url('recieverequests') }}"><img class="img-zoom" src="images/bookrequests.png" alt="Users"/></a>
         </div>
 
         <div class="col-md-3 col-md-offset-0">
-            <div class="panel panel-default">
-                <div class="panel-heading">MESSAGES</div>
-
-                <div class="panel-body">
-                  <img src="images/bg.jpg" border="1">
-                </div>
-
-            </div>
+             <a href="{{ url('messages') }}"><img class="img-zoom" src="images/messages.png" alt="Messages"/></a>
         </div>
 
         <div class="col-md-3 col-md-offset-0">
-            <div class="panel panel-default">
-                <div class="panel-heading">LOGOUT</div>
-
-                <div class="panel-body">
-                  <img src="images/bg.jpg" border="1">
-                </div>
-
-            </div>
+             <a href="{{ url('/logout') }}"><img class="img-zoom" src="images/logout.png" alt="Logout"/></a>
         </div>
+
     </div>
+  </div>
 </div>
 @endsection

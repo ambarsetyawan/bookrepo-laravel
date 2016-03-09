@@ -7,7 +7,7 @@
         <div class="col-md-12 col-md-offset-0">
             <div class="panel panel-default">
 
-                <div class="panel-heading">   This is where you can view and manage users of the website. </div>
+              
                     <div class="panel-body">
 
                       @if(Session::has('delete_message'))

@@ -3,13 +3,12 @@
 @section('content')
 <div class="container">
     <div class="row"  align="center">
-      
+
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
 
-                <div class="panel-heading">   This is where you see the messages sent by other users to you. </div>
                     <div class="panel-body">
-                                        <h2><i class="fa fa-users"></i> Recieved Contact Messages</h2>
+                                        <h2><i class="fa fa-envelope"></i> Recieved Contact Messages</h2>
                                         <div class="table-responsive">
                                             <table class="table table-bordered table-striped">
 

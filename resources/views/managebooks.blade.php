@@ -7,7 +7,7 @@
         <div class="col-md-4 col-md-offset-0">
             <div class="panel panel-default">
 
-                <div class="panel-heading">Add A New Book</div>
+                <div class="panel-heading"><i class="fa fa-plus"></i> Add A New Book</div>
                 <div class="panel-body">
 
                   @if (count($errors) > 0)
@@ -50,6 +50,7 @@
                   </div>
 
                   <div class="form-group">
+
                       {!! Form::label('retail', 'Retail Link:') !!}
                       {!! Form::text('retail', null, ['class' => 'form-control']) !!}
                   </div>
@@ -64,7 +65,7 @@
 
             <div class="col-md-8 col-md-offset-0">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Books On the Website Database</div>
+                    <div class="panel-heading"><i class="fa fa-database"></i> Books On the Website Database</div>
                        <div class="panel-body">
 
                          @if(Session::has('delete_message'))

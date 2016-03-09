@@ -50,7 +50,6 @@
         <div class="col-md-12 col-md-offset-0">
             <div class="panel panel-default">
 
-                    <div class="panel-heading"><i class="fa fa-picture-o"></i>     Book Examples! </div>
                     <div class="panel-body">
 
                       <div id="makeMeScrollable">

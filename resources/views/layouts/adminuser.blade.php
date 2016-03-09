@@ -15,6 +15,11 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+
+    <!-- javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="js/jqueryzoomimg.js" type="text/javascript"></script>
+
 </head>
 
 
@@ -46,7 +51,7 @@
 
                   @else
                   <li><a href="{{ url('statistics') }}"><i class="fa fa-bar-chart"></i> Statistics</a></li>
-                  <li><a href="{{ url('managebooks') }}"><i class="fa fa-plus"></i> Manage Books</a></li>
+                  <li><a href="{{ url('managebooks') }}"><i class="fa fa-book"></i> Manage Books</a></li>
                   <li><a href="{{ url('manageusers') }}"><i class="fa fa-users"></i> Manage Users</a></li>
                   <li><a href="{{ url('recieverequests') }}"><i class="fa fa-exclamation"></i> Book Requests</a></li>
                 </ul>

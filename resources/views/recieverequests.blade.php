@@ -7,9 +7,8 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
 
-                <div class="panel-heading">   This is where you can view the requests made by users. </div>
-                    <div class="panel-body">
-                                        <h2><i class="fa fa-users"></i> Recieved Requests</h2>
+                            <div class="panel-body">
+                                        <h2><i class="fa fa-exclamation-circle"></i> Recieved Requests</h2>
                                         <div class="table-responsive">
                                             <table class="table table-bordered table-striped">
 
