@@ -34,18 +34,18 @@ Route::group(['middleware' => 'web'], function () {
     return view('dashboard');
     });
 
-    Route::get('admindash', function () {
-    return view('admindash');
-    });
-
     Route::get('managebooks', function () {
     return view('managebooks');
+    });
+
+    Route::get('editbooks', function () {
+    return view('editbooks');
     });
 
     Route::post('managebooks', 'BooksController@store');
     Route::get('managebooks', 'BooksController@GetBooks');
     Route::delete('managebooks/delete/{id}',array('uses' => 'BooksController@destroy', 'as' => 'managebooks'));
-
+    Route::get('managebooks/edit/{id}',array('uses' => 'BooksController@edit', 'as' => 'managebooks'));
 
     Route::get('statistics', function () {
     return view('statistics');
@@ -78,6 +78,10 @@ Route::group(['middleware' => 'web'], function () {
     return view('messages');
     });
 
+    Route::get('profile', function () {
+    return view('profile');
+    });
+
     Route::get('messages', 'ContactController@GetMessages');
     Route::delete('messages/delete/{id}',array('uses' => 'ContactController@destroy', 'as' => 'messages'));
 
@@ -89,7 +93,6 @@ Route::group(['middleware' => 'web'], function () {
 Route::get('/books', function () {
 return view('books');
 });
-
 
 Route::get('/contact', function () {
 return view('contact');

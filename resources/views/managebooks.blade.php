@@ -27,7 +27,6 @@
                   @endif
 
                   {!! Form::open() !!}
-
                   <!-- Title form input -->
                   <div class="form-group">
                       {!! Form::label('title', 'Title:') !!}
@@ -74,7 +73,14 @@
                              </div>
                          @endif
 
-                         <table class="table table-bordered table-striped">
+                         @if(Session::has('editmessage'))
+                             <div class="alert alert-success">
+                                 {{ Session::get('editmessage') }}
+                             </div>
+                         @endif
+
+                         <div class="table-responsive" >
+                           <table class="table table-bordered table-striped">
 
                              <thead>
                                  <tr>
@@ -88,7 +94,7 @@
                              </thead>
                              @foreach($AddedBooks as $key => $book)
                              <tr>
-                               <td>{{ $book->title }}</th>
+                               <td >{{ $book->title }}</th >
                                <td>{{ $book->authur }}</th>
                                <td>{{ $book->description }}</th>
                                <td>{{ $book->published }}</th>
@@ -96,16 +102,19 @@
                                <td> {{ Form::open(['route' => ['managebooks', $book->id], 'method' => 'delete']) }}
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit"class="btn btn-danger btn-mini">Delete</button>
-                                    {{ Form::close() }}</th>
+                                    {{ Form::close() }}
+
+                                    {{ Form::open(['route' => ['managebooks', $book->id], 'method' => 'edit']) }}
+                                         <input type="hidden" name="_method" value="EDIT">
+                                         <button type="submit"class="btn btn-info btn-mini">Edit</button>
+                                    {{ Form::close() }}
+                                       </th>
                              </tr>
                              @endforeach
                          </table>
+                        </div>
 
                     </div>
-
-
-
-
                 </div>
 
                 </div>

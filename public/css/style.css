@@ -5,7 +5,7 @@ html{
 }
 
 body {
-    background-image: url("https://wallpaperscraft.com/image/smoke_fire_bright_colorful_background_46862_1920x1080.jpg");
+    background-image: url("http://wallpaper.pickywallpapers.com/2560x1440/abstract-colored-threads.jpg");
     background-size: contain;
     background-attachment:inherit;
     background-position: center;
@@ -75,6 +75,7 @@ div.scrollWrapper
     -o-transform: scale(1.3);
     transform: scale(1.3);
 }
+
 
 #footer{
   background:#FFFFFF;

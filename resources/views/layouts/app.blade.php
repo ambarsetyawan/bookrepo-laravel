@@ -44,8 +44,10 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                @if (Auth::guest() OR Auth::user()->admin!=1)
+                  @if (Auth::guest())
                 <a class="navbar-brand" href="{{ url('/') }}"><i class="fa fa-home"></i>HOME</a>
+                  @elseif (Auth::user()->admin!=1)
+                <a class="navbar-brand" href="{{ url('/dashboard') }}"><i class="fa fa-home"></i>DASH</a>
                   @elseif(Auth::user()->admin==1)
                 <a class="navbar-brand" href="{{ url('/dashboard') }}"><i class="fa fa-home"></i>ADMIN</a>
                 @endif
@@ -87,9 +89,11 @@
                             <ul class="dropdown-menu" role="menu">
 
                                 @if (Auth::guest() OR Auth::user()->admin!=1)
+                                <li><a href="{{ url('/profile') }}"><i class="fa fa-pencil-square-o"></i> Your Profile</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> Logout</a></li>
                                 @elseif(Auth::user()->admin==1)
                                 <li><a href="{{ url('/messages') }}"><i class="fa fa-pencil-square-o"></i> Messages</a></li>
+                                <li><a href="{{ url('/profile') }}"><i class="fa fa-file"></i> Profile</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> Logout</a></li>
                                 @endif
                             </ul>

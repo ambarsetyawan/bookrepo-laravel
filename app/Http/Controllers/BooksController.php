@@ -63,6 +63,16 @@ class BooksController extends Controller
 
 
 
+        public function edit($id)
+        {
+          $EditBook = AddBooks::findOrFail($id);
+          return view('editbooks')->withTask($EditBook);
+
+          Session::flash('edit_message', 'Book Edited Successfully!');
+          return Redirect::to('managebooks');
+        }
+
+
         public function destroy($id)
         {
           AddBooks::destroy($id);
