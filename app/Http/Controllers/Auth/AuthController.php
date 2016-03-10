@@ -28,7 +28,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/standarddash';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new authentication controller instance.
@@ -56,12 +56,8 @@ class AuthController extends Controller
     }
 
     protected function authenticated($request,$user){
-    if($user->admin === 'yes'){ //role is the user role as saved in DB
-        return redirect()->intended('admindash'); //redirect to admin view
-    }
-
-    return redirect()->intended('/standarddash'); //redirect to standard user view
-}
+        return redirect()->intended('/dashboard'); //redirect to standard user view
+      }
 
 
 

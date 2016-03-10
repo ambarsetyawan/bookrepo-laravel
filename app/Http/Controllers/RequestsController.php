@@ -14,40 +14,23 @@ use Session;
 
 class RequestsController extends Controller
 {
-public function __construct()
-{
-    $this->middleware('auth');
-}
 
 
-  public function GetRequests(){
-    $BookRequest =   \App\BookRequest::all();
-    return view('recieverequests')->with('Requests', $BookRequest);
-  }
-
-
-  public function destroy($id)
-  {
-    BookRequest::destroy($id);
-
-    Session::flash('delete_message', 'Request Deleted Successfully!');
-    return Redirect::to('recieverequests');
-  }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
 
   public function store()
   {
-
       $rules = array(
-
 
         'username' => 'required',
         'email' => 'required',
         'booktitle' => 'required',
         'bookauthur' => 'required',
       );
-
-
 
       $validator = Validator::make(Input::all(), $rules);
 
@@ -71,6 +54,21 @@ public function __construct()
               return Redirect::to('request');
             }
 
+    }
+
+
+    public function GetRequests(){
+      $BookRequest =   \App\BookRequest::all();
+      return view('recieverequests')->with('Requests', $BookRequest);
+    }
+
+
+    public function destroy($id)
+    {
+      BookRequest::destroy($id);
+
+      Session::flash('delete_message', 'Request Deleted Successfully!');
+      return Redirect::to('recieverequests');
     }
 
 }

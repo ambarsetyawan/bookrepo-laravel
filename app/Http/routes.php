@@ -30,8 +30,8 @@ Route::get('/', function () {
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    Route::get('/standarddash', function () {
-    return view('standarddash');
+    Route::get('/dashboard', function () {
+    return view('dashboard');
     });
 
     Route::get('admindash', function () {
@@ -80,8 +80,6 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('messages', 'ContactController@GetMessages');
     Route::delete('messages/delete/{id}',array('uses' => 'ContactController@destroy', 'as' => 'messages'));
-
-
 
     Route::get('/', function () {
     return view('welcome');
