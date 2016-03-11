@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\BookRequest;
+use App\RequestModel;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -42,7 +42,7 @@ class RequestsController extends Controller
             }
         else
             {
-              $class = new \App\BookRequest;
+              $class = new \App\RequestModel;
               $class->username = Input::get('username');
               $class->email = Input::get('email');
               $class->booktitle = Input::get('booktitle');
@@ -58,14 +58,14 @@ class RequestsController extends Controller
 
 
     public function GetRequests(){
-      $BookRequest =   \App\BookRequest::all();
+      $BookRequest =   \App\RequestModel::all();
       return view('recieverequests')->with('Requests', $BookRequest);
     }
 
 
     public function destroy($id)
     {
-      BookRequest::destroy($id);
+      RequestModel::destroy($id);
 
       Session::flash('delete_message', 'Request Deleted Successfully!');
       return Redirect::to('recieverequests');

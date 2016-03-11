@@ -9,9 +9,6 @@
                 </th> </div>
                     <div class="panel-body">
 
-
-
-
                       @if (count($errors) > 0)
                           <div class="alert alert-danger">
                               <ul>
@@ -22,41 +19,34 @@
                           </div>
                       @endif
 
-                      @if(Session::has('editmessage'))
-                          <div class="alert alert-success">
-                              {{ Session::get('editmessage') }}
-                          </div>
-                      @endif
 
-
-  {!! Form::open() !!}
-
+                  {!! Form::open() !!}
 
                     <!-- Title form input -->
                     <div class="form-group">
                         {!! Form::label('title', 'Title:') !!}
-                        {!! Form::text('title', null, ['class' => 'form-control']) !!}
+                        {!! Form::text('title', $data->title, ['class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
                         {!! Form::label('authur', 'Authur:') !!}
-                        {!! Form::text('authur', null, ['class' => 'form-control']) !!}
+                        {!! Form::text('authur', $data->authur, ['class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
                         {!! Form::label('description', 'Description:') !!}
-                        {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+                        {!! Form::textarea('description', $data->description, ['class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
                         {!! Form::label('published', 'Publish Date:') !!}
-                        {!! Form::text('published', null, ['class' => 'form-control']) !!}
+                        {!! Form::text('published', $data->published, ['class' => 'form-control']) !!}
                     </div>
 
                     <div class="form-group">
 
                         {!! Form::label('retail', 'Retail Link:') !!}
-                        {!! Form::text('retail', null, ['class' => 'form-control']) !!}
+                        {!! Form::text('retail', $data->retail, ['class' => 'form-control']) !!}
                     </div>
 
                     {!! Form::submit('Update Book', ['class' => 'btn btn-primary']) !!}

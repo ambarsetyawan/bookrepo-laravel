@@ -38,14 +38,15 @@ Route::group(['middleware' => 'web'], function () {
     return view('managebooks');
     });
 
-    Route::get('editbooks', function () {
-    return view('editbooks');
-    });
+    // Route::get('editbooks', function () {
+    // return view('editbooks');
+    // });
 
     Route::post('managebooks', 'BooksController@store');
     Route::get('managebooks', 'BooksController@GetBooks');
     Route::delete('managebooks/delete/{id}',array('uses' => 'BooksController@destroy', 'as' => 'managebooks'));
-    Route::get('managebooks/edit/{id}',array('uses' => 'BooksController@edit', 'as' => 'managebooks'));
+    Route::get('managebooks/edit/{id}',array('uses' => 'BooksController@edit', 'as' => 'editbooks'));
+    Route::post('managebooks/edit/',array('uses' => 'BooksController@update', 'as' => 'editbooks'));
 
     Route::get('statistics', function () {
     return view('statistics');
