@@ -119,7 +119,7 @@
                                          <input type="hidden" name="_method" value="EDIT">
                                          <button type="submit"class="btn btn-info btn-mini">Edit</button>
                                     {{ Form::close() }} -->
-                                    <a href ='/managebooks/edit/{{$book->id}}' class ='btn btn-info'>Edit</a></td>
+                                    <a href ="/managebooks/edit/{{$book->id}}" class ='btn btn-info'>Edit</a></td>
 
                                        </th>
                              </tr>

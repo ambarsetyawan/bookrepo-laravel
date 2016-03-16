@@ -74,7 +74,7 @@ class BooksController extends Controller
         }
 
 
-        public function update(Request $request)
+        public function update($id)
         {
             $rules = array(
               'title' => 'required',
@@ -93,7 +93,7 @@ class BooksController extends Controller
                   }
               else
                   {
-                    $class = new \App\BookModel;
+                    $class = BookModel::find($id);
                     $class->title = Input::get('title');
                     $class->authur = Input::get('authur');
                     $class->description = Input::get('description');
