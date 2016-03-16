@@ -1,4 +1,4 @@
-@extends('layouts.adminuser')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -7,7 +7,7 @@
         <div class="col-md-12 col-md-offset-0">
             <div class="panel panel-default">
 
-              
+
                     <div class="panel-body">
 
                       @if(Session::has('delete_message'))

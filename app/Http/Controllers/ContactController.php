@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Contact;
+use App\ContactModel;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -17,7 +17,7 @@ class ContactController extends Controller
 
 
   public function GetMessages(){
-    $Messages =   \App\Contact::all();
+    $Messages =   \App\ContactModel::all();
     return view('messages')->with('Messages', $Messages);
   }
 
@@ -45,7 +45,7 @@ class ContactController extends Controller
             }
         else
             {
-              $class = new \App\Contact;
+              $class = new \App\ContactModel;
               $class->name = Input::get('name');
               $class->email = Input::get('email');
               $class->message = Input::get('message');
@@ -61,7 +61,7 @@ class ContactController extends Controller
 
     public function destroy($id)
     {
-      Contact::destroy($id);
+      ContactModel::destroy($id);
 
       Session::flash('delete_message', 'Message Deleted!');
       return Redirect::to('messages');

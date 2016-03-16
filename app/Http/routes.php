@@ -30,22 +30,24 @@ Route::get('/', function () {
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    Route::get('/standarddash', function () {
-    return view('standarddash');
-    });
-
-    Route::get('admindash', function () {
-    return view('admindash');
+    Route::get('/dashboard', function () {
+    return view('dashboard');
     });
 
     Route::get('managebooks', function () {
     return view('managebooks');
     });
 
+    // Route::get('editbooks', function () {
+    // return view('editbooks');
+    // });
+
     Route::post('managebooks', 'BooksController@store');
     Route::get('managebooks', 'BooksController@GetBooks');
     Route::delete('managebooks/delete/{id}',array('uses' => 'BooksController@destroy', 'as' => 'managebooks'));
 
+    Route::get('managebooks/edit/{id}',array('uses' => 'BooksController@edit', 'as' => 'editbooks'));
+    Route::post('managebooks/edit/{id}',array('uses' => 'BooksController@update', 'as' => 'editbooks'));
 
     Route::get('statistics', function () {
     return view('statistics');
@@ -78,10 +80,12 @@ Route::group(['middleware' => 'web'], function () {
     return view('messages');
     });
 
+    Route::get('profile', function () {
+    return view('profile');
+    });
+
     Route::get('messages', 'ContactController@GetMessages');
     Route::delete('messages/delete/{id}',array('uses' => 'ContactController@destroy', 'as' => 'messages'));
-
-
 
     Route::get('/', function () {
     return view('welcome');
@@ -91,7 +95,6 @@ Route::group(['middleware' => 'web'], function () {
 Route::get('/books', function () {
 return view('books');
 });
-
 
 Route::get('/contact', function () {
 return view('contact');

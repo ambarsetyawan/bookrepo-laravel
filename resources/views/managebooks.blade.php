@@ -1,4 +1,4 @@
-@extends('layouts.adminuser')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -26,9 +26,17 @@
                       </div>
                   @endif
 
-                  {!! Form::open() !!}
+                  @if(Session::has('bookupdatedmessage'))
+                      <div class="alert alert-success">
+                          {{ Session::get('bookupdatedmessage') }}
+                      </div>
+                  @endif
 
+
+
+                  {!! Form::open(['action'=>'BooksController@store', 'files'=>true]) !!}
                   <!-- Title form input -->
+
                   <div class="form-group">
                       {!! Form::label('title', 'Title:') !!}
                       {!! Form::text('title', null, ['class' => 'form-control']) !!}
@@ -41,12 +49,12 @@
 
                   <div class="form-group">
                       {!! Form::label('description', 'Description:') !!}
-                      {!! Form::textarea('description', null, ['class' => 'form-control']) !!}
+                      {!! Form::textarea('description', null, ['class' => 'form-control', 'rows' => 4, 'cols' => 40]) !!}
                   </div>
 
                   <div class="form-group">
                       {!! Form::label('published', 'Publish Date:') !!}
-                      {!! Form::text('published', null, ['class' => 'form-control']) !!}
+                      {!! Form::text('published', null,['class'=>'form-control']) !!}
                   </div>
 
                   <div class="form-group">
@@ -74,10 +82,18 @@
                              </div>
                          @endif
 
-                         <table class="table table-bordered table-striped">
+                         @if(Session::has('editmessage'))
+                             <div class="alert alert-success">
+                                 {{ Session::get('editmessage') }}
+                             </div>
+                         @endif
+
+                         <div class="table-responsive" >
+                           <table class="table table-bordered table-striped">
 
                              <thead>
                                  <tr>
+                                     <th>Cover</th>
                                      <th>Title</th>
                                      <th>Authur</th>
                                      <th>Description</th>
@@ -88,7 +104,8 @@
                              </thead>
                              @foreach($AddedBooks as $key => $book)
                              <tr>
-                               <td>{{ $book->title }}</th>
+                              <td >{{ $book->cover }}</th >
+                               <td >{{ $book->title }}</th >
                                <td>{{ $book->authur }}</th>
                                <td>{{ $book->description }}</th>
                                <td>{{ $book->published }}</th>
@@ -96,16 +113,21 @@
                                <td> {{ Form::open(['route' => ['managebooks', $book->id], 'method' => 'delete']) }}
                                     <input type="hidden" name="_method" value="DELETE">
                                     <button type="submit"class="btn btn-danger btn-mini">Delete</button>
-                                    {{ Form::close() }}</th>
+                                    {{ Form::close() }}
+
+                                    <!-- {{ Form::open(['route' => ['editbooks', $book->id], 'method' => 'POST']) }}
+                                         <input type="hidden" name="_method" value="EDIT">
+                                         <button type="submit"class="btn btn-info btn-mini">Edit</button>
+                                    {{ Form::close() }} -->
+                                    <a href ="/managebooks/edit/{{$book->id}}" class ='btn btn-info'>Edit</a></td>
+
+                                       </th>
                              </tr>
                              @endforeach
                          </table>
+                        </div>
 
                     </div>
-
-
-
-
                 </div>
 
                 </div>
