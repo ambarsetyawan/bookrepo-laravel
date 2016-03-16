@@ -26,7 +26,7 @@
                                 </thead>
                                 @foreach($AddedBooks as $key => $book)
                                 <tr>
-                                  <td>{{ $book->title }}</th>
+                                  <td><a href="/browsebooks/{{ $book->id }}">{{ $book->title }}</th>
                                   <td>{{ $book->authur }}</th>
                                   <td>{{ $book->description }}</th>
                                   <td>{{ $book->published }}</th>

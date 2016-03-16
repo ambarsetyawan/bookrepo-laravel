@@ -82,11 +82,13 @@
                              </div>
                          @endif
 
-                         @if(Session::has('editmessage'))
+                         @if(Session::has('book_update_message'))
                              <div class="alert alert-success">
-                                 {{ Session::get('editmessage') }}
+                                 {{ Session::get('book_update_message') }}
                              </div>
                          @endif
+
+
 
                          <div class="table-responsive" >
                            <table class="table table-bordered table-striped">

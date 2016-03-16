@@ -38,10 +38,6 @@ Route::group(['middleware' => 'web'], function () {
     return view('managebooks');
     });
 
-    // Route::get('editbooks', function () {
-    // return view('editbooks');
-    // });
-
     Route::post('managebooks', 'BooksController@store');
     Route::get('managebooks', 'BooksController@GetBooks');
     Route::delete('managebooks/delete/{id}',array('uses' => 'BooksController@destroy', 'as' => 'managebooks'));
@@ -80,21 +76,27 @@ Route::group(['middleware' => 'web'], function () {
     return view('messages');
     });
 
+    Route::get('messages', 'ContactController@GetMessages');
+    Route::delete('messages/delete/{id}',array('uses' => 'ContactController@destroy', 'as' => 'messages'));
+
+
     Route::get('profile', function () {
     return view('profile');
     });
 
-    Route::get('messages', 'ContactController@GetMessages');
-    Route::delete('messages/delete/{id}',array('uses' => 'ContactController@destroy', 'as' => 'messages'));
 
     Route::get('/', function () {
     return view('welcome');
 });
 
 
-Route::get('/books', function () {
-return view('books');
+Route::get('/browsebooks', function () {
+return view('browsebooks');
 });
+
+Route::get('browsebooks/{id}', 'BooksController@showbookinfo');
+
+
 
 Route::get('/contact', function () {
 return view('contact');
@@ -102,7 +104,7 @@ return view('contact');
 
 Route::post('contact', 'ContactController@store');
 
-Route::get('books', 'BooksController@RetrieveBooks');
+Route::get('browsebooks', 'BooksController@RetrieveBooks');
 
 Route::get('/home', 'HomeController@index');
 });

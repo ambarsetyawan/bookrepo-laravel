@@ -58,11 +58,15 @@
                   </div>
 
                   <div class="col-md-3 col-md-offset-0">
-                      <a href="{{ url('recieverequests') }}"><img class="img-zoom img-responsive" src="images/bookrequests.png" alt="Users"/></a>
+                      <a href="{{ url('recieverequests') }}"><img class="img-zoom img-responsive" src="images/bookrequests.png" alt="Requests"/></a>
                   </div>
 
                   <div class="col-md-3 col-md-offset-0">
                        <a href="{{ url('messages') }}"><img class="img-zoom img-responsive" src="images/messages.png" alt="Messages"/></a>
+                  </div>
+
+                  <div class="col-md-3 col-md-offset-0">
+                       <a href="{{ url('profile') }}"><img class="img-zoom img-responsive" src="images/profile.png" alt="Profile"/></a>
                   </div>
 
                   <div class="col-md-3 col-md-offset-0">
@@ -71,7 +75,20 @@
                     @endif
 
                     @if (Auth::user()->admin!=1)
-                    <div class="col-md-3 col-md-offset-6">
+
+                    <div class="col-md-3 col-md-offset-0">
+                         <a href="{{ url('/browsebooks') }}"><img class="img-zoom img-responsive" src="images/browsebooks.png" alt="BrowseBooks"/></a>
+                    </div>
+
+                    <div class="col-md-3 col-md-offset-0">
+                         <a href="{{ url('request') }}"><img class="img-zoom img-responsive" src="images/requestbook.png" alt="Request Book"/></a>
+                    </div>
+
+                    <div class="col-md-3 col-md-offset-0">
+                         <a href="{{ url('profile') }}"><img class="img-zoom img-responsive" src="images/profile.png" alt="Profile"/></a>
+                    </div>
+
+                    <div class="col-md-3 col-md-offset-0">
                          <a href="{{ url('/logout') }}"><img class="img-zoom img-responsive" src="images/logout.png" alt="Logout"/></a>
                     </div>
                       @endif

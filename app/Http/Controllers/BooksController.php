@@ -21,7 +21,7 @@ class BooksController extends Controller
 
   public function RetrieveBooks(){
     $AddedBooks =   \App\BookModel::all();
-    return view('books')->with('AddedBooks', $AddedBooks);
+    return view('browsebooks')->with('AddedBooks', $AddedBooks);
   }
 
   public function store()
@@ -60,6 +60,16 @@ class BooksController extends Controller
 
 
 
+        public function showbookinfo($id)
+        {
+            $bookinfo = BookModel::find($id);
+
+            return view('bookinfo')->with ('bookinfo', $bookinfo);
+        }
+
+
+
+
 
         public function edit($id)
         {
@@ -74,38 +84,28 @@ class BooksController extends Controller
         }
 
 
-        public function update($id)
+        public function update($id, Request $request)
         {
-            $rules = array(
+
+          $data = BookModel::findOrFail($id);
+
+           $this->validate($request, [
               'title' => 'required',
               'authur' => 'required',
               'description' => 'required',
               'published' => 'required',
               'retail' => 'required'
-            );
-            $validator = Validator::make(Input::all(), $rules);
-
-              if ($validator-> fails())
-                  {
-                    return redirect('editbooks')
-                    ->withErrors($validator)
-                    ->withInput();
-                  }
-              else
-                  {
-                    $class = BookModel::find($id);
-                    $class->title = Input::get('title');
-                    $class->authur = Input::get('authur');
-                    $class->description = Input::get('description');
-                    $class->published = Input::get('published');
-                    $class->retail = Input::get('retail');
-                    $class -> save();
+            ]);
 
 
-                    Session::flash('bookupdatedmessage', 'Book Updated!');
-                    return Redirect::to('managebooks');
-                  }
+            $input = $request->all();
+            $class -> save();
+
+
+            Session::flash('book_update_message', 'Book Updated!');
+            return Redirect::to('managebooks');
           }
+
 
 
 
