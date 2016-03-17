@@ -34,6 +34,11 @@ Route::group(['middleware' => 'web'], function () {
     return view('dashboard');
     });
 
+
+    Route::get('addbook', function () {
+    return view('addbook');
+    });
+
     Route::get('managebooks', function () {
     return view('managebooks');
     });

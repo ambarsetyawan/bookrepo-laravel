@@ -65,6 +65,7 @@
 
                   @elseif(Auth::user()->admin==1)
                   <li><a href="{{ url('statistics') }}"><i class="fa fa-bar-chart"></i> Statistics</a></li>
+                   <li><a href="{{ url('addbook') }}"><i class="fa fa-plus"></i> Add Book</a></li>
                   <li><a href="{{ url('managebooks') }}"><i class="fa fa-book"></i> Manage Books</a></li>
                   <li><a href="{{ url('manageusers') }}"><i class="fa fa-users"></i> Manage Users</a></li>
                   <li><a href="{{ url('recieverequests') }}"><i class="fa fa-exclamation"></i> Book Requests</a></li>

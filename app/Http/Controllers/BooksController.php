@@ -31,7 +31,7 @@ class BooksController extends Controller
 
       $rules = array(
         'title' => 'required',
-        'book_cover' => 'required|mimes:png',
+        'book_cover' => 'required',
         'authur' => 'required',
         'description' => 'required',
         'published' => 'required',
@@ -41,7 +41,7 @@ class BooksController extends Controller
 
         if ($validator-> fails())
             {
-              return redirect('managebooks')
+              return redirect('addbook')
               ->withErrors($validator)
               ->withInput();
             }
