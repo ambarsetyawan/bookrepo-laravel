@@ -36,6 +36,10 @@
 
                   {!! Form::open(['action'=>'BooksController@store', 'files'=>true]) !!}
                   <!-- Title form input -->
+                  <div class="form-group">
+                      {!! Form::label('Book Cover') !!}
+                      {!! Form::file('book_cover', null) !!}
+                </div>
 
                   <div class="form-group">
                       {!! Form::label('title', 'Title:') !!}
@@ -106,8 +110,8 @@
                              </thead>
                              @foreach($AddedBooks as $key => $book)
                              <tr>
-                              <td >{{ $book->cover }}</th >
-                               <td >{{ $book->title }}</th >
+                               <td><img src="/uploads/{{ $book->id }}.png"></th >
+                               <td>{{ $book->title }}</th >
                                <td>{{ $book->authur }}</th>
                                <td>{{ $book->description }}</th>
                                <td>{{ $book->published }}</th>

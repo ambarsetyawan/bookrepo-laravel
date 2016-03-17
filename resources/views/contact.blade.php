@@ -3,14 +3,20 @@
 @section('content')
 <div class="container">
     <div class="row" align="center">
-        <div class="col-md-4 col-md-offset-4">
+
+        <div class="col-md-12 col-md-offset-0">
             <div class="panel panel-default">
-                <div class="panel-heading">   Have A Problem? Send The Admin A Message!<th>
-                </th> </div>
+                <div class="panel-heading">   Have A Problem? Send The Admin A Message! </div>
+              </div>
+            </div>
+
+
+
+                <div class="col-md-6 col-md-offset-3">
+                    <div class="panel panel-default">
+
                     <div class="panel-body">
-
-
-
+                      <h2><i class="fa fa-envelope-square"></i> CONTACT ADMIN</h2>
 
                       @if (count($errors) > 0)
                           <div class="alert alert-danger">
@@ -57,7 +63,8 @@
                     </div>
 
                 </div>
-        </div>
+            </div>
+
     </div>
 </div>
 @endsection

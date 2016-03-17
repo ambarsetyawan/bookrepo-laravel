@@ -8,6 +8,6 @@ use DB;
 class BookModel extends Model
 {
     protected $table = 'books';
-    protected $fillable = array('cover', 'id', 'title', 'authur', 'description', 'published', 'retail');
+    protected $fillable = array('id','book_cover', 'title', 'authur', 'description', 'published', 'retail');
 
 }

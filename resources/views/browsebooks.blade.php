@@ -17,20 +17,14 @@
 
                                 <thead>
                                     <tr>
+                                        <th>Cover</th>
                                         <th>Title</th>
-                                        <th>Authur</th>
-                                        <th>Description</th>
-                                        <th>Published On</th>
-                                        <th>Retail Link</th>
                                     </tr>
                                 </thead>
                                 @foreach($AddedBooks as $key => $book)
                                 <tr>
+                                  <td><img src="/uploads/{{ $book->id }}.png"></th>
                                   <td><a href="/browsebooks/{{ $book->id }}">{{ $book->title }}</th>
-                                  <td>{{ $book->authur }}</th>
-                                  <td>{{ $book->description }}</th>
-                                  <td>{{ $book->published }}</th>
-                                  <td>{{ $book->retail }}</a></th>
 
                                 </tr>
                                 @endforeach

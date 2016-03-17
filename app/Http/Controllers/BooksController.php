@@ -24,10 +24,14 @@ class BooksController extends Controller
     return view('browsebooks')->with('AddedBooks', $AddedBooks);
   }
 
-  public function store()
+  public function store(Request $request)
   {
+
+
+
       $rules = array(
         'title' => 'required',
+        'book_cover' => 'required|mimes:png',
         'authur' => 'required',
         'description' => 'required',
         'published' => 'required',
@@ -51,6 +55,12 @@ class BooksController extends Controller
               $class->retail = Input::get('retail');
               $class -> save();
 
+              $covereName = $class->id . '.' .
+                 $request->file('book_cover')->getClientOriginalExtension();
+
+                 $request->file('book_cover')->move(
+                     base_path() . '/public/uploads/', $covereName
+                 );
 
               Session::flash('bookaddedmessage', 'Book Added!');
               return Redirect::to('managebooks');
@@ -99,7 +109,8 @@ class BooksController extends Controller
 
 
             $input = $request->all();
-            $class -> save();
+            $data->fill($input)->save();
+
 
 
             Session::flash('book_update_message', 'Book Updated!');
