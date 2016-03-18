@@ -66,33 +66,33 @@
             <h2>  <div class="panel-heading" align="center"><i class="fa fa-clock-o"></i> YOUR HISTORY</div></h2>
              <div class="panel-body">
  
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered table-striped">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
 
-                                   
+           
 
-                                                      @yield('content')
+                              @yield('content')
 
-                                                <thead>
-                                                    <tr>
-                                                        <th>Book</th>
-                                                        <th>Comment</th>
-                                                        <th>Submitted On</th>
-                                                        <th>Manage</th>
-                                                    </tr>
-                                                </thead>
-                                                
-                                                <tr>
-                                                  <td>Example</th>
-                                                  <td>Example</th>
-                                                  <td>Example</th>
-                                                  <td>Example</th>
-                                                </tr>
-                                               
+                        <thead>
+                            <tr>
+                                <th>Book</th>
+                                <th>Comment</th>
+                                <th>Submitted On</th>
+                                <th>Manage</th>
+                            </tr>
+                        </thead>
+                        
+                        <tr>
+                          <td>Example</th>
+                          <td>Example</th>
+                          <td>Example</th>
+                          <td>Example</th>
+                        </tr>
+                       
 
-                                              </table>
+                      </table>
 
-                                        </div>
+                </div>
           </div>
       </div>
 

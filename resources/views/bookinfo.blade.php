@@ -3,40 +3,99 @@
 @section('content')
 <div class="container">
     <div class="row" align="center">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-7 col-md-offset-0">
             <div class="panel panel-default">
-                <div class="panel-heading"><h1> BOOK DETAILS <th></h1>
+                <div class="panel-heading"><h1><i class="fa fa-info-circle"></i> BOOK DETAILS <th></h1></div>
 
-                  <div class="col-md-3 col-md-offset-0">
-                      <div class="panel panel-default">
-                        <div class="panel-heading"><h1> Cover <th></h1>
-                              <div class="panel-body">
+          <div class="panel-body">
+
+                                <div class="col-md-4 col-md-offset-0">
+                                            <div class="panel panel-default">
+
+                                                <div class="panel-heading"><i class="fa fa-info-circle"></i>   Book Cover </div>
+                                                    <div class="panel-body">
+                                                     <h1> <img class="book-zoom img-responsive" src="/uploads/{{ $bookinfo->id }}.jpg"> <th></h1>  
+                                                    </div>
+                                                </div>
+                                        </div>
+
+                                 <div class="col-md-4 col-md-offset-0">
+                                            <div class="panel panel-default">
+
+                                                <div class="panel-heading"><i class="fa fa-info-circle"></i>   Authur </div>
+                                                    <div class="panel-body">
+                                                      {{ $bookinfo->authur }}
+                                                    </div>
+                                                </div>
+                                        </div>
+
+                                 <div class="col-md-4 col-md-offset-0">
+                                            <div class="panel panel-default">
+
+                                                <div class="panel-heading"><i class="fa fa-info-circle"></i>   Published On </div>
+                                                    <div class="panel-body">
+                                                      {{ $bookinfo->published }}
+                                                    </div>
+                                                </div>
+                                        </div>
 
 
-                              </div>
-                          </div>
-                        </div>
-                  </div>
+                                                 <div class="col-md-8 col-md-offset-0">
+                                            <div class="panel panel-default">
 
-                </th> </div>
-                    <div class="panel-body">
+                                                <div class="panel-heading"><i class="fa fa-info-circle"></i>   Buy It! </div>
+                                                    <div class="panel-body">
+                                                      <a href="{{ $bookinfo->retail }}">Click Here</a>
+                                                    </div>
+                                                </div>
+                                        </div>
 
-                      <table border="1" bordercolor="green">
-                      <tr><td rowspan="2"></td><td>Authur: </td><td>  Published On:</td></tr>
-                      <tr><td>{{ $bookinfo->authur }}</td><td>{{ $bookinfo->published }}</td></tr>
-                      <tr><td colspan="3">{{ $bookinfo->description }}</td></tr>
-                      <tr><td colspan="4">{{ $bookinfo->retail }}</td></tr>
-                      </table>
 
-                    </div>
+                                         <div class="col-md-12 col-md-offset-0">
+                                            <div class="panel panel-default">
+
+                                                <div class="panel-heading"><i class="fa fa-info-circle"></i>   Description </div>
+                                                    <div class="panel-body">
+                                                      {{ $bookinfo->description }}
+                                                    </div>
+                                                </div>
+                                        </div>
+
+
+
+                             </div>
+  </div>
+
 
                     <button class="btn btn-primary" onclick="history.go(-1)">
-                      « Back
+                      « Reurn Back
                     </button>
+    </div>
 
+<div class="row" align="center">
+        <div class="col-md-5 col-md-offset-0">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h1><i class="fa fa-commenting-o"></i> COMMENTS & REVIEWS <th></h1></div>
+
+  <div class="panel-body">
+
+
+
+
+
+  </div>
         </div>
+
     </div>
 </div>
 </div>
+
+  </div>
+
+</div>
+
+
+
+
 </div>
 @endsection

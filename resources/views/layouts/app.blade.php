@@ -13,7 +13,7 @@
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
 
@@ -22,11 +22,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
-    <script src="js/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
-    <script src="js/jquery.mousewheel.min.js" type="text/javascript"></script>
-    <script src="js/jquery.smoothdivscroll-1.3-min.js" type="text/javascript"></script>
-    <script src="js/jqueryautoscroll.js" type="text/javascript"></script>
-    <script src="js/jqueryzoomimg.js" type="text/javascript"></script>
+    <script src="/js/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.mousewheel.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.smoothdivscroll-1.3-min.js" type="text/javascript"></script>
+    <script src="/js/jqueryautoscroll.js" type="text/javascript"></script>
+    <script src="/js/jqueryzoomimg.js" type="text/javascript"></script>
 
 </head>
 

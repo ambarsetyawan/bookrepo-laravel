@@ -58,7 +58,7 @@
                                           <button type="submit"class="btn btn-danger btn-mini">Delete</button></p>
                                           {{ Form::close() }}
 
-                                          <a href ="/managebooks/edit/{{$book->id}}" class ='btn btn-info'>Edit</a></td>
+                                          <a href ="managebooks/edit/{{$book->id}}" class ='btn btn-info'>Edit</a></td>
                                    </tr>
                                    </thread>
                              @endforeach

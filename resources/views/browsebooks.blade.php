@@ -22,7 +22,7 @@
 
                 <div class="table">
                     <table class="class="col-xs-4">
-                    <br><tr rowspan="2"  align="center"></td><td><a href="/browsebooks/{{ $book->id }}"><img class="book-zoom img-responsive" src="/uploads/{{ $book->id }}.jpg" </td></tr>
+                    <br><tr rowspan="2"  align="center"></td><td><a href="/browsebooks/{{ $book->id }}"><img class="book-zoom img-responsive" src="/uploads/{{ $book->id }}.jpg" width="250" height="378"> </td></tr>
                     <tr><td></td></tr>
 
                    </table>

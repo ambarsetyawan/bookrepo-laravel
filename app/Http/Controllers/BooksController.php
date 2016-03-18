@@ -26,9 +26,6 @@ class BooksController extends Controller
 
   public function store(Request $request)
   {
-
-
-
       $rules = array(
         'title' => 'required',
         'book_cover' => 'required',
@@ -76,8 +73,6 @@ class BooksController extends Controller
 
             return view('bookinfo')->with ('bookinfo', $bookinfo);
         }
-
-
 
 
 
