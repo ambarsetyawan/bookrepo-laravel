@@ -87,8 +87,6 @@ class BooksController extends Controller
           // var_dump($editbook);
           return view('editbooks')->with('data', $data);
 
-
-
         /*  Session::flash('edit_message', 'Book Edited Successfully!');
           return Redirect::to('managebooks'); */
         }

@@ -87,7 +87,7 @@
                       </div>
 
 
-                    {{ Form::submit('Send', array('class' => 'btn')) }}
+                    {{ Form::submit('Send', array('class' => 'btn btn-info')) }}
 
                     {!! Form::close() !!}
 

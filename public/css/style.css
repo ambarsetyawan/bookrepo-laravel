@@ -5,9 +5,10 @@ html{
 }
 
 body {
-    background-image: url("http://wallpaper.pickywallpapers.com/2560x1440/abstract-colored-threads.jpg");
+    background-image: url("https://images7.alphacoders.com/303/303069.png");
     background-size: contain;
-    background-attachment:inherit;
+    background-attachment:fixed;
+    background-repeat: no-repeat;
     background-position: center;
     font-family: 'Lato';
     margin: 0 0 100px;
@@ -71,7 +72,7 @@ div.scrollWrapper
 
 
 .book-zoom {
-    width: 130px;
+    width: 150px;
     -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     -o-transition: all .2s ease-in-out;

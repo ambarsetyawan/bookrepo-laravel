@@ -88,7 +88,7 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-
+ 
                                 @if (Auth::guest() OR Auth::user()->admin!=1)
                                 <li><a href="{{ url('/profile') }}"><i class="fa fa-pencil-square-o"></i> Your Profile</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> Logout</a></li>
@@ -96,7 +96,9 @@
                                 <li><a href="{{ url('/messages') }}"><i class="fa fa-pencil-square-o"></i> Messages</a></li>
                                 <li><a href="{{ url('/profile') }}"><i class="fa fa-file"></i> Profile</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> Logout</a></li>
+
                                 @endif
+
                             </ul>
                         </li>
                     @endif

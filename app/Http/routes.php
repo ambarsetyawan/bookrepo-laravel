@@ -85,10 +85,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::delete('messages/delete/{id}',array('uses' => 'ContactController@destroy', 'as' => 'messages'));
 
 
-    Route::get('profile', function () {
-    return view('profile');
-    });
+   Route::get('profile',array('uses' => 'ProfileController@show', 'as' => 'profile'));
+   Route::post('profile',array('uses' => 'ProfileController@update', 'as' => 'profile'));
 
+   Route::get('managebooks/edit/{id}',array('uses' => 'BooksController@edit', 'as' => 'editbooks'));
+   Route::get('profile/{id}',array('uses' => 'ProfileController@showProfile', 'as' => 'profile'));
 
     Route::get('/', function () {
     return view('welcome');
