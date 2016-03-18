@@ -45,7 +45,11 @@
 
                                                 <div class="panel-heading"><i class="fa fa-info-circle"></i>   Buy It! </div>
                                                     <div class="panel-body">
+                                                     @if (Auth::guest())
+                                                      You Must Be Logged In To View The Link!
+                                                      @elseif(Auth::user())
                                                       <a href="{{ $bookinfo->retail }}">Click Here</a>
+                                                      @endif
                                                     </div>
                                                 </div>
                                         </div>
@@ -68,7 +72,7 @@
 
 
                     <button class="btn btn-primary" onclick="history.go(-1)">
-                      « Reurn Back
+                      « Return Back
                     </button>
     </div>
 
