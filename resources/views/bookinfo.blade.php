@@ -14,7 +14,7 @@
 
                                                 <div class="panel-heading"><i class="fa fa-info-circle"></i>   Book Cover </div>
                                                     <div class="panel-body">
-                                                     <h1> <img class="book-zoom img-responsive" src="/uploads/{{ $bookinfo->id }}.jpg"> <th></h1>  
+                                                     <h1> <img class="book-zoom img-responsive" src="/uploads/{{ $bookinfo->id }}.jpg"> <th></h1>
                                                     </div>
                                                 </div>
                                         </div>
@@ -79,12 +79,45 @@
 <div class="row" align="center">
         <div class="col-md-5 col-md-offset-0">
             <div class="panel panel-default">
-                <div class="panel-heading"><h1><i class="fa fa-commenting-o"></i> COMMENTS & REVIEWS <th></h1></div>
+                <div class="panel-heading"><h2><i class="fa fa-commenting-o"></i> COMMENTS & REVIEWS <th></h2></div>
 
   <div class="panel-body">
 
 
 
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    @if(Session::has('commentsuccess'))
+        <div class="alert alert-success">
+            {{ Session::get('commentsuccess') }}
+        </div>
+    @endif
+
+@if (Auth::guest())
+<h3>You Must Be Logged In To Comment!</h3>
+
+@elseif(Auth::user())
+
+{!! Form::open() !!}
+
+<!-- Content form input -->
+<div class="form-group">
+  {!! Form::label('content', 'Share Your Review:') !!}
+  {!! Form::textarea('content', null, ['class' => 'form-control', 'rows' => 4, 'cols' => 40]) !!}
+</div>
+
+{{ Form::submit('Submit', array('class' => 'btn btn-info')) }}
+
+{!! Form::close() !!}
+@endif
 
 
   </div>

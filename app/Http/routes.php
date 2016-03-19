@@ -102,6 +102,10 @@ return view('browsebooks');
 
 Route::get('browsebooks/{id}', 'BooksController@showbookinfo');
 
+Route::post('browsebooks/{id}',array('uses' => 'CommentsController@postComment', 'as' => 'browsebooks/{id}'));
+
+// Route::get('bookinfo/{id}', 'CommentsController@getComments');
+
 
 
 Route::get('/contact', function () {
