@@ -83,14 +83,7 @@
 
   <div class="panel-body">
 
-    @foreach($comments as $comments)
-    <article>
-        <p><small>Posted by <b>{{$comments->Commenter->name}}</b> at <b>{{$comments->created_at}}</b></small></p>
-          <p>{{$comments->content}}</p>
 
-    </article>
-
-    @endforeach
 
 
     @if (count($errors) > 0)
@@ -111,26 +104,24 @@
 
 @if (Auth::guest())
 <h3>You Must Be Logged In To Comment!</h3>
-
 @elseif(Auth::user())
 
-{!! Form::open() !!}
 
+
+
+{!! Form::open() !!}
 <!-- Content form input -->
 <div class="form-group">
   {!! Form::label('content', 'Share Your Review:') !!}
   {!! Form::textarea('content', null, ['class' => 'form-control', 'rows' => 4, 'cols' => 40]) !!}
 </div>
-
 {{ Form::submit('Submit', array('class' => 'btn btn-info')) }}
-
 {!! Form::close() !!}
 @endif
 
 
   </div>
         </div>
-
     </div>
 </div>
 </div>

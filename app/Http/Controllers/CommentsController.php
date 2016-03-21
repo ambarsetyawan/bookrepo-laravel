@@ -15,20 +15,20 @@ use Session;
 
 class CommentsController extends Controller
 {
-  public function getComments()
+  public function getcomments($id)
   {
-      $comments =   \App\CommentsModel::all();
+      $comments = CommentsModel::find($id);
+      // $comments =   \App\CommentsModel::all();
     // $comments = CommentsModel::with('Commenter')-> orderBy('id', 'DESC')->get();
-    var_dump($comments);
-    // return view('bookinfo')->with('comments',$comments);
+      return view('bookinfo')->with ('comments',$comments);
   }
-
 
   public function postComment()
   {
   CommentsModel::create(array(
               'content' => Input::get('content'),
-              'commenter_id' => Auth::user()->id
+              'commenter_id' => Auth::user()->id,
+              'book_id' => Session::get('bookid')
    ));
 
    Session::flash('commentsuccess','Comment Submitted!');

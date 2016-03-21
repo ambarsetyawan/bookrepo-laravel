@@ -7,8 +7,7 @@ html{
 body {
     background-image: url("https://images7.alphacoders.com/303/303069.png");
     background-size: contain;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment:inherit;
     background-position: center;
     font-family: 'Lato';
     margin: 0 0 100px;

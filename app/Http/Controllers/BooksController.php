@@ -65,12 +65,13 @@ class BooksController extends Controller
     }
 
 
-
-
         public function showbookinfo($id)
         {
             $bookinfo = BookModel::find($id);
+            Session::put('bookid', $id);
             return view('bookinfo')->with ('bookinfo', $bookinfo);
+
+            // var_dump($id);
         }
 
 
