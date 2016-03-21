@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class CommentsModel extends Model
 {
@@ -12,6 +13,6 @@ class CommentsModel extends Model
 
   public function Commenter(){
 
-      return $this->belongsTo('User','commenter_id');
+      return $this->belongsTo('commenter_id');
   }
 }

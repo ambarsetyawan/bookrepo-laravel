@@ -83,6 +83,14 @@
 
   <div class="panel-body">
 
+    @foreach($comments as $comments)
+    <article>
+        <p><small>Posted by <b>{{$comments->Commenter->name}}</b> at <b>{{$comments->created_at}}</b></small></p>
+          <p>{{$comments->content}}</p>
+
+    </article>
+
+    @endforeach
 
 
     @if (count($errors) > 0)

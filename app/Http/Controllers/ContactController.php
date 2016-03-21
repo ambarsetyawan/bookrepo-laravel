@@ -22,6 +22,14 @@ class ContactController extends Controller
   }
 
 
+  public function showmessagecontents($id)
+  {
+      $messageinfo = ContactModel::find($id);
+      return view('messagecontents')->with ('messageinfo', $messageinfo);
+  }
+
+
+
   public function store()
   {
 

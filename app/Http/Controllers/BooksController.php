@@ -70,7 +70,6 @@ class BooksController extends Controller
         public function showbookinfo($id)
         {
             $bookinfo = BookModel::find($id);
-
             return view('bookinfo')->with ('bookinfo', $bookinfo);
         }
 
@@ -81,9 +80,6 @@ class BooksController extends Controller
           $data = BookModel::findOrFail($id);
           // var_dump($editbook);
           return view('editbooks')->with('data', $data);
-
-        /*  Session::flash('edit_message', 'Book Edited Successfully!');
-          return Redirect::to('managebooks'); */
         }
 
 

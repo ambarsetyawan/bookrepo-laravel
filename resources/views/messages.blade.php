@@ -24,21 +24,21 @@
                                                     <tr>
                                                         <th>Name</th>
                                                         <th>Email</th>
-                                                        <th>Message</th>
-                                                        <th>Sent On</th>
-                                                        <th>Manage</th>
+                                                        <th>Recieved At</th>
+                                                        <th>Manage Messages</th>
                                                     </tr>
                                                 </thead>
                                                 @foreach($Messages as $key => $message)
                                                 <tr>
                                                   <td>{{ $message->name }}</th>
                                                   <td>{{ $message->email }}</th>
-                                                  <td>{{ $message->message }}</th>
                                                   <td>{{ $message->created_at }}</th>
                                                   <td>  <form action="/messages/delete/{{ $message->id }}" method="POST">
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
+
+                                                         <a href="/messages/{{ $message->id }}" class ='btn btn-info'>View</a>
                                                         <button type="submit" class="btn btn-danger btn-mini">Delete</button></th>
                                                 </tr>
                                                 @endforeach

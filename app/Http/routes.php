@@ -83,7 +83,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('messages', 'ContactController@GetMessages');
     Route::delete('messages/delete/{id}',array('uses' => 'ContactController@destroy', 'as' => 'messages'));
-
+    Route::get('messages/{id}', 'ContactController@showmessagecontents');
 
    Route::get('profile',array('uses' => 'ProfileController@show', 'as' => 'profile'));
    Route::post('profile',array('uses' => 'ProfileController@update', 'as' => 'profile'));
@@ -103,9 +103,7 @@ return view('browsebooks');
 Route::get('browsebooks/{id}', 'BooksController@showbookinfo');
 
 Route::post('browsebooks/{id}',array('uses' => 'CommentsController@postComment', 'as' => 'browsebooks/{id}'));
-
-// Route::get('bookinfo/{id}', 'CommentsController@getComments');
-
+Route::get('browsebooks/{id}', 'CommentsController@getComments');
 
 
 Route::get('/contact', function () {
