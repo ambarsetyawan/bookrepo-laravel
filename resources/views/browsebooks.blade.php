@@ -12,6 +12,21 @@
         </div>
     </div>
 
+<ul class="pager">
+    <div class="col-md-4 col-md-offset-0">
+        <li><a href="">Sort By Alphabetically Oder</a></li>   
+    </div>
+
+        <div class="col-md-4 col-md-offset-0">
+            <li><a href="">Sort By Genre</a></li>
+    </div>
+
+        <div class="col-md-4 col-md-offset-0">
+           <li><a href="">Sort By Popularity</a></li>  
+    </div>
+</ul>
+    
+
 
  <div class="col-md-12 col-md-offset-0">
        
@@ -28,11 +43,14 @@
                    </table>
                 </div>
 
+
                 
             </div>
         @endforeach
         </div>
         
+          {!! $AddedBooks->render() !!} 
+          
         </div>
     </div>
     </div>

@@ -15,12 +15,13 @@ class BooksController extends Controller
 {
 
   public function GetBooks(){
-    $AddedBooks =   \App\BookModel::all();
+    $AddedBooks =   \App\BookModel::Paginate(4);
     return view('managebooks')->with('AddedBooks', $AddedBooks);
   }
 
+
   public function RetrieveBooks(){
-    $AddedBooks =   \App\BookModel::all();
+    $AddedBooks =   \App\BookModel::Paginate(12);
     return view('browsebooks')->with('AddedBooks', $AddedBooks);
   }
 
@@ -31,6 +32,7 @@ class BooksController extends Controller
         'book_cover' => 'required',
         'authur' => 'required',
         'description' => 'required',
+        'genre' => 'required',
         'published' => 'required',
         'retail' => 'required'
       );
@@ -48,6 +50,7 @@ class BooksController extends Controller
               $class->title = Input::get('title');
               $class->authur = Input::get('authur');
               $class->description = Input::get('description');
+              $class->genre = Input::get('genre');
               $class->published = Input::get('published');
               $class->retail = Input::get('retail');
               $class -> save();
@@ -93,6 +96,7 @@ class BooksController extends Controller
               'title' => 'required',
               'authur' => 'required',
               'description' => 'required',
+              'genre' => 'required',
               'published' => 'required',
               'retail' => 'required'
             ]);

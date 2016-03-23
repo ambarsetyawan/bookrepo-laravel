@@ -39,6 +39,7 @@
                                      <th>Title</th>
                                      <th>Authur</th>
                                      <th>Description</th>
+                                     <th>Genre</th>
                                      <th>Published</th>
                                      <th>Retail Link</th>
                                      <th>Manage</th>
@@ -50,7 +51,8 @@
                                      <td><img src="/uploads/{{ $book->id }}.jpg" width="55" height="105"></th >
                                      <td>{{ $book->title }}</th >
                                      <td>{{ $book->authur }}</th>
-                                     <td>{{ $book->description }}</th>
+                                     <td><div class="showmore">{{ $book->description }}</div></th>
+                                     <td>{{ $book->genre }}</th>
                                      <td>{{ $book->published }}</th>
                                      <td>{{ $book->retail }}</th>
                                      <td> {{ Form::open(['route' => ['managebooks', $book->id], 'method' => 'delete']) }}
@@ -60,14 +62,15 @@
 
                                           <a href ="managebooks/edit/{{$book->id}}" class ='btn btn-info'>Edit</a></td>
                                    </tr>
-                                   </thread>
+                                </thread>
                              @endforeach
                          </table>
+                {!! $AddedBooks->render() !!} 
                         </div>
+
 
                     </div>
                 </div>
-
                 </div>
             </div>
     </div>

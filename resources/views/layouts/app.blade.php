@@ -27,6 +27,7 @@
     <script src="/js/jquery.smoothdivscroll-1.3-min.js" type="text/javascript"></script>
     <script src="/js/jqueryautoscroll.js" type="text/javascript"></script>
     <script src="/js/jqueryzoomimg.js" type="text/javascript"></script>
+    <script src="/js/jqueryshowmore.js" type="text/javascript"></script>
 
 </head>
 

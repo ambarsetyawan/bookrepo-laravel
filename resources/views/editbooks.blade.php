@@ -39,6 +39,11 @@
                     </div>
 
                     <div class="form-group">
+                        {!! Form::label('genre', 'Genre:') !!}
+                        {!! Form::text('genre', $data->genre, ['class' => 'form-control']) !!}
+                    </div>
+
+                    <div class="form-group">
                         {!! Form::label('published', 'Publish Date:') !!}
                         {!! Form::text('published', $data->published, ['class' => 'form-control']) !!}
                     </div>

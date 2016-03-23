@@ -17,7 +17,7 @@ class CommentsController extends Controller
 {
   public function getcomments($id)
   {
-      $comments = CommentsModel::find($id);
+      $comments = \App\CommentsModel::find($id);
       // $comments =   \App\CommentsModel::all();
     // $comments = CommentsModel::with('Commenter')-> orderBy('id', 'DESC')->get();
       return view('bookinfo')->with ('comments',$comments);

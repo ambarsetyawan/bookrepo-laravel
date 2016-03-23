@@ -114,5 +114,6 @@ Route::post('contact', 'ContactController@store');
 
 Route::get('browsebooks', 'BooksController@RetrieveBooks');
 
+
 Route::get('/home', 'HomeController@index');
 });

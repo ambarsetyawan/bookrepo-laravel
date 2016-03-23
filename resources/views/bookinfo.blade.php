@@ -40,6 +40,17 @@
                                         </div>
 
 
+                                                <div class="col-md-8 col-md-offset-0">
+                                            <div class="panel panel-default">
+
+                                                <div class="panel-heading"><i class="fa fa-info-circle"></i>   Genre </div>
+                                                    <div class="panel-body">
+                                                      {{ $bookinfo->genre }}
+                                                    </div>
+                                                </div>
+                                        </div>
+
+
                                                  <div class="col-md-8 col-md-offset-0">
                                             <div class="panel panel-default">
 
@@ -60,7 +71,7 @@
 
                                                 <div class="panel-heading"><i class="fa fa-info-circle"></i>   Description </div>
                                                     <div class="panel-body">
-                                                      {{ $bookinfo->description }}
+                                                      <div class="showmore">{{ $bookinfo->description }}</div>
                                                     </div>
                                                 </div>
                                         </div>

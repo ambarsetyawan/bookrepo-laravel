@@ -86,6 +86,10 @@ div.scrollWrapper
 }
 
 
+.morecontent span {
+    display: none;
+}
+
 #footer{
   background:#FFFFFF;
   padding:15px 30px;

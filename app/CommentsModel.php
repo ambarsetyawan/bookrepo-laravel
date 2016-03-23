@@ -11,8 +11,8 @@ class CommentsModel extends Model
   protected $fillable = array('title','content','commenter_id', 'book_id');
   public $timestamps = true;
 
-  // public function Commenter(){
-  //
-  //     return $this->belongsTo('commenter_id');
-  // }
+   public function Commenter(){
+  
+       return $this->belongsTo('commenter_id');
+   }
 }
