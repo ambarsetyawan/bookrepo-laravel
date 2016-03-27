@@ -37,7 +37,16 @@
 
                 <div class="form-group">
                     {!! Form::label('email', 'Email:') !!}
-                    {!! Form::label('email', $profileinfo->email) !!}
+                    {!! Form::label('email',  $profileinfo->email) !!}
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('admin', 'Account Type:') !!}
+                     @if (Auth::user()->admin!=1)
+                        {!! Form::label('Standard') !!}
+                     @elseif(Auth::user()->admin==1)
+                          {!! Form::label('Adminstrator') !!}
+                     @endif
                 </div>
 
                 <div class="form-group" align="center">

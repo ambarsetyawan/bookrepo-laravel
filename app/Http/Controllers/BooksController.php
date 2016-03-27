@@ -25,6 +25,7 @@ class BooksController extends Controller
     return view('browsebooks')->with('AddedBooks', $AddedBooks);
   }
 
+
   public function store(Request $request)
   {
       $rules = array(
