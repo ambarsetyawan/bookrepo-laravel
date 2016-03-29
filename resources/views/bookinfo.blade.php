@@ -113,10 +113,17 @@
         </div>
     @endif
 
+
 @if (Auth::guest())
 <h3>You Must Be Logged In To Comment!</h3>
 @elseif(Auth::user())
 
+@foreach($comments as $comments)
+    <article>
+        <p><small>On Book <b>{{$comments->bookstitle}}</b>, Posted by <b>{{$comments->commentername}}</b> at <b>{{$comments->created_at}}</b></small></p>
+          <p>{{$comments->content}}</p>
+    </article>
+    @endforeach
 
 
 

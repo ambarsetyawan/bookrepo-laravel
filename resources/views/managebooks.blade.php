@@ -8,7 +8,7 @@
 
             <div class="col-md-12 col-md-offset-0">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><i class="fa fa-database"></i> Books On the Website Database     (Total Books {{ $TotalBooks}})</div>
+                    <div class="panel-heading"><i class="fa fa-database"></i> Books On the Website Database </div>
                        <div class="panel-body">
 
                          @if(Session::has('delete_message'))

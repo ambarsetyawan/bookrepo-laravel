@@ -19,6 +19,7 @@ class RequestsController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        Session::flash('authusermessage', 'You Must Be Signed In To Request A Book!');
     }
 
 

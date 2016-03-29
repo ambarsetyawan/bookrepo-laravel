@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\BookModel;
+use App\CommentsModel;
 
 class User extends Authenticatable
 {
@@ -28,5 +30,18 @@ class User extends Authenticatable
     ];
 
 
+
+
+
+     public function books()
+        {
+            return $this->hasMany('BookModel');
+        }
+
+
+     public function comments()
+        {
+            return $this->hasMany('CommentsModel');
+        }
 
 }

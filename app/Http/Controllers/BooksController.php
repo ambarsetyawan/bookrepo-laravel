@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\BookModel;
+use App\User;
+use App\CommentsModel;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Validator;
 use Input;
+use DB;
 use Redirect;
 use Session;
 
@@ -71,11 +74,23 @@ class BooksController extends Controller
 
         public function showbookinfo($id)
         {
-            $bookinfo = BookModel::find($id);
-            Session::put('bookid', $id);
-            return view('bookinfo')->with ('bookinfo', $bookinfo);
+             $bookinfo = BookModel::find($id);
+             $comments = DB::table('comments')      
+                ->select('comments.content','users.name as commentername', 'books.title as bookstitle', 'comments.created_at')   
+                ->join('books', 'comments.book_id', '=', 'books.id')                
+                ->join('users', 'comments.commenter_id', '=', 'users.id')
+                ->orderBy('comments.created_at')
+                
+                ->get();
 
-            // var_dump($id);
+
+             Session::put('bookid', $id);
+
+             return view('bookinfo')
+                 ->with ('bookinfo', $bookinfo)
+                 ->with ('comments', $comments);
+
+           //  var_dump($comments);
         }
 
 

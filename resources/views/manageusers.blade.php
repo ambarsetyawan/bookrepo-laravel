@@ -23,7 +23,6 @@
 
                                                 <thead>
                                                     <tr>
-                                                        <th>Status</th>
                                                         <th>Name</th>
                                                         <th>Email</th>
                                                         <th>Password</th>
@@ -33,7 +32,6 @@
                                                 </thead>
                                                 @foreach($Users as $key => $user)
                                                 <tr>
-                                                  <td></th>
                                                   <td>{{ $user->name }}</th>
                                                   <td>{{ $user->email }}</th>
                                                   <td>{{ $user->password }}</th>
