@@ -78,9 +78,7 @@
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped">
 
-           
 
-                              @yield('content')
 
                         <thead>
                             <tr>
@@ -90,18 +88,18 @@
                                 <th>Manage</th>
                             </tr>
                         </thead>
-                        
+                    @foreach($userhistory as $history)    
                         <tr>
-                          <td>Example</th>
-                          <td>Example</th>
-                          <td>Example</th>
-                          <td>Example</th>
+                          <td>{{$history->bookstitle}}</th>
+                          <td>{{$history->content}}</th>
+                          <td>{{$history->created_at}}</th>
+                          <td></th>
                         </tr>
-                       
-
+                      @endforeach
                       </table>
-
+ 
                 </div>
+               
           </div>
       </div>
 

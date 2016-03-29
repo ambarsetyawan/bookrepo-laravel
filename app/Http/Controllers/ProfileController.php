@@ -12,6 +12,7 @@ use Validator;
 use Input;
 use Redirect;
 use Session;
+use DB;
 use Auth;
 
 
@@ -26,8 +27,19 @@ class ProfileController extends Controller
     public function show()
     {
         {
-            $profileinfo = User::find(Auth::user()->id);     
-             return view('profile')->with ('profileinfo', $profileinfo);
+            $profileinfo = User::find(Auth::user()->id);
+            $userhistory = DB::table('comments')     
+                ->select('users.name as username', 'books.id as bookid', 'books.title as bookstitle', 'comments.id', 'comments.content', 'comments.created_at')   
+                ->join('books', 'books.id', '=', 'comments.book_id')                
+                ->join('users', 'users.id', '=', 'comments.commenter_id')
+                ->where('comments.commenter_id', '=', (Auth::user()->id))
+                ->orderBy('comments.created_at')
+                
+                ->get();
+     
+             return view('profile')
+                    ->with ('profileinfo', $profileinfo)
+                    ->with ('userhistory', $userhistory);
         }
     }
 
