@@ -120,7 +120,7 @@
 
 @foreach($comments as $comments)
     <article>
-        <p><small>Posted by <b>{{$comments->commentername}}</b> at <b>{{$comments->created_at}}</b></small></p>
+        <p><small>Posted by <b>{{$comments->commentername}}</b>, On <b>{{$comments->bookstitle}}</b> at <b>{{$comments->created_at}}</b></small></p>
           <p>{{$comments->content}}
           <p>  _____________________________________________________________________________</p>
     </article>

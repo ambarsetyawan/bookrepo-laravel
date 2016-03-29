@@ -79,7 +79,7 @@ class BooksController extends Controller
                 ->select('comments.id', 'comments.content', 'comments.created_at', 'books.id as bookid', 'books.title as bookstitle', 'users.name as commentername')   
                 ->join('books', 'books.id', '=', 'comments.book_id')                
                 ->join('users', 'users.id', '=', 'comments.commenter_id')
-                ->where('books.id', '=', Session::get('bookid'))
+                ->where('comments.book_id', '=', $id)
                 ->orderBy('comments.created_at')
                 
                 ->get();
