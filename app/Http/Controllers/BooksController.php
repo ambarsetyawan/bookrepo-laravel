@@ -75,22 +75,23 @@ class BooksController extends Controller
         public function showbookinfo($id)
         {
              $bookinfo = BookModel::find($id);
-             $comments = DB::table('comments')      
-                ->select('comments.content','users.name as commentername', 'books.title as bookstitle', 'comments.created_at')   
-                ->join('books', 'comments.book_id', '=', 'books.id')                
-                ->join('users', 'comments.commenter_id', '=', 'users.id')
+             $comments = DB::table('comments')     
+                ->select('comments.id', 'comments.content', 'comments.created_at', 'books.id as bookid', 'books.title as bookstitle', 'users.name as commentername')   
+                ->join('books', 'books.id', '=', 'comments.book_id')                
+                ->join('users', 'users.id', '=', 'comments.commenter_id')
+                ->where('books.id', '=', Session::get('bookid'))
                 ->orderBy('comments.created_at')
                 
                 ->get();
 
 
-             Session::put('bookid', $id);
+               Session::put('bookid', $id);
 
-             return view('bookinfo')
-                 ->with ('bookinfo', $bookinfo)
-                 ->with ('comments', $comments);
+               return view('bookinfo')
+                  ->with ('bookinfo', $bookinfo)
+                  ->with ('comments', $comments);
 
-           //  var_dump($comments);
+          // var_dump($comments);
         }
 
 

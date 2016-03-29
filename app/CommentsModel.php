@@ -14,14 +14,13 @@ class CommentsModel extends Model
   public $timestamps = true;
 
 
-     public function books()
-        {
-            return $this->belongsTo('BookModel');
-        }
-
-
       public function users()
         {
-            return $this->belongsTo('User');
+            return $this->belongsTo('App\User');
+        }
+
+      public function books()
+        {
+            return $this->belongsTo('App\BookModel');
         }
 }

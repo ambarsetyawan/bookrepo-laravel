@@ -92,7 +92,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><h2><i class="fa fa-commenting-o"></i> COMMENTS & REVIEWS <th></h2></div>
 
-  <div class="panel-body">
+  <div class="panel-body" align="left">
 
 
 
@@ -120,14 +120,12 @@
 
 @foreach($comments as $comments)
     <article>
-        <p><small>On Book <b>{{$comments->bookstitle}}</b>, Posted by <b>{{$comments->commentername}}</b> at <b>{{$comments->created_at}}</b></small></p>
-          <p>{{$comments->content}}</p>
+        <p><small>Posted by <b>{{$comments->commentername}}</b> at <b>{{$comments->created_at}}</b></small></p>
+          <p>{{$comments->content}}
+          <p>  _____________________________________________________________________________</p>
     </article>
     @endforeach
 
-
-
-{!! Form::open() !!}
 <!-- Content form input -->
 <div class="form-group">
   {!! Form::label('content', 'Share Your Review:') !!}

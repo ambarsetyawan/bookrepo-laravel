@@ -14,7 +14,8 @@ class BookModel extends Model
 
  	public function comments()
     {
-        return $this->hasMany('CommentsModel');
+        return $this->hasMany('App\CommentsModel');
     }
+
 
 }

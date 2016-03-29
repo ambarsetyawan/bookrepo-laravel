@@ -32,16 +32,10 @@ class User extends Authenticatable
 
 
 
-
-     public function books()
-        {
-            return $this->hasMany('BookModel');
-        }
-
-
      public function comments()
         {
-            return $this->hasMany('CommentsModel');
+            return $this->hasMany('App\CommentsModel');
         }
+
 
 }
