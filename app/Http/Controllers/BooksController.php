@@ -75,6 +75,9 @@ class BooksController extends Controller
 
         public function showbookinfo($id)
         {
+           Session::put('bookid', $id);
+
+
              $bookinfo = BookModel::find($id);
              $comments = DB::table('comments')     
                 ->select('comments.id', 'comments.content', 'comments.created_at', 'books.id as bookid', 'books.title as bookstitle', 'users.name as commentername')   
@@ -85,18 +88,19 @@ class BooksController extends Controller
                 ->get();
 
              $votes = DB::table('votes')     
-                ->selectRaw('votes.*, count(votes.likes) as booklikes, count(votes.dislikes) as bookdislikes')
+                ->selectRaw('votes.*, sum(votes.likes) as booklikes, sum(votes.dislikes) as bookdislikes')
                 ->where('votes.book_id', '=', $id)
                 ->get();
 
-                Session::put('bookid', $id);
+
+   
 
                 return view('bookinfo')
                    ->with ('bookinfo', $bookinfo)
                    ->with ('comments', $comments)
                    ->with ('votes', $votes);
 
-               //var_dump($votes);
+               //var_dump($upvotes);
         }
 
 

@@ -50,7 +50,7 @@
                 </div>
 
                 <div class="form-group" align="center">
-                    {!! Form::label('password', 'Password:') !!}
+                    {!! Form::label('password', 'Change Password:') !!}
                     {!! Form::text('password', null, ['class' => 'form-control']) !!}
                 </div>
 

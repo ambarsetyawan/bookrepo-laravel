@@ -56,16 +56,20 @@
                                             <div class="panel panel-default">
                                     
                                                 <div class="panel-heading"><i class="fa fa-info-circle"></i>   Ratings </div>
-                                                @foreach($votes as $votes) 
+                                                                                             
                                                     <div class="panel-body">
+                                                  @foreach($votes as $rating)      
+
+                                                      Likes {{ $rating->booklikes }} / 
                                                      
-                                                         Likes {{ $votes->booklikes }} -
-                                                         Dislikes {{ $votes->bookdislikes }}
-                                               
+                                                      Dislikes {{ $rating->bookdislikes }}
+
+                                                   @endforeach
                                                     </div>
-                                                 @endforeach
-                                                </div>
+                                      
+                                                
                                         </div>
+                                      </div>
 
 
 
