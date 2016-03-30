@@ -59,11 +59,11 @@
                                                 @foreach($votes as $votes) 
                                                     <div class="panel-body">
                                                      
-                                                         Likes {{ $votes->likes }} -
-                                                         Dislikes {{ $bookinfo->dislikes }}
+                                                         Likes {{ $votes->booklikes }} -
+                                                         Dislikes {{ $votes->bookdislikes }}
                                                
                                                     </div>
-     @endforeach
+                                                 @endforeach
                                                 </div>
                                         </div>
 

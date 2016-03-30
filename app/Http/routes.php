@@ -108,7 +108,7 @@ Route::get('browsebooks/{id}', 'BooksController@showbookinfo');
 
 Route::post('browsebooks/{id}',array('uses' => 'CommentsController@postComment', 'as' => 'browsebooks/{id}'));
 Route::get('/browsebooks/voteup/{id}', 'BooksController@voteup');
-// Route::get('/browsebooks/votedown/{id}', 'BooksController@votedown');
+Route::get('/browsebooks/votedown/{id}', 'BooksController@votedown');
 
 
 Route::get('/contact', function () {

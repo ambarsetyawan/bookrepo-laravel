@@ -85,13 +85,9 @@ class BooksController extends Controller
                 ->get();
 
              $votes = DB::table('votes')     
-                ->select('votes.voter_id', 'users.name', 'books.title', 'votes.likes', 'votes.dislikes')   
-                ->join('books', 'books.id', '=', 'votes.book_id')                
-                ->join('users', 'users.id', '=', 'votes.voter_id')
+                ->selectRaw('votes.*, count(votes.likes) as booklikes, count(votes.dislikes) as bookdislikes')
                 ->where('votes.book_id', '=', $id)
-
                 ->get();
-
 
                 Session::put('bookid', $id);
 
@@ -100,7 +96,7 @@ class BooksController extends Controller
                    ->with ('comments', $comments)
                    ->with ('votes', $votes);
 
-          // var_dump($votes);
+               //var_dump($votes);
         }
 
 
@@ -142,19 +138,31 @@ class BooksController extends Controller
         public function voteup($id){
 
 
+              $upvote = new \App\VotesModel;
+              $upvote->voter_id = Auth::id();
+              $upvote->book_id = Session::get('bookid');
+              $upvote->likes = 1;
+              $upvote->dislikes = 0;
+             
+              $upvote -> save();
+
+              Session::flash('upvote_message', 'You Have Voted Up!');
+               return Redirect::to('browsebooks');
+            }
+
+
+              public function votedown($id){
+
+
               $class = new \App\VotesModel;
               $class->voter_id = Auth::id();
               $class->book_id = Session::get('bookid');
-              $class->likes = 1;
-              $class->dislikes = 0;
+              $class->likes = 0;
+              $class->dislikes = 1;
              
+              $class -> save();
 
-              // var_dump($class);
-
-
-               $class -> save();
-
-
+              Session::flash('downvote_message', 'You Have Voted Down!');
                return Redirect::to('browsebooks');
             }
 
