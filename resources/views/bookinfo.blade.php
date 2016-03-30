@@ -59,8 +59,8 @@
                                                                                              
                                                     <div class="panel-body">
                                                   @foreach($votes as $rating)      
-
-                                                      Likes {{ $rating->booklikes }} / 
+                                                    
+                                                      Likes {{ $rating->booklikes }} -
                                                      
                                                       Dislikes {{ $rating->bookdislikes }}
 
