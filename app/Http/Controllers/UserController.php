@@ -25,7 +25,7 @@ class UserController extends Controller
 
     public function GetUsers()
     {
-      $Users = \App\User::all();
+      $Users = \App\User::Paginate(5);
 	  return view('manageusers')->with('Users',$Users);
     }
 

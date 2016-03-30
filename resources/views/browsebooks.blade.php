@@ -59,7 +59,7 @@
                         @elseif(Auth::user())
                              Vote <a href="/browsebooks/voteup/{{ $book->id }}"><img src="/images/up.png"></a>  /      
                              Vote <a href="/browsebooks/votedown/{{ $book->id }}"><img src="/images/down.png"></a>
-                             @endif
+                        @endif
                         </div>
                 </div>
 

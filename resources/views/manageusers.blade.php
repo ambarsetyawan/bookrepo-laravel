@@ -44,6 +44,7 @@
                                                 @endforeach
                                               </table>
 
+                                    {!! $Users->render() !!} 
                                         </div>
 
         </div>

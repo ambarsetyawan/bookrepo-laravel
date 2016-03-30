@@ -93,8 +93,6 @@ class BooksController extends Controller
                 ->get();
 
 
-   
-
                 return view('bookinfo')
                    ->with ('bookinfo', $bookinfo)
                    ->with ('comments', $comments)
@@ -144,7 +142,7 @@ class BooksController extends Controller
 
               $upvote = new \App\VotesModel;
               $upvote->voter_id = Auth::id();
-              $upvote->book_id = Session::get('bookid');
+              $upvote->book_id = $id;
               $upvote->likes = 1;
               $upvote->dislikes = 0;
              
@@ -158,16 +156,18 @@ class BooksController extends Controller
               public function votedown($id){
 
 
-              $class = new \App\VotesModel;
-              $class->voter_id = Auth::id();
-              $class->book_id = Session::get('bookid');
-              $class->likes = 0;
-              $class->dislikes = 1;
+              $downvote = new \App\VotesModel;
+              $downvote->voter_id = Auth::id();
+              $downvote->book_id = $id;
+              $downvote->likes = 0;
+              $downvote->dislikes = 1;
              
-              $class -> save();
+               $downvote -> save();
 
-              Session::flash('downvote_message', 'You Have Voted Down!');
-               return Redirect::to('browsebooks');
+               Session::flash('downvote_message', 'You Have Voted Down!');
+                return Redirect::to('browsebooks');
+
+               //var_dump($downvote);
             }
 
 

@@ -59,7 +59,7 @@
                                                                                              
                                                     <div class="panel-body">
                                                   @foreach($votes as $rating)      
-                                                    
+
                                                       Likes {{ $rating->booklikes }} -
                                                      
                                                       Dislikes {{ $rating->bookdislikes }}
@@ -139,6 +139,7 @@
 @if (Auth::guest())
 <h3>You Must Be Logged In To Comment!</h3>
 @elseif(Auth::user())
+
 
 @foreach($comments as $comments)
     <article>
