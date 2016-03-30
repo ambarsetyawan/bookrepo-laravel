@@ -38,7 +38,7 @@
                 <div class="table">
                     <table>
                     <br><tr rowspan="2"  align="center"></td><td><a href="/browsebooks/{{ $book->id }}"><img class="book-zoom img-responsive" src="/uploads/{{ $book->id }}.jpg"> </td></tr>
-                    <tr><td></td></tr>
+                    <tr><a href="/browsebooks/voteup/{{ $book->id }}">Vote Up</a> - Vote Down<td></td></tr>
 
                    </table>
                 </div>

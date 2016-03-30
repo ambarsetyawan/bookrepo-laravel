@@ -9,7 +9,7 @@ use App\CommentsModel;
 class BookModel extends Model
 {
     protected $table = 'books';
-    protected $fillable = array('id','book_cover', 'title', 'authur', 'description', 'genre', 'published', 'retail');
+    protected $fillable = array('id','book_cover', 'title', 'authur', 'description', 'genre', 'like', 'dislike', 'published', 'retail');
 
 
  	public function comments()
@@ -17,5 +17,10 @@ class BookModel extends Model
         return $this->hasMany('App\CommentsModel');
     }
 
+
+     public function votes()
+        {
+            return $this->hasMany('App\VotesModel');
+        }
 
 }

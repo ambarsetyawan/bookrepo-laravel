@@ -38,4 +38,9 @@ class User extends Authenticatable
         }
 
 
+     public function votes()
+        {
+            return $this->hasOne('App\VotesModel');
+        }
+
 }

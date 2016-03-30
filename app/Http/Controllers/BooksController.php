@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Validator;
 use Input;
 use DB;
+use Auth;
 use Redirect;
 use Session;
 
@@ -80,18 +81,26 @@ class BooksController extends Controller
                 ->join('books', 'books.id', '=', 'comments.book_id')                
                 ->join('users', 'users.id', '=', 'comments.commenter_id')
                 ->where('comments.book_id', '=', $id)
-                ->orderBy('comments.created_at')
-                
+                ->orderBy('comments.created_at')              
+                ->get();
+
+             $votes = DB::table('votes')     
+                ->select('votes.voter_id', 'users.name', 'books.title', 'votes.likes', 'votes.dislikes')   
+                ->join('books', 'books.id', '=', 'votes.book_id')                
+                ->join('users', 'users.id', '=', 'votes.voter_id')
+                ->where('votes.book_id', '=', $id)
+
                 ->get();
 
 
-               Session::put('bookid', $id);
+                Session::put('bookid', $id);
 
-               return view('bookinfo')
-                  ->with ('bookinfo', $bookinfo)
-                  ->with ('comments', $comments);
+                return view('bookinfo')
+                   ->with ('bookinfo', $bookinfo)
+                   ->with ('comments', $comments)
+                   ->with ('votes', $votes);
 
-          // var_dump($comments);
+          // var_dump($votes);
         }
 
 
@@ -130,6 +139,24 @@ class BooksController extends Controller
 
 
 
+        public function voteup($id){
+
+
+              $class = new \App\VotesModel;
+              $class->voter_id = Auth::id();
+              $class->book_id = Session::get('bookid');
+              $class->likes = 1;
+              $class->dislikes = 0;
+             
+
+              // var_dump($class);
+
+
+               $class -> save();
+
+
+               return Redirect::to('browsebooks');
+            }
 
 
         public function destroy($id)
