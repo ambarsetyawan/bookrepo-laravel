@@ -30,17 +30,41 @@
 
  <div class="col-md-12 col-md-offset-0">
        
+                      @if(Session::has('upvote_message'))
+                            <div class="alert alert-success">
+                                {{ Session::get('upvote_message') }}
+                            </div>
+                        @endif
 
+                     @if(Session::has('downvote_message'))
+                            <div class="alert alert-danger">
+                                {{ Session::get('downvote_message') }}
+                            </div>
+                        @endif
         @foreach($AddedBooks as $key => $book)
             <div class="col-md-2 col-md-offset-0">
                 
-
                 <div class="table">
                     <table>
+
                     <br><tr rowspan="2"  align="center"></td><td><a href="/browsebooks/{{ $book->id }}"><img class="book-zoom img-responsive" src="/uploads/{{ $book->id }}.jpg"> </td></tr>
                     <tr><td></td></tr>
 
                    </table>
+
+                       <div class="panel panel-default">
+
+                        @if (Auth::guest())
+                            Sign In To Rate!
+
+                        @elseif(Auth::user())
+
+                                      Rate It - <a href="/browsebooks/voteup/{{ $book->id }}"><img src="/images/up.png"></a>  /      
+                                      <a href="/browsebooks/votedown/{{ $book->id }}"><img src="/images/down.png"></a>
+
+                                 
+                        @endif
+                        </div>
                 </div>
 
 

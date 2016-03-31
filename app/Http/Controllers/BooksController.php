@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Validator;
 use Input;
 use DB;
+use Auth;
 use Redirect;
 use Session;
 
@@ -74,24 +75,30 @@ class BooksController extends Controller
 
         public function showbookinfo($id)
         {
+           Session::put('bookid', $id);
+
+
              $bookinfo = BookModel::find($id);
              $comments = DB::table('comments')     
                 ->select('comments.id', 'comments.content', 'comments.created_at', 'books.id as bookid', 'books.title as bookstitle', 'users.name as commentername')   
                 ->join('books', 'books.id', '=', 'comments.book_id')                
                 ->join('users', 'users.id', '=', 'comments.commenter_id')
                 ->where('comments.book_id', '=', $id)
-                ->orderBy('comments.created_at')
-                
+                ->orderBy('comments.created_at')              
+                ->get();
+
+             $votes = DB::table('votes')     
+                ->selectRaw('votes.*, sum(votes.likes) as booklikes, sum(votes.dislikes) as bookdislikes')
+                ->where('votes.book_id', '=', $id)
                 ->get();
 
 
-               Session::put('bookid', $id);
+                return view('bookinfo')
+                   ->with ('bookinfo', $bookinfo)
+                   ->with ('comments', $comments)
+                   ->with ('votes', $votes);
 
-               return view('bookinfo')
-                  ->with ('bookinfo', $bookinfo)
-                  ->with ('comments', $comments);
-
-          // var_dump($comments);
+               //var_dump($upvotes);
         }
 
 
@@ -130,6 +137,38 @@ class BooksController extends Controller
 
 
 
+        public function voteup($id){
+
+
+              $upvote = new \App\VotesModel;
+              $upvote->voter_id = Auth::id();
+              $upvote->book_id = $id;
+              $upvote->likes = 1;
+              $upvote->dislikes = 0;
+             
+              $upvote -> save();
+
+              Session::flash('upvote_message', 'You Have Voted Up!');
+               return Redirect::to('browsebooks');
+            }
+
+
+              public function votedown($id){
+
+
+              $downvote = new \App\VotesModel;
+              $downvote->voter_id = Auth::id();
+              $downvote->book_id = $id;
+              $downvote->likes = 0;
+              $downvote->dislikes = 1;
+             
+               $downvote -> save();
+
+               Session::flash('downvote_message', 'You Have Voted Down!');
+                return Redirect::to('browsebooks');
+
+               //var_dump($downvote);
+            }
 
 
         public function destroy($id)

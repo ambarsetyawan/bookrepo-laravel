@@ -40,7 +40,7 @@
                                         </div>
 
 
-                                                <div class="col-md-8 col-md-offset-0">
+                                                <div class="col-md-4 col-md-offset-0">
                                             <div class="panel panel-default">
 
                                                 <div class="panel-heading"><i class="fa fa-info-circle"></i>   Genre </div>
@@ -49,6 +49,28 @@
                                                     </div>
                                                 </div>
                                         </div>
+
+
+
+                                       <div class="col-md-4 col-md-offset-0">
+                                            <div class="panel panel-default">
+                                    
+                                                <div class="panel-heading"><i class="fa fa-info-circle"></i>   Ratings </div>
+                                                                                             
+                                                    <div class="panel-body">
+                                                  @foreach($votes as $rating)      
+
+                                                      Likes {{ $rating->booklikes }} -
+                                                     
+                                                      Dislikes {{ $rating->bookdislikes }}
+
+                                                   @endforeach
+                                                    </div>
+                                      
+                                                
+                                        </div>
+                                      </div>
+
 
 
                                                  <div class="col-md-8 col-md-offset-0">
@@ -92,7 +114,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><h2><i class="fa fa-commenting-o"></i> COMMENTS & REVIEWS <th></h2></div>
 
-  <div class="panel-body" align="left">
+  <div class="panel-body">
 
 
 
@@ -115,8 +137,9 @@
 
 
 @if (Auth::guest())
-<h3>You Must Be Logged In To Comment!</h3>
+    <h3>You Must Be Logged In To Comment!</h3>
 @elseif(Auth::user())
+
 
 @foreach($comments as $comments)
     <article>
@@ -126,13 +149,16 @@
     </article>
     @endforeach
 
+{!! Form::open() !!}
 <!-- Content form input -->
-<div class="form-group">
-  {!! Form::label('content', 'Share Your Review:') !!}
-  {!! Form::textarea('content', null, ['class' => 'form-control', 'rows' => 4, 'cols' => 40]) !!}
-</div>
-{{ Form::submit('Submit', array('class' => 'btn btn-info')) }}
-{!! Form::close() !!}
+    <div class="form-group">
+      {!! Form::label('content', 'Share Your Review:') !!}
+      {!! Form::textarea('content', null, ['class' => 'form-control', 'rows' => 4, 'cols' => 40]) !!}
+    </div>
+    {{ Form::submit('Submit', array('class' => 'btn btn-info')) }}
+
+    {!! Form::close() !!}
+
 @endif
 
 
