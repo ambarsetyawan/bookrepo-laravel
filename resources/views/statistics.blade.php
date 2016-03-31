@@ -11,15 +11,7 @@
                     <div class="panel-heading"><i class="fa fa-info-circle"></i>     Top 10 Ranking Books </div>
                     <div class="panel-body"> <div class="table-responsive">
                                             <table class="table table-bordered table-striped">
-
-                                              @if(Session::has('delete_message'))
-                                                          <div class="alert alert-success">
-                                                              {{ Session::get('delete_message') }}
-                                                          </div>
-                                                      @endif
-
-                                                      @yield('content')
-
+                         
                                                 <thead>
                                                     <tr>
                                                         <th>Title</th>
@@ -42,7 +34,41 @@
                 </div>
         </div>
 
-        <div class="col-md-3 col-md-offset-0">
+
+
+<div class="col-md-3 col-md-offset-0">
+            <div class="panel panel-default">
+
+                    <div class="panel-heading"><i class="fa fa-info-circle"></i>     Popular Genres </div>
+                    <div class="panel-body"> <div class="table-responsive">
+                                            <table class="table table-bordered table-striped">
+
+                                                <thead>
+                                                    <tr>
+                                                        <th>Genre</th>
+                                                         <th>Likes</th>
+                                                       
+                                                        
+                                                    </tr>
+                                                </thead>
+                                               
+                                                @foreach($PopularGenere as $TopGeneres)      
+                                                <tr>
+                                                  <td>{{ $TopGeneres->bookgenres }}</th>
+                                                  <td>{{ $TopGeneres->totallikes }}</th>
+                                                </tr>
+                                                @endforeach
+                                     
+
+                                              </table>
+
+                                        </div>
+                                    
+                    </div>
+                </div>
+        </div>
+
+        <div class="col-md-2 col-md-offset-0">
             <div class="panel panel-default">
 
                 <div class="panel-heading"><i class="fa fa-info-circle"></i>  Total Members </div>
@@ -52,7 +78,7 @@
                 </div>
         </div>
 
-        <div class="col-md-3 col-md-offset-0">
+        <div class="col-md-2 col-md-offset-0">
             <div class="panel panel-default">
 
                     <div class="panel-heading"><i class="fa fa-info-circle"></i>     Total Books </div>
@@ -64,7 +90,7 @@
         </div>
 
 
-        <div class="col-md-3 col-md-offset-0">
+        <div class="col-md-2 col-md-offset-0">
             <div class="panel panel-default">
 
                     <div class="panel-heading"><i class="fa fa-info-circle"></i>     Total Comments </div>
@@ -75,7 +101,7 @@
                 </div>
         </div>
 
-                <div class="col-md-3 col-md-offset-0">
+                <div class="col-md-2 col-md-offset-0">
             <div class="panel panel-default">
 
                 <div class="panel-heading"><i class="fa fa-exclamation"></i>  New Messages </div>
@@ -85,12 +111,14 @@
                 </div>
         </div>
 
-        <div class="col-md-3 col-md-offset-0">
+        <div class="col-md-2 col-md-offset-0">
             <div class="panel panel-default">
 
                     <div class="panel-heading"><i class="fa fa-exclamation"></i>     New Requests </div>
                     <div class="panel-body">
                              {{ $NewRequests}}
+                             
+
                     </div>
 
                 </div>
@@ -101,15 +129,7 @@
 
 
 
-        <div class="col-md-9 col-md-offset-0">
-            <div class="panel panel-default">
- 				<div class="panel-heading"><i class="fa fa-info-circle"></i>     Popular Genre's </div>
-                    <div class="panel-body">
-
-                     
-                    </div>
-              </div>
-         </div>
+       
     </div>
 </div>
 

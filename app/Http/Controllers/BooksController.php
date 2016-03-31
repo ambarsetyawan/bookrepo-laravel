@@ -12,6 +12,7 @@ use Validator;
 use Input;
 use DB;
 use Auth;
+use Resize;
 use Redirect;
 use Session;
 
@@ -62,7 +63,6 @@ class BooksController extends Controller
 
               $covereName = $class->id . '.' .
                  $request->file('book_cover')->getClientOriginalExtension();
-
                  $request->file('book_cover')->move(
                      base_path() . '/public/uploads/', $covereName
                  );

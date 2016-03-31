@@ -24,6 +24,13 @@ class StatisticsController extends Controller
                 ->orderBy('totallikes', 'DESC')  
                 ->take(10)
                 ->get();
+       $PopularGenere = DB::table('votes')     
+                ->select('books.genre as bookgenres')
+                ->selectRaw('votes.*, sum(votes.likes) as totallikes')
+                ->join('books', 'books.id', '=', 'votes.book_id')  
+                ->groupBy('bookgenres')
+                ->orderBy('totallikes', 'DESC')  
+                ->get();         
 
 
 	  return view('statistics')
@@ -32,7 +39,8 @@ class StatisticsController extends Controller
 	  		->with('TotalComments',$TotalComments)
 	  		->with('NewMessages',$NewMessages)
 	  		->with('NewRequests',$NewRequests)
-	  		->with('TopBooks',$TopBooks);
+	  		->with('TopBooks',$TopBooks)
+        ->with('PopularGenere',$PopularGenere);
     }
 
 }
