@@ -55,7 +55,7 @@ Route::group(['middleware' => 'web'], function () {
     return view('statistics');
     });
 
-    Route::get('statistics', 'StatisticsController@GetTotal');
+    Route::get('statistics', 'StatisticsController@GetStatistics');
 
 
     Route::get('manageusers', function () {
@@ -89,11 +89,11 @@ Route::group(['middleware' => 'web'], function () {
     Route::delete('messages/delete/{id}',array('uses' => 'ContactController@destroy', 'as' => 'messages'));
     Route::get('messages/{id}', 'ContactController@showmessagecontents');
 
-   Route::get('profile',array('uses' => 'ProfileController@show', 'as' => 'profile'));
-   Route::post('profile',array('uses' => 'ProfileController@update', 'as' => 'profile'));
+    Route::get('profile',array('uses' => 'ProfileController@show', 'as' => 'profile'));
+    Route::post('profile',array('uses' => 'ProfileController@update', 'as' => 'profile'));
 
-   Route::get('managebooks/edit/{id}',array('uses' => 'BooksController@edit', 'as' => 'editbooks'));
-   Route::get('profile/{id}',array('uses' => 'ProfileController@showProfile', 'as' => 'profile'));
+    Route::get('managebooks/edit/{id}',array('uses' => 'BooksController@edit', 'as' => 'editbooks'));
+    Route::get('profile/{id}',array('uses' => 'ProfileController@showProfile', 'as' => 'profile'));
 
     Route::get('/', function () {
     return view('welcome');
