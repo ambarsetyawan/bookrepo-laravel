@@ -9,19 +9,33 @@
    
 
 
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
 
                 <div class="panel-heading"><h2> <i class="fa fa-plus"></i> Add A New Book</h2></div>
                 <div class="panel-body">
 
 
-<div class="col-md-6 col-md-offset-0">
+<div class="col-md-4 col-md-offset-0">
             <div class="panel panel-default">
 
                 <div class="panel-heading"><i class="fa fa-info-circle"></i>  Book Cover </div>
                     <div class="panel-body">
 
+              
+                   {!! Form::open(['action'=>'BooksController@store', 'files'=>true]) !!}
+                  <!-- Title form input -->
+                  <div class="form-group">
+                      {!! Form::label('Book Cover') !!}
+                      {!! Form::file('book_cover', null) !!}
+
+               
+                </div>
+
+              
+
+                    </div>
+                </div>
 
                   @if (count($errors) > 0)
                       <div class="alert alert-danger">
@@ -32,31 +46,16 @@
                           </ul>
                       </div>
                   @endif
-
-                
-
-                           
-
-                 {!! Form::open(['action'=>'BooksController@store', 'files'=>true]) !!}
-                  <!-- Title form input -->
-                  <div class="form-group">
-                      {!! Form::label('Book Cover') !!}
-                      {!! Form::file('book_cover', null) !!}
-
-
-                </div>
-
-                    </div>
-                </div>
         </div>
 
 
-<div class="col-md-6 col-md-offset-0">
+<div class="col-md-4 col-md-offset-0">
             <div class="panel panel-default">
 
                 <div class="panel-heading"><i class="fa fa-info-circle"></i>  Book Details </div>
                     <div class="panel-body">
                             
+
 
                   <div class="form-group">
                       {!! Form::label('title', 'Title:') !!}
@@ -82,16 +81,28 @@
                       {!! Form::label('published', 'Publish Date:') !!}
                       {!! Form::text('published', null,['class'=>'form-control']) !!}
                   </div>
+          
+                    </div>
+                </div>
+        </div>
 
-                  <div class="form-group">
+
+<div class="col-md-4 col-md-offset-0">
+            <div class="panel panel-default">
+
+                <div class="panel-heading"><i class="fa fa-info-circle"></i>  Book Retail Link </div>
+                    <div class="panel-body">
+
+
+                 {!! Form::open(['action'=>'BooksController@store', 'files'=>true]) !!}
+                  <!-- Title form input -->
+                   <div class="form-group">
 
                       {!! Form::label('retail', 'Retail Link:') !!}
                       {!! Form::text('retail', null, ['class' => 'form-control']) !!}
-                  </div>
-
-                {{ Form::submit('ADD BOOK', array('class' => 'btn btn-info')) }}
-
-              {!! Form::close() !!}
+              
+        
+                   </div>
 
                     </div>
                 </div>
@@ -100,7 +111,12 @@
 
 
                 </div>
+                  {{ Form::submit('ADD BOOK', array('class' => 'btn btn-info')) }}
+
+                  {!! Form::close() !!}
             </div>
+
+
         </div>
 
 
