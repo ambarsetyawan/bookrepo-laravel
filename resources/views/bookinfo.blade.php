@@ -141,13 +141,19 @@
 @elseif(Auth::user())
 
 
-@foreach($comments as $comments)
+@foreach($comments as $bookcomment)
     <article>
-        <p><small>Posted by <b>{{$comments->commentername}}</b>, On <b>{{$comments->bookstitle}}</b> at <b>{{$comments->created_at}}</b></small></p>
-          <p>{{$comments->content}}
+        <p><small>Posted by <b>{{$bookcomment->commentername}}</b> - At <b>{{$bookcomment->created_at}}</b></small></p>
+          <p>{{$bookcomment->content}}
           <p>  _____________________________________________________________________________</p>
     </article>
+
+
     @endforeach
+
+    
+{!! $comments->render() !!} 
+
 
 {!! Form::open() !!}
 <!-- Content form input -->

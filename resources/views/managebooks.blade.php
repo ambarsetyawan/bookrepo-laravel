@@ -65,7 +65,10 @@
                                 </thread>
                              @endforeach
                          </table>
-                {!! $AddedBooks->render() !!} 
+
+
+                                     {!! $AddedBooks->render() !!} 
+                                     
                         </div>
 
 

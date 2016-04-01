@@ -73,11 +73,16 @@
           <div class="panel panel-default">
 
             <h2>  <div class="panel-heading" align="center"><i class="fa fa-clock-o"></i> YOUR HISTORY</div></h2>
-             <div class="panel-body">
+             <div class="panel-body" align="center">
  
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped">
 
+                        @if(Session::has('comment_delete_message'))
+                            <div class="alert alert-success">
+                                {{ Session::get('comment_delete_message') }}
+                            </div>
+                        @endif
 
 
                         <thead>
@@ -93,14 +98,23 @@
                           <td>{{$history->bookstitle}}</th>
                           <td>{{$history->content}}</th>
                           <td>{{$history->created_at}}</th>
-                          <td></th>
+                          <td>{{ Form::open(['route' => ['profile', $history->id], 'method' => 'delete']) }}
+                                  <input type="hidden" name="_method" value="DELETE">
+                                  <button type="submit"class="btn btn-danger btn-mini">Delete</button>
+                               {{ Form::close() }}</th>
                         </tr>
                       @endforeach
+
+                      
+
+
                       </table>
- 
+
                 </div>
-               
+                 {!! $userhistory->render() !!} 
           </div>
+
+
       </div>
 
 </div>

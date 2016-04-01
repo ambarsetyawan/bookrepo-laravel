@@ -92,8 +92,12 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('profile',array('uses' => 'ProfileController@show', 'as' => 'profile'));
     Route::post('profile',array('uses' => 'ProfileController@update', 'as' => 'profile'));
 
+    Route::delete('profile/{id}',array('uses' => 'ProfileController@destroy', 'as' => 'profile'));
+
+
     Route::get('managebooks/edit/{id}',array('uses' => 'BooksController@edit', 'as' => 'editbooks'));
     Route::get('profile/{id}',array('uses' => 'ProfileController@showProfile', 'as' => 'profile'));
+
 
     Route::get('/', function () {
     return view('welcome');

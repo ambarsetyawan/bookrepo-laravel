@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
+use App\CommentsModel;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -34,8 +35,7 @@ class ProfileController extends Controller
                 ->join('users', 'users.id', '=', 'comments.commenter_id')
                 ->where('comments.commenter_id', '=', (Auth::user()->id))
                 ->orderBy('comments.created_at')
-                
-                ->get();
+                ->paginate(8);
      
              return view('profile')
                     ->with ('profileinfo', $profileinfo)
@@ -70,4 +70,17 @@ class ProfileController extends Controller
         Session::flash('profile_updated_message', 'Profile Updated!');
         return Redirect::to('profile');
     }
+
+
+
+
+      public function destroy($id)
+        {
+          CommentsModel::destroy($id);
+
+          Session::flash('comment_delete_message', 'Comment Deleted From Book!');
+          return Redirect::to('profile');
+        }
+
+
 }

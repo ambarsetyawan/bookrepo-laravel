@@ -85,7 +85,7 @@ class BooksController extends Controller
                 ->join('users', 'users.id', '=', 'comments.commenter_id')
                 ->where('comments.book_id', '=', $id)
                 ->orderBy('comments.created_at')              
-                ->get();
+                ->paginate(4);
 
              $votes = DB::table('votes')     
                 ->selectRaw('votes.*, sum(votes.likes) as booklikes, sum(votes.dislikes) as bookdislikes')
