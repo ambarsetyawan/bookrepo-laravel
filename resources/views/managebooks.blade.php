@@ -54,7 +54,7 @@
                                      <td><div class="showmore">{{ $book->description }}</div></th>
                                      <td>{{ $book->genre }}</th>
                                      <td>{{ $book->published }}</th>
-                                     <td>{{ $book->retail }}</th>
+                                     <td><a href ="{{ $book->retail }}">Click Here</a></th>
                                      <td> {{ Form::open(['route' => ['managebooks', $book->id], 'method' => 'delete']) }}
                                           <input type="hidden" name="_method" value="DELETE"></br>
                                           <button type="submit"class="btn btn-danger btn-mini">Delete</button></p>
