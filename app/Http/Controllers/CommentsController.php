@@ -11,6 +11,7 @@ use Validator;
 use Input;
 use Redirect;
 use Auth;
+use DB;
 use Session;
 
 class CommentsController extends Controller
@@ -27,4 +28,35 @@ class CommentsController extends Controller
    Session::flash('commentsuccess','Comment Submitted!');
    return Redirect::back();
   }
+
+
+
+    public function show()
+    {
+        {
+           
+            $BookComments = DB::table('comments')     
+                ->select('users.name as username', 'books.id as bookid', 'books.title as bookstitle', 'comments.id', 'comments.content', 'comments.created_at')   
+                ->join('books', 'books.id', '=', 'comments.book_id')                
+                ->join('users', 'users.id', '=', 'comments.commenter_id')
+                
+                ->orderBy('comments.created_at')
+                ->paginate(6);
+     
+             return view('managecomments')->with ('BookComments', $BookComments);
+        }
+    }
+
+
+
+
+   public function destroy($id)
+        {
+          CommentsModel::destroy($id);
+
+          Session::flash('comment_delete_message', 'Comment Deleted From Book And Database!');
+          return Redirect::to('managecomments');
+        }
+
+
 }

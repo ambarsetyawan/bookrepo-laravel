@@ -85,6 +85,14 @@ Route::group(['middleware' => 'web'], function () {
     return view('messages');
     });
 
+
+    Route::get('managecomments', function () {
+    return view('managecomments');
+    });
+
+    Route::get('managecomments',array('uses' => 'CommentsController@show', 'as' => 'managecomments'));
+    Route::delete('managecomments/{id}',array('uses' => 'CommentsController@destroy', 'as' => 'managecomments'));
+
     Route::get('messages', 'ContactController@GetMessages');
     Route::delete('messages/delete/{id}',array('uses' => 'ContactController@destroy', 'as' => 'messages'));
     Route::get('messages/{id}', 'ContactController@showmessagecontents');

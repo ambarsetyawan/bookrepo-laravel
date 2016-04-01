@@ -76,12 +76,12 @@
                                                  <div class="col-md-8 col-md-offset-0">
                                             <div class="panel panel-default">
 
-                                                <div class="panel-heading"><i class="fa fa-info-circle"></i>   Buy It! </div>
+                                                <div class="panel-heading"><i class="fa fa-info-circle"></i>   Buy It! (Right Click Link and Open In New Tab)</div>
                                                     <div class="panel-body">
                                                      @if (Auth::guest())
                                                       You Must Be Logged In To View The Link!
                                                       @elseif(Auth::user())
-                                                      <a href="{{ $bookinfo->retail }}">Click Here</a>
+                                                      <a href="{{ $bookinfo->retail }}">Amazon Link</a>
                                                       @endif
                                                     </div>
                                                 </div>
