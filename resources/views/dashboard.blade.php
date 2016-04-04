@@ -5,7 +5,7 @@
     <div class="row" align="center">
         <div class="col-md-12 col-md-offset-0">
 
-  @if (Auth::user()->ban==1)
+  @if (Auth::user()->ban_status==1)
 
 
               <div class="col-md-8 col-md-offset-2">
@@ -28,7 +28,7 @@
 
 
 
-  @elseif (Auth::user()->ban!=1)
+  @elseif (Auth::user()->ban_status!=1)
 
 
                   @if (Auth::guest() OR Auth::user()->admin!=1)

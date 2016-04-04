@@ -17,7 +17,7 @@
                               @endif
 
                               @if(Session::has('ban_user_message'))
-                                  <div class="alert alert-success">
+                                  <div class="alert alert-danger">
                                       {{ Session::get('ban_user_message') }}
                                   </div>
                               @endif
@@ -48,18 +48,16 @@
                                                   <td>{{ $user->name }}</th>
                                                   <td>{{ $user->email }}</th>
                                                   <td>{{ $user->created_at }}</th>
-                                                  <td>{{ $user->account_status }}</th>
-                                                  <td> {{ Form::open(['route' => ['manageusers', $user->id], 'method' => 'delete']) }}
+                                                  <td>{{{$user->ban_status ? 'Banned' : 'Not Banned' }}}</th>
+                                                  <td>{{ Form::open(['route' => ['manageusers', $user->id], 'method' => 'delete']) }}
                                                        <input type="hidden" name="_method" value="DELETE">
-                                                       <button type="submit"class="btn btn-danger btn-mini">Delete</button></td>
+                                                       <button type="submit"class="btn btn-danger btn-mini">Delete</button></th>
 
                                                      <td><a href ="manageusers/ban/{{$user->id}}" class ='btn btn-danger'>Ban</a>
-                                                        <a href ="manageusers/unban/{{$user->id}}" class ='btn btn-info'>Unban</a></td>
+                                                        <a href ="manageusers/unban/{{$user->id}}" class ='btn btn-info'>Unban</a></th>
                                                         
-                                                       {{ Form::close() }}</th>
+                                                       {{ Form::close() }}
 
-
-                                                </tr>
                                                 @endforeach
                                               </table>
 

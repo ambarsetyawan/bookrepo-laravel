@@ -74,7 +74,7 @@ class UserController extends Controller
         {
 
               $banstatus = User::find($id);
-              $banstatus->account_status = "Banned";
+              $banstatus->ban_status = 1;
               $banstatus->save();
 
             Session::flash('ban_user_message', 'User Has Been Banned!');
@@ -86,7 +86,7 @@ class UserController extends Controller
         {
 
               $banstatus = User::find($id);
-              $banstatus->account_status = "Not Banned";
+              $banstatus->ban_status = 0;
               $banstatus->save();
 
             Session::flash('unban_user_message', 'User Has Been Unbanned!');
