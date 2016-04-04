@@ -14,7 +14,10 @@
 
 <ul class="pager">
     <div class="col-md-4 col-md-offset-0">
-        <li><a href="">Sort By Alphabetically Oder</a></li>   
+
+     
+        <li><a href="">Sort By Alphabetically Oder</a></li>
+        
     </div>
 
         <div class="col-md-4 col-md-offset-0">

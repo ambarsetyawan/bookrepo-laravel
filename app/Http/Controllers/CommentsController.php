@@ -41,7 +41,7 @@ class CommentsController extends Controller
                 ->join('users', 'users.id', '=', 'comments.commenter_id')
                 
                 ->orderBy('comments.created_at')
-                ->paginate(6);
+                ->paginate(10);
      
              return view('managecomments')->with ('BookComments', $BookComments);
         }

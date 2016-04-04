@@ -10,9 +10,9 @@
 
                     <div class="panel-body">
 
-                      @if(Session::has('delete_message'))
+                      @if(Session::has('delete_user_message'))
                                   <div class="alert alert-success">
-                                      {{ Session::get('delete_message') }}
+                                      {{ Session::get('delete_user_message') }}
                                   </div>
                               @endif
 

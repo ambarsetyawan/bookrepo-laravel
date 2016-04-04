@@ -4,11 +4,6 @@
 <div class="container">
     <div class="row" align="center">
 
-
-
-   
-
-
         <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default">
 
@@ -79,7 +74,7 @@
 
                   <div class="form-group">
                       {!! Form::label('published', 'Publish Date:') !!}
-                      {!! Form::text('published', null,['class'=>'form-control']) !!}
+                      {!! Form::text('published', null,['id' => 'datepicker']) !!}
                   </div>
           
                     </div>
@@ -94,7 +89,7 @@
                     <div class="panel-body">
 
 
-                 {!! Form::open(['action'=>'BooksController@store', 'files'=>true]) !!}
+               
                   <!-- Title form input -->
                    <div class="form-group">
 

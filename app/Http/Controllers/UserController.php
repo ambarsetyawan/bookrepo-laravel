@@ -25,7 +25,7 @@ class UserController extends Controller
 
     public function GetUsers()
     {
-      $Users = \App\User::Paginate(5);
+      $Users = \App\User::Paginate(8);
 	  return view('manageusers')->with('Users',$Users);
     }
 
@@ -57,5 +57,17 @@ class UserController extends Controller
 
 		return Redirect::to('manageusers');
     }
+
+
+
+            public function destroy($id)
+        {
+          User::destroy($id);
+
+          Session::flash('delete_user_message', 'User Deleted!');
+          return Redirect::to('manageusers');
+        }
+
+
 
 }

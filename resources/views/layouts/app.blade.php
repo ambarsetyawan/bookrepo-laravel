@@ -13,13 +13,17 @@
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="/css/style.css">
-    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
+   
 
+    {{-- <link href="{{ elixir('css/app.css') }}" rel="stylesheet"> --}}
 
     <!-- JavaScripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
 
     <script src="/js/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
@@ -28,7 +32,7 @@
     <script src="/js/jqueryautoscroll.js" type="text/javascript"></script>
     <script src="/js/jqueryzoomimg.js" type="text/javascript"></script>
     <script src="/js/jqueryshowmore.js" type="text/javascript"></script>
-
+    <script src="/js/jquerycalender.js" type="text/javascript"></script>
 </head>
 
 
