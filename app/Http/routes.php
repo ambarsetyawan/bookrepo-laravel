@@ -63,6 +63,8 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     Route::get('manageusers', 'UserController@GetUsers');
+    Route::get('manageusers/ban/{id}',array('uses' => 'UserController@ban', 'as' => 'manageusers'));
+    Route::get('manageusers/unban/{id}',array('uses' => 'UserController@unban', 'as' => 'manageusers'));
     Route::delete('manageusers/delete/{id}',array('uses' => 'UserController@destroy', 'as' => 'manageusers'));
 
 

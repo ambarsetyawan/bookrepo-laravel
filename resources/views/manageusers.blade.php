@@ -16,6 +16,18 @@
                                   </div>
                               @endif
 
+                              @if(Session::has('ban_user_message'))
+                                  <div class="alert alert-success">
+                                      {{ Session::get('ban_user_message') }}
+                                  </div>
+                              @endif
+
+                               @if(Session::has('unban_user_message'))
+                                  <div class="alert alert-success">
+                                      {{ Session::get('unban_user_message') }}
+                                  </div>
+                              @endif
+
                                         <h2><i class="fa fa-users"></i> Management Users</h2>
 
                                         <div class="table-responsive" >
@@ -25,28 +37,36 @@
                                                     <tr>
                                                         <th>Name</th>
                                                         <th>Email</th>
-                                                        <th>Password</th>
                                                         <th>Joined On</th>
-                                                        <th>Manage</th>
+                                                         <th>Account Status</th>
+                                                        <th>Manage User</th>
+                                                        <th>Manage Account</th>
                                                     </tr>
                                                 </thead>
                                                 @foreach($Users as $key => $user)
                                                 <tr>
                                                   <td>{{ $user->name }}</th>
                                                   <td>{{ $user->email }}</th>
-                                                  <td>{{ $user->password }}</th>
                                                   <td>{{ $user->created_at }}</th>
+                                                  <td>{{ $user->account_status }}</th>
                                                   <td> {{ Form::open(['route' => ['manageusers', $user->id], 'method' => 'delete']) }}
                                                        <input type="hidden" name="_method" value="DELETE">
-                                                       <button type="submit"class="btn btn-danger btn-mini">Delete</button>
+                                                       <button type="submit"class="btn btn-danger btn-mini">Delete</button></td>
+
+                                                     <td><a href ="manageusers/ban/{{$user->id}}" class ='btn btn-danger'>Ban</a>
+                                                        <a href ="manageusers/unban/{{$user->id}}" class ='btn btn-info'>Unban</a></td>
+                                                        
                                                        {{ Form::close() }}</th>
+
+
                                                 </tr>
                                                 @endforeach
                                               </table>
 
                                     {!! $Users->render() !!} 
-                                        </div>
 
+
+                                        </div>
         </div>
     </div>
 </div>

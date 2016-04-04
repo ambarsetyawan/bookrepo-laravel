@@ -5,11 +5,37 @@
     <div class="row" align="center">
         <div class="col-md-12 col-md-offset-0">
 
+  @if (Auth::user()->ban==1)
+
+
+              <div class="col-md-8 col-md-offset-2">
+                          <div class="panel panel-default">
+
+                                  <div class="panel-heading"><i class="fa fa-info-circle"></i>     YOU ARE BANNED! </div>
+                                  <div class="panel-body"> 
+                                                  User {{ Auth::user()->name }}. The Admin has banned you from doing anything else on the website till furthur notice.<p>
+                                                  The reasons for this could very well be due to one or many of the following reasons:<p>
+                                                  - Abusing the commentary section</p>
+                                                  - Use of profanity</p>
+                                                  - Hacking</p>
+                                                  - Complaints from other users etc.</p>
+                                                                                                
+                                                  If you think that you have been banned for reasons not of your doing, then please contact the admin.
+
+                                  </div>
+                              </div>
+                      </div>
+
+
+
+  @elseif (Auth::user()->ban!=1)
+
 
                   @if (Auth::guest() OR Auth::user()->admin!=1)
                   @elseif(Auth::user()->admin==1)
                   <div class="panel-heading"><h2><i class="fa fa-pencil-square-o"></i> ADMIN DASHBOARD</h2></div>
                   @endif
+                  
                   @if (Auth::guest() OR Auth::user()->admin!=1)
 
                   <div class="panel-heading"><h2><i class="fa fa-pencil-square-o"></i> STANDARD DASHBOARD</h2></div>
@@ -86,12 +112,10 @@
                     </div>
 
 
-
-
-                    
-
                       @endif
 
+
+ @endif
         </div>
     </div>
 </div>

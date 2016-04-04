@@ -55,8 +55,8 @@
                 </div>
 
                  <div class="form-group" align="center">
-                    {!! Form::label('dob', 'Date Of Birth:') !!}
-                    {!! Form::text('dob', $profileinfo->dob, ['id' => 'datepicker']) !!}
+                    {!! Form::label('dob', 'Date Of Birth (YYYY:MM:DD):') !!}
+                    {!! Form::text('dob', $profileinfo->dob, ['class' => 'form-control']) !!}
                 </div>
 
 

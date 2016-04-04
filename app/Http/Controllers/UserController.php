@@ -60,7 +60,7 @@ class UserController extends Controller
 
 
 
-            public function destroy($id)
+         public function destroy($id)
         {
           User::destroy($id);
 
@@ -68,6 +68,45 @@ class UserController extends Controller
           return Redirect::to('manageusers');
         }
 
+
+
+        public function ban($id)
+        {
+
+              $banstatus = User::find($id);
+              $banstatus->account_status = "Banned";
+              $banstatus->save();
+
+            Session::flash('ban_user_message', 'User Has Been Banned!');
+            return Redirect::to('manageusers');
+        }
+
+
+        public function unban($id)
+        {
+
+              $banstatus = User::find($id);
+              $banstatus->account_status = "Not Banned";
+              $banstatus->save();
+
+            Session::flash('unban_user_message', 'User Has Been Unbanned!');
+            return Redirect::to('manageusers');
+        }
+
+
+
+    public function update(Request $request)
+    {
+      $user = User::find(Auth::user()->id);
+
+      $user->password   = Hash::make(Input::get('password'));
+      $user->dob      = Input::get('dob');
+
+      $user->save();
+
+        Session::flash('profile_updated_message', 'Profile Updated!');
+        return Redirect::to('profile');
+    }
 
 
 }

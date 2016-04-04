@@ -65,9 +65,18 @@
                 <ul class="nav navbar-nav">
 
                   <!-- Authentication Links -->
-                  @if (Auth::guest() OR Auth::user()->admin!=1)
+                
+                  @if (Auth::guest())
                   <li><a href="{{ url('/browsebooks') }}"><i class="fa fa-book"></i> Browse Books</a></li>
                   <li><a href="{{ url('/request') }}"><i class="fa fa-retweet"></i></i> Request Book</a></li>
+                  <li><a href="{{ url('contact') }}"><i class="fa fa-envelope-square"></i> Contact Admin</a></li>
+
+                  @elseif (Auth::user()->admin!=1 & Auth::user()->ban!=1)
+                  <li><a href="{{ url('/browsebooks') }}"><i class="fa fa-book"></i> Browse Books</a></li>
+                  <li><a href="{{ url('/request') }}"><i class="fa fa-retweet"></i></i> Request Book</a></li>
+                  <li><a href="{{ url('contact') }}"><i class="fa fa-envelope-square"></i> Contact Admin</a></li>
+
+                  @elseif (Auth::user()->admin!=1 & Auth::user()->ban==1)
                   <li><a href="{{ url('contact') }}"><i class="fa fa-envelope-square"></i> Contact Admin</a></li>
 
                   @elseif(Auth::user()->admin==1)
@@ -91,10 +100,7 @@
 
                 
                  <li><a href="{{ url('recieverequests') }}"><i class="fa fa-exclamation"></i> Book Requests</a></li>
-                   <li><a href="{{ url('statistics') }}"><i class="fa fa-bar-chart"></i> Statistics</a></li>         
-                 
-                  
-
+                   <li><a href="{{ url('statistics') }}"><i class="fa fa-bar-chart"></i> Statistics</a></li>             
                   @endif
                 </ul>
 
@@ -115,10 +121,14 @@
 
                             <ul class="dropdown-menu" role="menu">
  
-                                @if (Auth::guest() OR Auth::user()->admin!=1)
-                                <li><a href="{{ url('/profile') }}"><i class="fa fa-pencil-square-o"></i> Your Profile</a></li>
+                                @if (Auth::user()->admin!=1 & Auth::user()->ban!=1)
+                                <li><a href="{{ url('/profile') }}"><i class="fa fa-file"></i> Your Profile</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> Logout</a></li>
-                                @elseif(Auth::user()->admin==1)
+
+                                @elseif (Auth::user()->admin!=1 & Auth::user()->ban==1)
+                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> Logout</a></li>
+
+                                @elseif(Auth::user()->admin==1 & Auth::user()->ban!=1)
                                 <li><a href="{{ url('/messages') }}"><i class="fa fa-pencil-square-o"></i> Messages</a></li>
                                 <li><a href="{{ url('/profile') }}"><i class="fa fa-file"></i> Profile</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> Logout</a></li>
