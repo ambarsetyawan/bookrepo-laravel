@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\BookModel;
 use App\User;
 use App\CommentsModel;
+use App\CommentVotesModel;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Validator;
@@ -27,8 +28,9 @@ class BooksController extends Controller
 
   public function RetrieveBooks(){
     $AddedBooks =   \App\BookModel::Paginate(12);
-    return view('browsebooks')->with('AddedBooks', $AddedBooks);
+    return view('browsebooks') ->with('AddedBooks', $AddedBooks);
   }
+
 
 
   public function store(Request $request)
@@ -76,7 +78,7 @@ class BooksController extends Controller
         public function showbookinfo($id)
         {
            Session::put('bookid', $id);
-
+           Session::put('commentvotebookid', $id);
 
              $bookinfo = BookModel::find($id);
              $comments = DB::table('comments')     
@@ -169,6 +171,46 @@ class BooksController extends Controller
 
                //var_dump($downvote);
             }
+
+
+
+             public function votecommentup($id){
+
+              
+              $upcommentvote = new \App\CommentVotesModel;
+              $upcommentvote->bookcommenter_id = $id;
+              $upcommentvote->book_id = Session::get('commentvotebookid');
+              $upcommentvote->commentvoter_id = Auth::id();
+              $upcommentvote->likes = 1;
+              $upcommentvote->dislikes = 0;
+             
+              $upcommentvote -> save();
+
+              Session::flash('commentupvote_message', 'You Have Up Voted The Comment!');
+              return Redirect::back();
+
+              // var_dump($upcommentvote);
+            }
+
+
+              public function votecommentdown($id){
+
+
+              $downcommentvote = new \App\CommentVotesModel;
+              $downcommentvote->bookcommenter_id = $id;
+              $downcommentvote->book_id =  Session::get('commentvotebookid');
+              $downcommentvote->commentvoter_id = Auth::id();
+              $downcommentvote->likes = 0;
+              $downcommentvote->dislikes = 1;
+             
+               $downcommentvote -> save();
+
+               Session::flash('commentdownvote_message', 'You Have Down Voted The Comment!');
+              return Redirect::back();
+
+                // var_dump($downcommentvote);
+            }
+
 
 
         public function destroy($id)

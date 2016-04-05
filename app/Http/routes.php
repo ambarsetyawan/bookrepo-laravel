@@ -118,11 +118,14 @@ Route::get('/browsebooks', function () {
 return view('browsebooks');
 });
 
-Route::get('browsebooks/{id}', 'BooksController@showbookinfo');
 
+Route::get('browsebooks/{id}', 'BooksController@showbookinfo');
 Route::post('browsebooks/{id}',array('uses' => 'CommentsController@postComment', 'as' => 'browsebooks/{id}'));
 Route::get('/browsebooks/voteup/{id}', 'BooksController@voteup');
 Route::get('/browsebooks/votedown/{id}', 'BooksController@votedown');
+
+Route::get('/browsebooks/comment/{id}/votecommentup', 'BooksController@votecommentup');
+Route::get('/browsebooks/comment/{id}/votecommentdown', 'BooksController@votecommentdown');
 
 
 Route::get('/contact', function () {

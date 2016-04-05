@@ -109,7 +109,7 @@
                     </button>
     </div>
 
-<div class="row" align="center">
+<div class="row" align="left">
         <div class="col-md-5 col-md-offset-0">
             <div class="panel panel-default">
                 <div class="panel-heading"><h2><i class="fa fa-commenting-o"></i> COMMENTS & REVIEWS <th></h2></div>
@@ -135,6 +135,18 @@
         </div>
     @endif
 
+        @if(Session::has('commentupvote_message'))
+        <div class="alert alert-success">
+            {{ Session::get('commentupvote_message') }}
+        </div>
+    @endif
+
+        @if(Session::has('commentdownvote_message'))
+        <div class="alert alert-danger">
+            {{ Session::get('commentdownvote_message') }}
+        </div>
+    @endif
+
 
 @if (Auth::guest())
     <h3>You Must Be Logged In To Comment!</h3>
@@ -143,8 +155,9 @@
 
 @foreach($comments as $bookcomment)
     <article>
-        <p><small>Posted by <b>{{$bookcomment->commentername}}</b> - At <b>{{$bookcomment->created_at}}</b></small></p>
+        <p><small>Posted by <b>{{$bookcomment->commentername}}</b> - At <b>{{$bookcomment->created_at}}</b></small> - <a href="/browsebooks/comment/{{ $bookcomment->id }}/votecommentup"><img src="/images/up.png"></a> / <a href="/browsebooks/comment/{{ $bookcomment->id }}/votecommentdown"><img src="/images/down.png"></a>
           <p>{{$bookcomment->content}}
+         
           <p>  _____________________________________________________________________________</p>
     </article>
 
