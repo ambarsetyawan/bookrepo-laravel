@@ -155,14 +155,20 @@
 
 @foreach($comments as $bookcomment)
     <article>
-        <p><small>Posted by <b>{{$bookcomment->commentername}}</b> - At <b>{{$bookcomment->created_at}}</b></small> - <a href="/browsebooks/comment/{{ $bookcomment->id }}/votecommentup"><img src="/images/up.png"></a> / <a href="/browsebooks/comment/{{ $bookcomment->id }}/votecommentdown"><img src="/images/down.png"></a>
-          <p>{{$bookcomment->content}}
+    @foreach($commentvotes as $commentrating)
+        <p><small>Posted by <b>{{$bookcomment->commentername}}</b> - 
+        At <b>{{$bookcomment->created_at}}</b> - 
+        Liked {{$commentrating->commentupvote}} / Disliked {{$commentrating->commentdownvote}}</small> : 
+        <a href="/browsebooks/comment/{{ $bookcomment->id }}/votecommentup"><img src="/images/up.png"></a> / 
+        <a href="/browsebooks/comment/{{ $bookcomment->id }}/votecommentdown"><img src="/images/down.png"></a>
+        <p>{{$bookcomment->content}}
          
           <p>  _____________________________________________________________________________</p>
+     @endforeach
     </article>
 
 
-    @endforeach
+@endforeach
 
     
 {!! $comments->render() !!} 

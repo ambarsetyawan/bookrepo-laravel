@@ -77,9 +77,8 @@ class BooksController extends Controller
 
         public function showbookinfo($id)
         {
-           Session::put('bookid', $id);
-           Session::put('commentvotebookid', $id);
-
+             Session::put('bookid', $id);
+          
              $bookinfo = BookModel::find($id);
              $comments = DB::table('comments')     
                 ->select('comments.id', 'comments.content', 'comments.created_at', 'books.id as bookid', 'books.title as bookstitle', 'users.name as commentername')   
@@ -94,13 +93,20 @@ class BooksController extends Controller
                 ->where('votes.book_id', '=', $id)
                 ->get();
 
+              $commentvotes = DB::table('commentvotes')     
+                ->selectRaw('commentvotes.*, sum(commentvotes.likes) as commentupvote, sum(commentvotes.dislikes) as commentdownvote')
+                ->where('commentvotes.book_id', '=', $id)
+                ->get();
+
+                
 
                 return view('bookinfo')
                    ->with ('bookinfo', $bookinfo)
                    ->with ('comments', $comments)
-                   ->with ('votes', $votes);
+                   ->with ('votes', $votes)
+                   ->with ('commentvotes', $commentvotes);
 
-               //var_dump($upvotes);
+               //var_dump($commentvotes);
         }
 
 
@@ -108,7 +114,6 @@ class BooksController extends Controller
         public function edit($id)
         {
           $data = BookModel::findOrFail($id);
-          // var_dump($editbook);
           return view('editbooks')->with('data', $data);
         }
 
@@ -175,7 +180,6 @@ class BooksController extends Controller
 
 
              public function votecommentup($id){
-
               
               $upcommentvote = new \App\CommentVotesModel;
               $upcommentvote->bookcommenter_id = $id;
@@ -189,7 +193,7 @@ class BooksController extends Controller
               Session::flash('commentupvote_message', 'You Have Up Voted The Comment!');
               return Redirect::back();
 
-              // var_dump($upcommentvote);
+              // var_dump($id);
             }
 
 
@@ -203,7 +207,7 @@ class BooksController extends Controller
               $downcommentvote->likes = 0;
               $downcommentvote->dislikes = 1;
              
-               $downcommentvote -> save();
+              $downcommentvote -> save();
 
                Session::flash('commentdownvote_message', 'You Have Down Voted The Comment!');
               return Redirect::back();
