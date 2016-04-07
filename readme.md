@@ -1,26 +1,24 @@
-## Laravel PHP Framework
+## Laravel PHP Framework Website
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+The name of the website is "BookRepo". In a sense it is a repository containing information regarding reading books, novels and stories. Registered users can do interactive things such as voting, commenting and reviewing the books. The registered user and admin make most use of features and functionalities that uses CRUD.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+-> A guest user can browse the books and read all infomration about it such as book title, genre, author, ratings and description.      Although there are few restrictions unless the user decides to become a registered user on the website .
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+-> A registered user can do all of those features as mentioned as well as the addition features acquired by becoming a member of the website. These include voting/ rating a book (likes/dislikes), commenting on books, voting/ rating comments, requesting a book and the ability to see and use the retail links for all the books on the website.
+
+-> An admin user can do previously mentioned features as well as much more. They have full control over the website such as adding a new book, editing books, deleting books, deleting users and deleting comments etc. 
+
+
+
 
 ## Official Documentation
 
 Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
 
 ## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+Few glitches and bugs in few places.
 
 ### License
 
