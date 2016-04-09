@@ -54,13 +54,11 @@
                     {!! Form::text('password', null, ['class' => 'form-control']) !!}
                 </div>
 
-                 <div class="form-group" align="center">
-                    {!! Form::label('dob', 'Date Of Birth (YYYY:MM:DD):') !!}
-                    {!! Form::text('dob', $profileinfo->dob, ['class' => 'form-control']) !!}
+
+
+                <div class="form-group" align="center">
+                    {{ Form::submit('Update Profile', array('class' => 'btn btn-info')) }}
                 </div>
-
-
-              {{ Form::submit('Update Profile', array('class' => 'btn btn-info')) }}
 
             {!! Form::close() !!}
 

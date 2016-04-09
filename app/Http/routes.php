@@ -16,6 +16,8 @@ Route::get('/', function () {
 
 });
 
+
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -27,46 +29,74 @@ Route::get('/', function () {
 |
 */
 
+
+
+
 Route::group(['middleware' => 'web'], function () {
+            Route::group(['middleware' => 'App\Http\Middleware\RoleMiddleware'], function () {
+
+            // Adding new books to the database route
+                Route::get('addbook', function () {
+                return view('addbook');
+                });
+
+            // Manage Books routes, connected controller and methods
+                Route::get('managebooks', function () {
+                return view('managebooks');
+                });
+
+                Route::post('managebooks', 'BooksController@store');
+                Route::get('managebooks', 'BooksController@GetBooks');
+                Route::delete('managebooks/delete/{id}',array('uses' => 'BooksController@destroy', 'as' => 'managebooks'));
+                Route::get('managebooks/edit/{id}',array('uses' => 'BooksController@edit', 'as' => 'editbooks'));
+                Route::post('managebooks/edit/{id}',array('uses' => 'BooksController@update', 'as' => 'editbooks'));
+
+
+            // Manage Users routes, connected controller and methods
+                Route::get('manageusers', function () {
+                return view('manageusers');
+                });
+
+                Route::get('manageusers', 'UserController@GetUsers');
+                Route::get('manageusers/ban/{id}',array('uses' => 'UserController@ban', 'as' => 'manageusers'));
+                Route::get('manageusers/unban/{id}',array('uses' => 'UserController@unban', 'as' => 'manageusers'));
+                Route::delete('manageusers/delete/{id}',array('uses' => 'UserController@destroy', 'as' => 'manageusers'));
+
+
+            // Statistics view route, connected controller and methods
+                Route::get('statistics', function () {
+                return view('statistics');
+                });
+
+                Route::get('statistics', 'StatisticsController@GetStatistics');
+
+
+            // Manage Comments routes, connected controller and methods
+                Route::get('managecomments', function () {
+                return view('managecomments');
+                });
+
+                Route::get('managecomments',array('uses' => 'CommentsController@show', 'as' => 'managecomments'));
+                Route::delete('managecomments/{id}',array('uses' => 'CommentsController@destroy', 'as' => 'managecomments'));
+
+
+            // Manage Requests route, connected controller and methods
+                Route::get('recieverequests', function () {
+                return view('recieverequests');
+                });
+
+                Route::get('recieverequests', 'RequestsController@GetRequests');
+                Route::delete('recieverequests/delete/{id}',array('uses' => 'RequestsController@destroy', 'as' => 'recieverequests'));
+
+            // RoleMiddleware ends here
+            });
+
+
     Route::auth();
 
     Route::get('/dashboard', function () {
     return view('dashboard');
     });
-
-
-    Route::get('addbook', function () {
-    return view('addbook');
-    });
-
-    Route::get('managebooks', function () {
-    return view('managebooks');
-    });
-
-    Route::post('managebooks', 'BooksController@store');
-    Route::get('managebooks', 'BooksController@GetBooks');
-
-
-    Route::delete('managebooks/delete/{id}',array('uses' => 'BooksController@destroy', 'as' => 'managebooks'));
-    Route::get('managebooks/edit/{id}',array('uses' => 'BooksController@edit', 'as' => 'editbooks'));
-    Route::post('managebooks/edit/{id}',array('uses' => 'BooksController@update', 'as' => 'editbooks'));
-
-    Route::get('statistics', function () {
-    return view('statistics');
-    });
-
-    Route::get('statistics', 'StatisticsController@GetStatistics');
-
-
-    Route::get('manageusers', function () {
-    return view('manageusers');
-    });
-
-    Route::get('manageusers', 'UserController@GetUsers');
-    Route::get('manageusers/ban/{id}',array('uses' => 'UserController@ban', 'as' => 'manageusers'));
-    Route::get('manageusers/unban/{id}',array('uses' => 'UserController@unban', 'as' => 'manageusers'));
-    Route::delete('manageusers/delete/{id}',array('uses' => 'UserController@destroy', 'as' => 'manageusers'));
-
 
     Route::get('/request', function () {
     return view('request');
@@ -74,26 +104,9 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::post('request', 'RequestsController@store');
 
-
-    Route::get('recieverequests', function () {
-    return view('recieverequests');
-    });
-
-    Route::get('recieverequests', 'RequestsController@GetRequests');
-    Route::delete('recieverequests/delete/{id}',array('uses' => 'RequestsController@destroy', 'as' => 'recieverequests'));
-
-
     Route::get('messages', function () {
     return view('messages');
     });
-
-
-    Route::get('managecomments', function () {
-    return view('managecomments');
-    });
-
-    Route::get('managecomments',array('uses' => 'CommentsController@show', 'as' => 'managecomments'));
-    Route::delete('managecomments/{id}',array('uses' => 'CommentsController@destroy', 'as' => 'managecomments'));
 
     Route::get('messages', 'ContactController@GetMessages');
     Route::delete('messages/delete/{id}',array('uses' => 'ContactController@destroy', 'as' => 'messages'));
@@ -101,48 +114,42 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('profile',array('uses' => 'ProfileController@show', 'as' => 'profile'));
     Route::post('profile',array('uses' => 'ProfileController@update', 'as' => 'profile'));
-
     Route::delete('profile/{id}',array('uses' => 'ProfileController@destroy', 'as' => 'profile'));
-
-
-    Route::get('managebooks/edit/{id}',array('uses' => 'BooksController@edit', 'as' => 'editbooks'));
     Route::get('profile/{id}',array('uses' => 'ProfileController@showProfile', 'as' => 'profile'));
-
 
     Route::get('/', function () {
     return view('welcome');
-});
+    });
 
 
-Route::get('/browsebooks', function () {
-return view('browsebooks');
-});
+// Browse Books route, connected controllers and methods
+    Route::get('/browsebooks', function () {
+    return view('browsebooks');
+    });
+
+    Route::get('browsebooks', 'BooksController@RetrieveBooks');
+    Route::get('browsebooks/{id}', 'BooksController@showbookinfo');
+    Route::post('browsebooks/{id}',array('uses' => 'CommentsController@postComment', 'as' => 'browsebooks/{id}'));
+    Route::get('/browsebooks/voteup/{id}', 'BooksController@voteup');
+    Route::get('/browsebooks/votedown/{id}', 'BooksController@votedown');
+    Route::get('/browsebooks/comment/{id}/votecommentup', 'BooksController@votecommentup');
+    Route::get('/browsebooks/comment/{id}/votecommentdown', 'BooksController@votecommentdown');
 
 
-Route::get('browsebooks/{id}', 'BooksController@showbookinfo');
-Route::post('browsebooks/{id}',array('uses' => 'CommentsController@postComment', 'as' => 'browsebooks/{id}'));
-Route::get('/browsebooks/voteup/{id}', 'BooksController@voteup');
-Route::get('/browsebooks/votedown/{id}', 'BooksController@votedown');
+// Contact Admin Route, connect controller and methods
+    Route::get('/contact', function () {
+    return view('contact');
+    });
 
-Route::get('/browsebooks/comment/{id}/votecommentup', 'BooksController@votecommentup');
-Route::get('/browsebooks/comment/{id}/votecommentdown', 'BooksController@votecommentdown');
+    Route::post('contact', 'ContactController@store');
 
 
-Route::get('/contact', function () {
-return view('contact');
-});
+// Password reset routes, connected controllers, middleware and methods
+    Route::get('password/email', 'Auth\PasswordController@getEmail');
+    Route::post('password/email', 'Auth\PasswordController@postEmail');
+    Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+    Route::post('password/reset', 'Auth\PasswordController@postReset');
 
-Route::post('contact', 'ContactController@store');
 
-Route::get('browsebooks', 'BooksController@RetrieveBooks');
-
-// Password reset link request routes...
-Route::get('password/email', 'Auth\PasswordController@getEmail');
-Route::post('password/email', 'Auth\PasswordController@postEmail');
-
-// Password reset routes...
-Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
-Route::post('password/reset', 'Auth\PasswordController@postReset');
-
-Route::get('/home', 'HomeController@index');
+    Route::get('/home', 'HomeController@index');
 });
