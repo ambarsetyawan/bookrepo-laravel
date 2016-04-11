@@ -92,31 +92,45 @@ Route::group(['middleware' => 'web'], function () {
             });
 
 
+// Dashboard route, connected controllers and methods
     Route::auth();
 
     Route::get('/dashboard', function () {
     return view('dashboard');
     });
 
+ // Contact Admin Route, connect controller and methods
+    Route::get('/contact', function () {
+    return view('contact');
+    });
+
+    Route::post('contact', 'ContactController@store');
+
+// Request route, connected controllers and methods
     Route::get('/request', function () {
     return view('request');
     });
 
     Route::post('request', 'RequestsController@store');
 
+
+// Messages route, connected controllers and methods
     Route::get('messages', function () {
     return view('messages');
     });
+
 
     Route::get('messages', 'ContactController@GetMessages');
     Route::delete('messages/delete/{id}',array('uses' => 'ContactController@destroy', 'as' => 'messages'));
     Route::get('messages/{id}', 'ContactController@showmessagecontents');
 
+// Profile route, connected controllers and methods
     Route::get('profile',array('uses' => 'ProfileController@show', 'as' => 'profile'));
     Route::post('profile',array('uses' => 'ProfileController@update', 'as' => 'profile'));
     Route::delete('profile/{id}',array('uses' => 'ProfileController@destroy', 'as' => 'profile'));
     Route::get('profile/{id}',array('uses' => 'ProfileController@showProfile', 'as' => 'profile'));
 
+// Welcome route, connected controllers and methods
     Route::get('/', function () {
     return view('welcome');
     });
@@ -132,14 +146,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('browsebooks/{id}',array('uses' => 'CommentsController@postComment', 'as' => 'browsebooks/{id}'));
     Route::get('/browsebooks/voteup/{id}', 'BooksController@voteup');
     Route::get('/browsebooks/votedown/{id}', 'BooksController@votedown');
-
-
-// Contact Admin Route, connect controller and methods
-    Route::get('/contact', function () {
-    return view('contact');
-    });
-
-    Route::post('contact', 'ContactController@store');
 
 
 // Password reset routes, connected controllers, middleware and methods
