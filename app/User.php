@@ -44,9 +44,5 @@ class User extends Authenticatable
         }
 
 
-     public function commentvotes()
-        {
-            return $this->hasMany('App\CommentVotesModel');
-        }
 
 }

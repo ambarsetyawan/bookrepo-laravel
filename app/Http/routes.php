@@ -132,8 +132,6 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('browsebooks/{id}',array('uses' => 'CommentsController@postComment', 'as' => 'browsebooks/{id}'));
     Route::get('/browsebooks/voteup/{id}', 'BooksController@voteup');
     Route::get('/browsebooks/votedown/{id}', 'BooksController@votedown');
-    Route::get('/browsebooks/comment/{id}/votecommentup', 'BooksController@votecommentup');
-    Route::get('/browsebooks/comment/{id}/votecommentdown', 'BooksController@votecommentdown');
 
 
 // Contact Admin Route, connect controller and methods

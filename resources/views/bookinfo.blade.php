@@ -135,17 +135,6 @@
         </div>
     @endif
 
-        @if(Session::has('commentupvote_message'))
-        <div class="alert alert-success">
-            {{ Session::get('commentupvote_message') }}
-        </div>
-    @endif
-
-        @if(Session::has('commentdownvote_message'))
-        <div class="alert alert-danger">
-            {{ Session::get('commentdownvote_message') }}
-        </div>
-    @endif
 
 
 @if (Auth::guest())
@@ -155,18 +144,13 @@
 
 @foreach($comments as $bookcomment)
     <article>
-    @foreach($commentvotes as $commentrating)
+   
         <p><small>Posted by <b>{{$bookcomment->commentername}}</b> - 
-        At <b>{{$bookcomment->created_at}}</b> - 
-        Liked {{$commentrating->commentupvote}} / Disliked {{$commentrating->commentdownvote}}</small> : 
-        <a href="/browsebooks/comment/{{ $bookcomment->id }}/votecommentup"><img src="/images/up.png"></a> / 
-        <a href="/browsebooks/comment/{{ $bookcomment->id }}/votecommentdown"><img src="/images/down.png"></a>
-        <p>{{$bookcomment->content}}
-         
-          <p>  _____________________________________________________________________________</p>
-     @endforeach
-    </article>
+        At <b>{{$bookcomment->created_at}}</b></small> 
+        <p>{{$bookcomment->content}}        
+        <p>  ______________________________________________________________________________</p>
 
+    </article>
 
 @endforeach
 

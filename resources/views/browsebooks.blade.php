@@ -47,6 +47,8 @@
                                 {{ Session::get('downvote_message') }}
                             </div>
                         @endif
+
+
         @foreach($AddedBooks as $key => $book)
             <div class="col-md-2 col-md-offset-0">
                 
@@ -64,10 +66,13 @@
                             Sign In To Rate!
 
                         @elseif(Auth::user())
+                                        
 
-                                      Rate It - <a href="/browsebooks/voteup/{{ $book->id }}"><img src="/images/up.png"></a>  /      
-                                      <a href="/browsebooks/votedown/{{ $book->id }}"><img src="/images/down.png"></a>
+                                             Rate It - <a href="/browsebooks/voteup/{{ $book->id }}"><img src="/images/up.png"></a>  /      
+                                                        <a href="/browsebooks/votedown/{{ $book->id }}"><img src="/images/down.png"></a>
 
+                                             
+                                     
                                  
                         @endif
                         </div>
