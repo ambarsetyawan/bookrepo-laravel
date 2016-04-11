@@ -25,7 +25,9 @@ class UserController extends Controller
 
     public function GetUsers()
     {
-      $Users = \App\User::Paginate(8);
+      $Users = \App\User::where('admin', 0)
+            ->where('admin', 0)
+            ->paginate(5);
 	  return view('manageusers')->with('Users',$Users);
     }
 

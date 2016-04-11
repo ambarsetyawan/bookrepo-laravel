@@ -53,9 +53,12 @@
                                                        <input type="hidden" name="_method" value="DELETE">
                                                        <button type="submit"class="btn btn-danger btn-mini">Delete</button></th>
 
-                                                     <td><a href ="manageusers/ban/{{$user->id}}" class ='btn btn-danger'>Ban</a>
-                                                        <a href ="manageusers/unban/{{$user->id}}" class ='btn btn-info'>Unban</a></th>
-                                                        
+                                                  <td>
+                                                 @if(!$user->ban_status) 
+                                                  <a href ="manageusers/ban/{{$user->id}}" class ='btn btn-danger'>Ban</a>
+                                                  @elseif($user->ban_status) 
+                                                      <a href ="manageusers/unban/{{$user->id}}" class ='btn btn-info'>Unban</a></th>
+                                                   @endif
                                                        {{ Form::close() }}
 
                                                 @endforeach
