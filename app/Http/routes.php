@@ -114,11 +114,25 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('request', 'RequestsController@store');
 
 
+
+
+// Discussions route, connected controllers and methods
+    Route::get('discussions', function () {
+    return view('discussions');
+    });
+
+    Route::get('discussions', 'DiscussionsController@GetTopics');
+    Route::post('discussions', 'DiscussionsController@store');
+    Route::get('discussions/{id}', 'DiscussionsController@showtopicposts');
+    Route::post('discussions/{id}', 'DiscussionsController@createtopicpost');
+
+
+
+
 // Messages route, connected controllers and methods
     Route::get('messages', function () {
     return view('messages');
     });
-
 
     Route::get('messages', 'ContactController@GetMessages');
     Route::delete('messages/delete/{id}',array('uses' => 'ContactController@destroy', 'as' => 'messages'));
