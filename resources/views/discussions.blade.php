@@ -22,32 +22,40 @@
                         @endif
 
 
-                        <thead>
+      @if (Auth::guest())
+            You Must Be Logged In To Use The Forum!
+      @elseif(Auth::user())
+                                                  
+                            <thead>
+                                <tr>
+                                    <th>Topics</th>
+                                    <th>Created By</th>
+                                    <th>Replies</th>
+                                    <th>Users</th>
+                                    <th>Views</th>
+                                    
+                                    <th>Created On</th>
+                                    <th>Manage</th>
+                                </tr>
+                            </thead>
+
+                         
                             <tr>
-                                <th>Topics</th>
-                                <th>Created By</th>
-                                <th>Replies</th>
-                                <th>Users</th>
-                                <th>Views</th>
-                                
-                                <th>Created On</th>
-                                <th>Manage</th>
+                             @foreach($Topics as $key => $discussionthread)
+                              <td> <a href="/discussions/{{ $discussionthread->id }}">{{ $discussionthread->topic }}</a></th>
+                              <td>{{ $discussionthread->creator_name }}</th>
+                              <td></th>
+                              <td></th>
+                              <td></th>
+                              <td>{{ $discussionthread->created_at }}</th>
+                              <td></th>
                             </tr>
-                        </thead>
 
-                     
-                        <tr>
-                         @foreach($Topics as $key => $discussionthread)
-                          <td> <a href="/discussions/{{ $discussionthread->id }}">{{ $discussionthread->topic }}</a></th>
-                          <td>{{ $discussionthread->creator_name }}</th>
-                          <td></th>
-                          <td></th>
-                          <td></th>
-                          <td>{{ $discussionthread->created_at }}</th>
-                          <td></th>
-                        </tr>
+                          @endforeach
 
-                      @endforeach
+
+                  @endif
+
 
                       
                       </table>
@@ -60,8 +68,9 @@
       </div>
 
 
-<div class="row">
-<div class="col-md-6 col-md-offset-0">
+ 
+<div class="row" align="center">
+<div class="col-md-6 col-md-offset-3">
           <div class="panel panel-default">
        <h2>  <div class="panel-heading" align="center"><i class="fa fa-info-circle"></i>  Create A New Topic</div></h2>
                     <div class="panel-body">
@@ -83,8 +92,14 @@
                           </div>
                       @endif
 
-                   {!! Form::open(['action'=>'DiscussionsController@store', 'files'=>true]) !!}
 
+
+
+         @if (Auth::guest())
+            You Must Be Logged In To Use The Forum!
+         @elseif(Auth::user())
+
+                 {!! Form::open() !!}
 
                   <div class="form-group">
                       {!! Form::label('topic', 'Topic Title:') !!}
@@ -98,10 +113,14 @@
 
 
                        </div>
+          @endif
 
 </div>
 </div>
 </div>
+
+
+
 </div>
 </div>
 @endsection

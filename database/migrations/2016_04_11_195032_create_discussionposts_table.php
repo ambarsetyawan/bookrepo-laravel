@@ -10,12 +10,12 @@ class CreateDiscussionpostsTable extends Migration
      *
      * @return void
      */
-     public function up()
+      public function up()
     {
-        Schema::create('disscussionposts', function (Blueprint $table) {
+        Schema::create('discussionposts', function (Blueprint $table) {
         $table->increments('disscussionpost_id');
         $table->integer('topic_id');
-        $table->string('discussion_post');
+        $table->string('discussionpost');
         $table->integer('discusser_id');
         $table->timestamps();
       });
@@ -28,6 +28,6 @@ class CreateDiscussionpostsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('disscussionposts');
+        Schema::drop('discussionposts');
     }
 }

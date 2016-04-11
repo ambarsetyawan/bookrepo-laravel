@@ -12,6 +12,7 @@ use Input;
 use Redirect;
 use Session;
 use App\DiscussionModel;
+use App\DiscussionPostsModel;
 
 class DiscussionsController extends Controller
 {
@@ -23,14 +24,9 @@ class DiscussionsController extends Controller
 
   public function store()
   {
-
       $rules = array(
-
-
-        'topic' => 'required',
-       
+        'topic' => 'required', 
       );
-
 
       $validator = Validator::make(Input::all(), $rules);
 
@@ -50,14 +46,15 @@ class DiscussionsController extends Controller
               Session::flash('new_thread_message', 'New Topic Has Been Created!');
               return Redirect::to('discussions');
 
-              // var_dump($newtopic);
+               // var_dump($newtopic);
             }
-
     }
 
 
 		  public function showtopicposts($id)
 		  {
+        Session::put('topicid', $id);
+
 		      $topicposts = DiscussionModel::find($id);
 		      return view('discussionsposts')->with ('topicposts', $topicposts);
 		  }
@@ -69,10 +66,10 @@ class DiscussionsController extends Controller
 		  public function createtopicpost()
 		  {
 
-		  DiscussionModel::create(array(
-		              'topic' => Input::get('discussion_post'),
-		              'discussion_post' => Input::get('discussion_post'),
-		              'discusser_id' => Auth::user()->id
+		  DiscussionPostsModel::create(array(
+		              'topic_id' => Session::get('topicid'),
+		              'discussionpost' => Input::get('discussion_post'),
+		              'discusser_id' => Auth::id()
 		   ));
 
 		   Session::flash('topic_post_success','Post Has Been Submitted!');

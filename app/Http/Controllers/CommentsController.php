@@ -20,8 +20,6 @@ class CommentsController extends Controller
   public function postComment()
   {
 
-
-
   CommentsModel::create(array(
               'content' => Input::get('content'),
               'commenter_id' => Auth::user()->id,

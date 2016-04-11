@@ -124,7 +124,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('discussions', 'DiscussionsController@GetTopics');
     Route::post('discussions', 'DiscussionsController@store');
     Route::get('discussions/{id}', 'DiscussionsController@showtopicposts');
-    Route::post('discussions/{id}', 'DiscussionsController@createtopicpost');
+    Route::post('discussions/{id}',array('uses' => 'DiscussionsController@createtopicpost', 'as' => 'discussions/{id}'));
 
 
 

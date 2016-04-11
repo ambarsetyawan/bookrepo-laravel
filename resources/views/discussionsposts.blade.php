@@ -12,11 +12,7 @@
                         <div class="panel-body">
 
 
-                          @if(Session::has('commentsuccess'))
-                              <div class="alert alert-success">
-                                  {{ Session::get('commentsuccess') }}
-                              </div>
-                          @endif
+                        
 
 
 
@@ -80,14 +76,16 @@
                           </div>
                       @endif
 
-                     @if(Session::has('new_topic_message'))
-                          <div class="alert alert-success">
-                              {{ Session::get('new_topic_message') }}
-                          </div>
-                      @endif
+
+                        @if(Session::has('topic_post_success'))
+                              <div class="alert alert-success">
+                                  {{ Session::get('topic_post_success') }}
+                              </div>
+                          @endif
+
                       
 
-                   {!! Form::open(['action'=>'DiscussionsController@createtopicpost', 'files'=>true]) !!}
+                 {!! Form::open() !!}
 
 
                   <div class="form-group">
