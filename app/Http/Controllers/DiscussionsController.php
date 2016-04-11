@@ -10,6 +10,7 @@ use Validator;
 use Auth;
 use Input;
 use Redirect;
+use DB;
 use Session;
 use App\DiscussionModel;
 use App\DiscussionPostsModel;
@@ -56,7 +57,18 @@ class DiscussionsController extends Controller
         Session::put('topicid', $id);
 
 		      $topicposts = DiscussionModel::find($id);
-		      return view('discussionsposts')->with ('topicposts', $topicposts);
+          $titleposts = DB::table('discussionposts')     
+          ->select('discussions.topic as discussiontopic', 'users.name as discussername', 'discussionposts.discussion_post', 'discussionposts.created_at' )   
+          ->join('users', 'users.id', '=', 'discussionposts.discusser_id')
+          ->join('discussions', 'discussions.id', '=', 'discussionposts.topic_id')  
+          ->where('discussionposts.topic_id', '=', $id)                
+          ->orderBy('discussionposts.created_at')
+          ->paginate(5);
+     
+            
+
+		      return view('discussionsposts')
+                      ->with ('titleposts', $titleposts);
 		  }
 
 
@@ -68,7 +80,7 @@ class DiscussionsController extends Controller
 
 		  DiscussionPostsModel::create(array(
 		              'topic_id' => Session::get('topicid'),
-		              'discussionpost' => Input::get('discussion_post'),
+		              'discussion_post' => Input::get('discussion_post'),
 		              'discusser_id' => Auth::id()
 		   ));
 

@@ -2,38 +2,39 @@
 
 @section('content')
 <div class="container">
-    <div class="row" align="center">
+    <div class="row">
 
 
-        <div class="col-md-8 col-md-offset-0">
+        <div class="col-md-6 col-md-offset-0">
             <div class="panel panel-default">
-
-                    <div class="panel-heading"><i class="fa fa-info-circle"></i>  Topic Title </div>
+  
+                    <div class="panel-heading" align="center">       
+                        <h3><i class="fa fa-info-circle"></i>  Discussion Topic </h3></div>
                         <div class="panel-body">
 
-
-                        
-
-
-
+                @foreach($titleposts as $topicpost)
+                 
                           <article>
                          
-                              <p><small>Posted by <b><---name---></b> - 
-                              At <b><---created at---></b></small> 
-                              <p><--post content-->        
-                              <p>  ______________________________________________________________________________</p>
-
+                              <p><small>Posted by <b>{{$topicpost->discussername}} on {{$topicpost->discussiontopic}}</b> - 
+                              At <b>{{$topicpost->created_at}}</b></small> 
+                              <p>{{$topicpost->discussion_post}}        
+                              <p>  ______________________________________________________________________________________________</p>
                           </article>
 
+                
+             
+                
+                  @endforeach
 
-                        <button class="btn btn-primary" onclick="history.go(-1)">
-                                            « Return Back
-                                          </button>
-
-
+                        <div align="center">{!! $titleposts->render() !!}<br>  
+                          <button class="btn btn-primary" onclick="history.go(-1)">
+                                            « Return Back To Topics
+                        </button>
+                      </div>
                         </div>
 
-
+ 
 
                 </div>
         </div>
@@ -43,29 +44,12 @@
 
 
 
+<div class="col-md-3 col-md-offset-0">
+            <div class="panel panel-default" align="center">
 
-        <div class="col-md-4 col-md-offset-0">
-            <div class="panel panel-default">
-
-                <div class="panel-heading"><i class="fa fa-info-circle"></i>   Discussion Threads  </div>
-                    <div class="panel-body"> 
-                                    
-                    </div>
-                </div>
-        </div>
-
-
-
-
-
-
-<div class="col-md-4 col-md-offset-0">
-            <div class="panel panel-default">
-
-                     <h2>  <div class="panel-heading" align="center"><i class="fa fa-info-circle"></i>  Submit A Post</div></h2>
+                     <h4>  <div class="panel-heading" align="center"><i class="fa fa-info-circle"></i>  Submit A Post</div></h4>
                     <div class="panel-body">
-
-              
+    
                      @if (count($errors) > 0)
                           <div class="alert alert-danger">
                               <ul>
@@ -103,6 +87,16 @@
         </div>
 
 
+
+ <div class="col-md-3 col-md-offset-0">
+            <div class="panel panel-default" align="center">
+
+                <div class="panel-heading"><i class="fa fa-info-circle"></i>   Discussion Threads  </div>
+                    <div class="panel-body"> 
+                                    
+                    </div>
+                </div>
+        </div>
 
 
     </div>

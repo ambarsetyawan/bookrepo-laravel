@@ -35,7 +35,7 @@ class CommentsController extends Controller
 
     public function show()
     {
-        {
+        
            
             $BookComments = DB::table('comments')     
                 ->select('users.name as username', 'books.id as bookid', 'books.title as bookstitle', 'comments.id', 'comments.content', 'comments.created_at')   
@@ -46,7 +46,7 @@ class CommentsController extends Controller
                 ->paginate(10);
      
              return view('managecomments')->with ('BookComments', $BookComments);
-        }
+        
     }
 
 

@@ -15,7 +15,7 @@ class CreateDiscussionpostsTable extends Migration
         Schema::create('discussionposts', function (Blueprint $table) {
         $table->increments('disscussionpost_id');
         $table->integer('topic_id');
-        $table->string('discussionpost');
+        $table->string('discussion_post');
         $table->integer('discusser_id');
         $table->timestamps();
       });
