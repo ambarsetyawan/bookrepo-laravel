@@ -9,7 +9,7 @@
         <div class="col-md-12 col-md-offset-0">
           <div class="panel panel-default">
 
-            <h2>  <div class="panel-heading" align="center"><i class="fa fa-rss-square"></i> WELCOME TO BOOK-REPO FORUM</div></h2>
+            <h2>  <div class="panel-heading" align="center"><i class="fa fa-rss-square"></i> WELCOME TO BOOK-REPO DISCUSSION BOARD</div></h2>
              <div class="panel-body" align="center">
  
                 <div class="table-responsive">
@@ -23,12 +23,12 @@
 
 
       @if (Auth::guest())
-            You Must Be Logged In To Use The Forum!
+            You Must Be Logged In To Use The Discussion Board!
       @elseif(Auth::user())
                                                   
                             <thead>
                                 <tr>
-                                    <th>Topics</th>
+                                    <th>{{ $TotalTopics}} Topics</th>
                                     <th>Created By</th>
                                     <th>Replies</th>
                                     <th>Users</th>
@@ -42,9 +42,10 @@
                          
                             <tr>
                              @foreach($Topics as $key => $discussionthread)
+                               
                               <td> <a href="/discussions/{{ $discussionthread->id }}">{{ $discussionthread->topic }}</a></th>
-                              <td>{{ $discussionthread->creator_name }}</th>
-                              <td></th>
+                              <td>{{ $discussionthread->creator_name }}</th>  
+                              <td></th>                      
                               <td></th>
                               <td></th>
                               <td>{{ $discussionthread->created_at }}</th>
@@ -59,7 +60,7 @@
 
                       
                       </table>
-
+                          {!! $Topics->render() !!} 
                 </div>
                 
           </div>
@@ -96,7 +97,7 @@
 
 
          @if (Auth::guest())
-            You Must Be Logged In To Use The Forum!
+            You Must Be Logged In To Use The Discussion Board!
          @elseif(Auth::user())
 
                  {!! Form::open() !!}

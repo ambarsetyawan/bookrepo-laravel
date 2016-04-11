@@ -5,7 +5,7 @@
     <div class="row">
 
 
-        <div class="col-md-6 col-md-offset-0">
+        <div class="col-md-7 col-md-offset-0">
             <div class="panel panel-default">
   
                     <div class="panel-heading" align="center">       
@@ -16,10 +16,10 @@
                  
                           <article>
                          
-                              <p><small>Posted by <b>{{$topicpost->discussername}} on {{$topicpost->discussiontopic}}</b> - 
+                              <p><small>Posted by <b>{{$topicpost->discussername}}</b> - 
                               At <b>{{$topicpost->created_at}}</b></small> 
                               <p>{{$topicpost->discussion_post}}        
-                              <p>  ______________________________________________________________________________________________</p>
+                              <p>  ________________________________________________________________________________________________________________</p>
                           </article>
 
                 
@@ -29,7 +29,7 @@
 
                         <div align="center">{!! $titleposts->render() !!}<br>  
                           <button class="btn btn-primary" onclick="history.go(-1)">
-                                            « Return Back To Topics
+                                            « Return Back
                         </button>
                       </div>
                         </div>
@@ -44,7 +44,7 @@
 
 
 
-<div class="col-md-3 col-md-offset-0">
+<div class="col-md-5 col-md-offset-0">
             <div class="panel panel-default" align="center">
 
                      <h4>  <div class="panel-heading" align="center"><i class="fa fa-info-circle"></i>  Submit A Post</div></h4>
@@ -88,15 +88,7 @@
 
 
 
- <div class="col-md-3 col-md-offset-0">
-            <div class="panel panel-default" align="center">
 
-                <div class="panel-heading"><i class="fa fa-info-circle"></i>   Discussion Threads  </div>
-                    <div class="panel-body"> 
-                                    
-                    </div>
-                </div>
-        </div>
 
 
     </div>

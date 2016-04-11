@@ -18,8 +18,11 @@ use App\DiscussionPostsModel;
 class DiscussionsController extends Controller
 {
      public function GetTopics(){
-    $Topics =   \App\DiscussionModel::all();
-    return view('discussions')->with('Topics', $Topics);
+    $Topics =   \App\DiscussionModel::Paginate(8);
+    $TotalTopics =   \App\DiscussionModel::count();
+    return view('discussions')
+              ->with('Topics', $Topics)
+              ->with('TotalTopics', $TotalTopics);
   }
 
 
