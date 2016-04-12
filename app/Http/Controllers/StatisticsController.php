@@ -16,6 +16,8 @@ class StatisticsController extends Controller
       $TotalComments = \App\CommentsModel::count();
       $NewMessages = \App\ContactModel::count();
       $NewRequests = \App\RequestModel::count();
+      $TotalTopics = \App\DiscussionModel::count();
+      $TotalPosts = \App\DiscussionPostsModel::count();
       $TopBooks = DB::table('votes')     
                 ->select('books.title as bookstitle')
                 ->selectRaw('votes.*, sum(votes.likes) as totallikes')
@@ -29,7 +31,8 @@ class StatisticsController extends Controller
                 ->selectRaw('votes.*, sum(votes.likes) as totallikes')
                 ->join('books', 'books.id', '=', 'votes.book_id')  
                 ->groupBy('bookgenres')
-                ->orderBy('totallikes', 'DESC')  
+                ->orderBy('totallikes', 'DESC')
+                ->take(10)  
                 ->get();         
 
 
@@ -39,6 +42,8 @@ class StatisticsController extends Controller
 	  		->with('TotalComments',$TotalComments)
 	  		->with('NewMessages',$NewMessages)
 	  		->with('NewRequests',$NewRequests)
+        ->with('TotalTopics',$TotalTopics)
+        ->with('TotalPosts',$TotalPosts)
 	  		->with('TopBooks',$TopBooks)
         ->with('PopularGenere',$PopularGenere);
     }

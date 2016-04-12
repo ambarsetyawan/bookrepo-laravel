@@ -67,7 +67,10 @@
 
                    <div class="form-group">
                       {!! Form::label('genre', 'Genre:') !!}
-                      {!! Form::text('genre', $data->genre, ['class' => 'form-control']) !!}
+                      {!! Form::select('genre', ['Unknown' => "", 'Fantasy' => 'Fantasy', 'Drama' => 'Drama', 'Horror' => 'Horror', 
+                      'Supernatural' => 'Supernatural', 'Science Fiction' => 'Science Fiction', 'Thriller' => 'Thriller',
+                       'Romance' => 'Romance', 'Novel' => 'Novel', 'Western' => 'Western', 'Fiction' => 'Fiction', 
+                       'Young Adult' => 'Young Adult', 'Memoir' => 'Memoir']) !!}
                   </div>
 
                   <div class="form-group">

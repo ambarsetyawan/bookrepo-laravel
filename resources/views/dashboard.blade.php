@@ -68,6 +68,10 @@
                   </div>
 
                   <div class="col-md-3 col-md-offset-0">
+                       <a href="{{ url('discussions') }}"><img class="img-zoom img-responsive" src="images/discussions.png" alt="Discussions"/></a>
+                  </div>
+
+                  <div class="col-md-3 col-md-offset-0">
                        <a href="{{ url('/logout') }}"><img class="img-zoom img-responsive" src="images/logout.png" alt="Logout"/></a>
                   </div>
                     @endif
@@ -99,9 +103,9 @@
                          <a href="{{ url('/browsebooks') }}"><img class="img-zoom img-responsive" src="images/browsebooks.png" alt="BrowseBooks"/></a>
                     </div>
 
-                    <div class="col-md-3 col-md-offset-0">
-                         <a href="{{ url('request') }}"><img class="img-zoom img-responsive" src="images/requestbook.png" alt="Request Book"/></a>
-                    </div>
+                     <div class="col-md-3 col-md-offset-0">
+                       <a href="{{ url('discussions') }}"><img class="img-zoom img-responsive" src="images/discussions.png" alt="Discussions"/></a>
+                     </div>
 
                     <div class="col-md-3 col-md-offset-0">
                          <a href="{{ url('profile') }}"><img class="img-zoom img-responsive" src="images/profile.png" alt="Profile"/></a>

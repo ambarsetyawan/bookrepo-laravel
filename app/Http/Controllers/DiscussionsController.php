@@ -18,7 +18,7 @@ use App\DiscussionPostsModel;
 class DiscussionsController extends Controller
 {
      public function GetTopics(){
-    $Topics =   \App\DiscussionModel::Paginate(8);
+    $Topics =   \App\DiscussionModel::Paginate(6);
     $TotalTopics =   \App\DiscussionModel::count();
     return view('discussions')
               ->with('Topics', $Topics)

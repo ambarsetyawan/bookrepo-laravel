@@ -11,6 +11,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Validator;
 use Input;
+use Intervention\Image\ImageManager;
 use DB;
 use Auth;
 use Resize;
@@ -61,13 +62,12 @@ class BooksController extends Controller
               $class->genre = Input::get('genre');
               $class->published = Input::get('published');
               $class->retail = Input::get('retail');
+              
               $class -> save();
 
-              $covereName = $class->id . '.' .
-                 $request->file('book_cover')->getClientOriginalExtension();
-                 $request->file('book_cover')->move(
-                     base_path() . '/public/uploads/', $covereName
-                 );
+                $covereName = $class->id . '.' .
+                $request->file('book_cover')->getClientOriginalExtension();
+                $request->file('book_cover')->move(base_path() . '/public/uploads/', $covereName);
 
               Session::flash('bookaddedmessage', 'Book Added!');
               return Redirect::to('managebooks');

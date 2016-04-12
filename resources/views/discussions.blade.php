@@ -15,9 +15,9 @@
                 <div class="table-responsive">
                     <table class="table table-bordered table-striped">
 
-                        @if(Session::has('thread_delete_message'))
+                        @if(Session::has('new_thread_message'))
                             <div class="alert alert-success">
-                                {{ Session::get('thread_delete_message') }}
+                                {{ Session::get('new_thread_message') }}
                             </div>
                         @endif
 
