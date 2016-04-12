@@ -33,7 +33,7 @@ Route::get('/', function () {
 
 
 Route::group(['middleware' => 'web'], function () {
-            Route::group(['middleware' => 'App\Http\Middleware\RoleMiddleware'], function () {
+            Route::group(['middleware' => 'admin'], function () {
 
             // Adding new books to the database route
                 Route::get('addbook', function () {
@@ -61,6 +61,17 @@ Route::group(['middleware' => 'web'], function () {
                 Route::get('manageusers/ban/{id}',array('uses' => 'UserController@ban', 'as' => 'manageusers'));
                 Route::get('manageusers/unban/{id}',array('uses' => 'UserController@unban', 'as' => 'manageusers'));
                 Route::delete('manageusers/delete/{id}',array('uses' => 'UserController@destroy', 'as' => 'manageusers'));
+
+
+
+            // Messages route, connected controllers and methods
+                Route::get('messages', function () {
+                return view('messages');
+                });
+
+                Route::get('messages', 'ContactController@GetMessages');
+                Route::delete('messages/delete/{id}',array('uses' => 'ContactController@destroy', 'as' => 'messages'));
+                Route::get('messages/{id}', 'ContactController@showmessagecontents');
 
 
             // Statistics view route, connected controller and methods
@@ -97,7 +108,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/dashboard', function () {
     return view('dashboard');
-    });
+    })->middleware(['auth']);
 
  // Contact Admin Route, connect controller and methods
     Route::get('/contact', function () {
@@ -109,37 +120,13 @@ Route::group(['middleware' => 'web'], function () {
 // Request route, connected controllers and methods
     Route::get('/request', function () {
     return view('request');
-    });
+    })->middleware(['auth', 'ban']);
 
     Route::post('request', 'RequestsController@store');
 
 
-
-
-// Discussions route, connected controllers and methods
-    Route::get('discussions', function () {
-    return view('discussions');
-    });
-
-    Route::get('discussions', 'DiscussionsController@GetTopics');
-    Route::post('discussions', 'DiscussionsController@store');
-    Route::get('discussions/{id}', 'DiscussionsController@showtopicposts');
-    Route::post('discussions/{id}',array('uses' => 'DiscussionsController@createtopicpost', 'as' => 'discussions/{id}'));
-
-
-
-
-// Messages route, connected controllers and methods
-    Route::get('messages', function () {
-    return view('messages');
-    });
-
-    Route::get('messages', 'ContactController@GetMessages');
-    Route::delete('messages/delete/{id}',array('uses' => 'ContactController@destroy', 'as' => 'messages'));
-    Route::get('messages/{id}', 'ContactController@showmessagecontents');
-
 // Profile route, connected controllers and methods
-    Route::get('profile',array('uses' => 'ProfileController@show', 'as' => 'profile'));
+    Route::get('profile',array('uses' => 'ProfileController@show', 'as' => 'profile'))->middleware(['ban']);
     Route::post('profile',array('uses' => 'ProfileController@update', 'as' => 'profile'));
     Route::delete('profile/{id}',array('uses' => 'ProfileController@destroy', 'as' => 'profile'));
     Route::get('profile/{id}',array('uses' => 'ProfileController@showProfile', 'as' => 'profile'));
@@ -147,7 +134,7 @@ Route::group(['middleware' => 'web'], function () {
 // Welcome route, connected controllers and methods
     Route::get('/', function () {
     return view('welcome');
-    });
+    })->middleware(['ban']);
 
 
 // Browse Books route, connected controllers and methods
@@ -155,11 +142,23 @@ Route::group(['middleware' => 'web'], function () {
     return view('browsebooks');
     });
 
-    Route::get('browsebooks', 'BooksController@RetrieveBooks');
-    Route::get('browsebooks/{id}', 'BooksController@showbookinfo');
+    Route::get('browsebooks', 'BooksController@RetrieveBooks')->middleware(['ban']);
+    Route::get('browsebooks/{id}', 'BooksController@showbookinfo')->middleware(['ban']);
     Route::post('browsebooks/{id}',array('uses' => 'CommentsController@postComment', 'as' => 'browsebooks/{id}'));
-    Route::get('/browsebooks/voteup/{id}', 'BooksController@voteup');
-    Route::get('/browsebooks/votedown/{id}', 'BooksController@votedown');
+    Route::get('/browsebooks/voteup/{id}', 'BooksController@voteup')->middleware(['auth', 'ban']);
+    Route::get('/browsebooks/votedown/{id}', 'BooksController@votedown')->middleware(['auth', 'ban']);
+
+
+
+// Discussions route, connected controllers and methods
+    Route::get('discussions', function () {
+    return view('discussions');
+    })->middleware(['auth']);
+
+    Route::get('discussions', 'DiscussionsController@GetTopics')->middleware(['auth', 'ban']);
+    Route::post('discussions', 'DiscussionsController@store');
+    Route::get('discussions/{id}', 'DiscussionsController@showtopicposts')->middleware(['auth', 'ban']);
+    Route::post('discussions/{id}',array('uses' => 'DiscussionsController@createtopicpost', 'as' => 'discussions/{id}'));
 
 
 // Password reset routes, connected controllers, middleware and methods

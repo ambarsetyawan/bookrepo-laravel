@@ -68,7 +68,9 @@
                           @endif
 
                       
-
+      @if (Auth::guest())
+            You Must Be Logged In To Submit A New Post!
+      @elseif(Auth::user())
                  {!! Form::open() !!}
 
 
@@ -81,7 +83,7 @@
 
                   {!! Form::close() !!}
 
-
+@endif
                        </div>
                 </div>
         </div>

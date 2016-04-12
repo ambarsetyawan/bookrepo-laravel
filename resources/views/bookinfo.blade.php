@@ -112,7 +112,7 @@
 <div class="row" align="left">
         <div class="col-md-5 col-md-offset-0">
             <div class="panel panel-default">
-                <div class="panel-heading"><h2><i class="fa fa-commenting-o"></i> COMMENTS & REVIEWS <th></h2></div>
+                <div class="panel-heading" align="center"><h2><i class="fa fa-commenting-o"></i> COMMENTS & REVIEWS <th></h2></div>
 
   <div class="panel-body">
 
@@ -138,7 +138,7 @@
 
 
 @if (Auth::guest())
-    <h3>You Must Be Logged In To Comment!</h3>
+   <div align="center"><h3>You Must Be Logged In To Comment!</h3></div>
 @elseif(Auth::user())
 
 

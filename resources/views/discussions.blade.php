@@ -22,9 +22,7 @@
                         @endif
 
 
-      @if (Auth::guest())
-            You Must Be Logged In To Use The Discussion Board!
-      @elseif(Auth::user())
+
                                                   
                             <thead>
                                 <tr>
@@ -55,7 +53,7 @@
                           @endforeach
 
 
-                  @endif
+    
 
 
                       
@@ -96,9 +94,9 @@
 
 
 
-         @if (Auth::guest())
-            You Must Be Logged In To Use The Discussion Board!
-         @elseif(Auth::user())
+      @if (Auth::guest())
+            You Must Be Logged In To Create A New Topic!
+      @elseif(Auth::user())
 
                  {!! Form::open() !!}
 
