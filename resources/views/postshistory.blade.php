@@ -28,6 +28,8 @@
                                 <th>Manage</th>
                             </tr>
                         </thead>
+
+               @if (count($userposthistory))       
                     @foreach($userposthistory as $posthistory)    
                         <tr>
                           <td>{{$posthistory->topic}}</th>
@@ -40,6 +42,11 @@
                         </tr>
                       @endforeach
       
+
+                 @else  
+                     <p><strong><h3>You Have No Posts History!</h3></strong></p>
+                 @endif  
+
                       </table>
 
                 </div>

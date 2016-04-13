@@ -28,6 +28,7 @@
                                 <th>Manage</th>
                             </tr>
                         </thead>
+                @if (count($usercommenthistory))
                     @foreach($usercommenthistory as $commenthistory)    
                         <tr>
                           <td>{{$commenthistory->bookstitle}}</th>
@@ -40,6 +41,11 @@
                         </tr>
                       @endforeach
       
+
+                    @else  
+                     <p><strong><h3>You Have No Comment History!</h3></strong></p>
+                    @endif   
+
                       </table>
 
                 </div>

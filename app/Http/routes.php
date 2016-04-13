@@ -134,7 +134,7 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('commentshistory',array('uses' => 'ProfileController@commenthistory', 'as' => 'commentshistory'))->middleware(['ban']);
     Route::delete('commentshistory/{id}',array('uses' => 'ProfileController@destroy', 'as' => 'commentshistory'));
-    
+
     Route::get('postshistory',array('uses' => 'ProfileController@postshistory', 'as' => 'postshistory'))->middleware(['ban']);
     Route::delete('postshistory/{id}',array('uses' => 'PostsController@destroy', 'as' => 'postshistory'));
 
@@ -154,7 +154,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('browsebooks/{id}',array('uses' => 'CommentsController@postComment', 'as' => 'browsebooks/{id}'));
     Route::get('/browsebooks/voteup/{id}', 'BooksController@voteup')->middleware(['auth', 'ban']);
     Route::get('/browsebooks/votedown/{id}', 'BooksController@votedown')->middleware(['auth', 'ban']);
-
+    Route::delete('browsebooks/{id}',array('uses' => 'BooksController@destroycomment', 'as' => 'browsebooks'));
 
 
 // Discussions route, connected controllers and methods
@@ -167,6 +167,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::get('discussions/{id}', 'DiscussionsController@showtopicposts')->middleware(['auth', 'ban']);
     Route::post('discussions/{id}',array('uses' => 'DiscussionsController@createtopicpost', 'as' => 'discussions/{id}'));
     Route::delete('discussions/delete/{id}',array('uses' => 'DiscussionsController@destroy', 'as' => 'discussions'));
+    Route::delete('discussions/{id}',array('uses' => 'PostsController@destroy', 'as' => 'discussions'));
 
 // Password reset routes, connected controllers, middleware and methods
     Route::get('password/email', 'Auth\PasswordController@getEmail');

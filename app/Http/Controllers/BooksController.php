@@ -81,7 +81,7 @@ class BooksController extends Controller
           
              $bookinfo = BookModel::find($id);
              $comments = DB::table('comments')     
-                ->select('comments.id', 'comments.content', 'comments.created_at', 'books.id as bookid', 'books.title as bookstitle', 'users.name as commentername')   
+                ->select('comments.id as commentid', 'comments.content', 'comments.commenter_id as userid', 'comments.created_at', 'books.id as bookid', 'books.title as bookstitle', 'users.name as commentername')   
                 ->join('books', 'books.id', '=', 'comments.book_id')                
                 ->join('users', 'users.id', '=', 'comments.commenter_id')
                 ->where('comments.book_id', '=', $id)
@@ -179,4 +179,16 @@ class BooksController extends Controller
           Session::flash('delete_message', 'Book Deleted!');
           return Redirect::to('managebooks');
         }
+
+
+
+
+       public function destroycomment($id)
+        {
+          CommentsModel::destroy($id);
+
+          Session::flash('comment_delete_message', 'Book Deleted!');
+          return Redirect::back();
+        }
+
 }

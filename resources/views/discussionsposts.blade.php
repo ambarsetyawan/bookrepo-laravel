@@ -14,10 +14,45 @@
 
                 @foreach($titleposts as $topicpost)
                  
+
                           <article>
-                         
-                              <p><small>Posted by <b>{{$topicpost->discussername}}</b> - 
-                              At <b>{{$topicpost->created_at}}</b></small> 
+
+                         @if (Auth::user()->id == $topicpost->userid)
+
+                              {{ Form::open(['route' => ['discussions', $topicpost->postid], 'method' => 'delete']) }}
+                                    <input type="hidden" name="_method" value="DELETE">
+
+                             <p><small>Posted by <b>{{$topicpost->discussername}}</b> - 
+                              At <b>{{$topicpost->created_at}}</b></small> - <button type="submit" class="btn btn-danger btn-mini">Delete</button>
+                              
+                              {{ Form::close() }}
+
+
+
+                          @elseif (Auth::user()->admin==1)
+
+
+                             {{ Form::open(['route' => ['discussions', $topicpost->postid], 'method' => 'delete']) }}
+                                    <input type="hidden" name="_method" value="DELETE">
+
+                             <p><small>Posted by <b>{{$topicpost->discussername}}</b> - 
+                              At <b>{{$topicpost->created_at}}</b></small> - <button type="submit" class="btn btn-danger btn-mini">Delete</button>
+                              
+                              {{ Form::close() }}
+
+
+
+                           @elseif (Auth::user()->name != $topicpost->userid)
+                           <p><small>Posted by <b>{{$topicpost->discussername}}</b> - 
+                              At <b>{{$topicpost->created_at}}</b></small>
+
+                              
+                              
+                          @endif
+
+
+                              
+
                               <p>{{$topicpost->discussion_post}}        
                               <p>  ________________________________________________________________________________________________________________</p>
                           </article>
@@ -29,7 +64,7 @@
 
                         <div align="center">{!! $titleposts->render() !!}<br>  
                           <button class="btn btn-primary" onclick="history.go(-1)">
-                                            « Return Back
+                              « Return Back
                         </button>
                       </div>
                         </div>

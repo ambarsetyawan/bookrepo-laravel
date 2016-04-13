@@ -136,24 +136,65 @@
     @endif
 
 
+    @if(Session::has('comment_delete_message'))
+        <div class="alert alert-success">
+            {{ Session::get('comment_delete_message') }}
+        </div>
+    @endif
+
 
 @if (Auth::guest())
    <div align="center"><h3>You Must Be Logged In To Comment!</h3></div>
 @elseif(Auth::user())
 
+      @if (count($comments)) 
+            @foreach($comments as $bookcomment)
+                <article>
 
-@foreach($comments as $bookcomment)
-    <article>
-   
-        <p><small>Posted by <b>{{$bookcomment->commentername}}</b> - 
-        At <b>{{$bookcomment->created_at}}</b></small> 
-        <p>{{$bookcomment->content}}        
-        <p>  ______________________________________________________________________________</p>
 
-    </article>
+                   @if (Auth::user()->id == $bookcomment->userid)
 
-@endforeach
+                         {{ Form::open(['route' => ['browsebooks', $bookcomment->commentid], 'method' => 'delete']) }}
+                          <input type="hidden" name="_method" value="DELETE">
 
+                              <p><small>Posted by <b>{{$bookcomment->commentername}}</b> - 
+                                  At <b>{{$bookcomment->created_at}}</b></small> - <button type="submit" class="btn btn-danger btn-mini">Delete</button>
+                                  <p>{{$bookcomment->content}}        
+                              <p>  ______________________________________________________________________________</p> 
+                          
+                         {{ Form::close() }}
+
+
+                   @elseif (Auth::user()->admin==1)
+                   
+
+                          {{ Form::open(['route' => ['browsebooks', $bookcomment->commentid], 'method' => 'delete']) }}
+                            <input type="hidden" name="_method" value="DELETE">
+
+                                <p><small>Posted by <b>{{$bookcomment->commentername}}</b> - 
+                                    At <b>{{$bookcomment->created_at}}</b></small> - <button type="submit" class="btn btn-danger btn-mini">Delete</button>
+                                    <p>{{$bookcomment->content}}        
+                                 <p>  ______________________________________________________________________________</p> 
+                          
+                           {{ Form::close() }}
+
+                   @elseif (Auth::user()->name != $bookcomment->userid)
+
+                                <p><small>Posted by <b>{{$bookcomment->commentername}}</b> - 
+                                   At <b>{{$bookcomment->created_at}}</b></small> 
+                                   <p>{{$bookcomment->content}}        
+                                 <p>  ______________________________________________________________________________</p> 
+
+                   @endif
+
+                </article>
+
+            @endforeach
+
+
+        @else  
+                <div align="center"><p><strong><h3>Be The First To Comment!</h3></strong></p></div>
+        @endif  
     
 {!! $comments->render() !!} 
 

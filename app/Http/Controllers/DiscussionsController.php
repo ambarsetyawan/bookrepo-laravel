@@ -63,7 +63,7 @@ class DiscussionsController extends Controller
 
 		      $topicposts = DiscussionModel::find($id);
           $titleposts = DB::table('discussionposts')     
-          ->select('discussions.topic as discussiontopic', 'users.name as discussername', 'discussionposts.discussion_post', 'discussionposts.created_at' )   
+          ->select('discussionposts.discusser_id as userid', 'discussions.topic as discussiontopic', 'discussionposts.id as postid', 'users.name as discussername', 'discussionposts.discussion_post', 'discussionposts.created_at' )   
           ->join('users', 'users.id', '=', 'discussionposts.discusser_id')
           ->join('discussions', 'discussions.id', '=', 'discussionposts.topic_id')  
           ->where('discussionposts.topic_id', '=', $id)                
