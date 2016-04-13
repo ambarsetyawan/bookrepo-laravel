@@ -127,9 +127,16 @@ Route::group(['middleware' => 'web'], function () {
 
 // Profile route, connected controllers and methods
     Route::get('profile',array('uses' => 'ProfileController@show', 'as' => 'profile'))->middleware(['ban']);
+    Route::get('profile',array('uses' => 'ProfileController@show', 'as' => 'profile'))->middleware(['ban']);
     Route::post('profile',array('uses' => 'ProfileController@update', 'as' => 'profile'));
-    Route::delete('profile/{id}',array('uses' => 'ProfileController@destroy', 'as' => 'profile'));
     Route::get('profile/{id}',array('uses' => 'ProfileController@showProfile', 'as' => 'profile'));
+
+
+    Route::get('commentshistory',array('uses' => 'ProfileController@commenthistory', 'as' => 'commentshistory'))->middleware(['ban']);
+    Route::delete('commentshistory/{id}',array('uses' => 'ProfileController@destroy', 'as' => 'commentshistory'));
+    
+    Route::get('postshistory',array('uses' => 'ProfileController@postshistory', 'as' => 'postshistory'))->middleware(['ban']);
+    Route::delete('postshistory/{id}',array('uses' => 'PostsController@destroy', 'as' => 'postshistory'));
 
 // Welcome route, connected controllers and methods
     Route::get('/', function () {
@@ -159,7 +166,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('discussions', 'DiscussionsController@store');
     Route::get('discussions/{id}', 'DiscussionsController@showtopicposts')->middleware(['auth', 'ban']);
     Route::post('discussions/{id}',array('uses' => 'DiscussionsController@createtopicpost', 'as' => 'discussions/{id}'));
-
+    Route::delete('discussions/delete/{id}',array('uses' => 'DiscussionsController@destroy', 'as' => 'discussions'));
 
 // Password reset routes, connected controllers, middleware and methods
     Route::get('password/email', 'Auth\PasswordController@getEmail');

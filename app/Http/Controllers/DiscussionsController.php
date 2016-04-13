@@ -20,6 +20,8 @@ class DiscussionsController extends Controller
      public function GetTopics(){
     $Topics =   \App\DiscussionModel::Paginate(6);
     $TotalTopics =   \App\DiscussionModel::count();
+      // var_dump($TotalReplies);
+            
     return view('discussions')
               ->with('Topics', $Topics)
               ->with('TotalTopics', $TotalTopics);
@@ -68,7 +70,7 @@ class DiscussionsController extends Controller
           ->orderBy('discussionposts.created_at')
           ->paginate(5);
      
-            
+          // var_dump($topicposts);
 
 		      return view('discussionsposts')
                       ->with ('titleposts', $titleposts);
@@ -91,5 +93,26 @@ class DiscussionsController extends Controller
 		   return Redirect::back();
 		  }
 
+
+
+
+
+      public function destroy($id)
+        {
+          DiscussionModel::destroy($id);
+
+          Session::flash('topic_delete_message', 'Topic Deleted!');
+          return Redirect::to('discussions');
+        }
+
+
+
+      // public function destroypost()
+      //   {
+      //     DiscussionPostsModel::destroy($id);
+
+      //     Session::flash('post_delete_message', 'Post Deleted!');
+      //     return Redirect::back();
+      //   }
 
 }

@@ -164,7 +164,7 @@
       {!! Form::label('content', 'Share Your Review:') !!}
       {!! Form::textarea('content', null, ['class' => 'form-control', 'rows' => 4, 'cols' => 40]) !!}
     </div>
-    {{ Form::submit('Submit', array('class' => 'btn btn-info')) }}
+   <div align="center"> {{ Form::submit('Submit', array('class' => 'btn btn-info')) }} </div>
 
     {!! Form::close() !!}
 

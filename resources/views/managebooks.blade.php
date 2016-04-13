@@ -33,7 +33,7 @@
                          <div class="table-responsive">
                            <table class="table table-bordered table-striped" >
 
-                             <thread>
+                            <thread>
                                  <tr>
                                      <th >Cover</th>
                                      <th>Title</th>
@@ -44,7 +44,7 @@
                                      <th>Retail Link</th>
                                      <th>Manage</th>
                                  </tr>
-                             </thread>
+                             </thread></div>
                              @foreach($AddedBooks as $key => $book)
                              <thread>
                                    <tr align="center">

@@ -21,6 +21,11 @@
                             </div>
                         @endif
 
+                      @if(Session::has('topic_delete_message'))
+                            <div class="alert alert-danger">
+                                {{ Session::get('topic_delete_message') }}
+                            </div>
+                        @endif
 
 
                                                   
@@ -28,32 +33,34 @@
                                 <tr>
                                     <th>{{ $TotalTopics}} Topics</th>
                                     <th>Created By</th>
-                                    <th>Replies</th>
-                                    <th>Users</th>
-                                    <th>Views</th>
-                                    
                                     <th>Created On</th>
                                     <th>Manage</th>
                                 </tr>
-                            </thead>
+                            </thead>  
 
-                         
                             <tr>
+                        @if (count($Topics))
                              @foreach($Topics as $key => $discussionthread)
-                               
-                              <td> <a href="/discussions/{{ $discussionthread->id }}">{{ $discussionthread->topic }}</a></th>
-                              <td>{{ $discussionthread->creator_name }}</th>  
-                              <td></th>                      
-                              <td></th>
-                              <td></th>
+                                     
+                              <td><h5><strong><a href="/discussions/{{ $discussionthread->id }}">{{ $discussionthread->topic }}</a></strong></h5></th>
+                              <td>{{ $discussionthread->creator_name  }}</th> 
                               <td>{{ $discussionthread->created_at }}</th>
-                              <td></th>
+                                       
+                         @if (Auth::user()->name == $discussionthread->creator_name)
+                              <td><div align="center"><a href ="discussions/delete/{{$discussionthread->id}}" class ='btn btn-danger'>Delete</a></div></th>
+                          @elseif (Auth::user()->admin==1)
+                              <td><div align="center"><a href ="discussions/delete/{{$discussionthread->id}}" class ='btn btn-danger'>Delete</a></div></th>
+
+                           @elseif (Auth::user()->name != $discussionthread->creator_name)
+                              <td><h6><strong><div align="center">You Do Not <br> Own This Topic!</div></strong></h6></th> 
+                          @endif
                             </tr>
-
+                                  
                           @endforeach
+                         @else  
 
-
-    
+                     <p><strong><h3>No Topics Exists! Be The First To Create A New One!</h3></strong></p>
+                    @endif   
 
 
                       

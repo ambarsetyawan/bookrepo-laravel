@@ -13,7 +13,7 @@ class CreateDiscussionpostsTable extends Migration
       public function up()
     {
         Schema::create('discussionposts', function (Blueprint $table) {
-        $table->increments('disscussionpost_id');
+        $table->increments('id');
         $table->integer('topic_id');
         $table->string('discussion_post');
         $table->integer('discusser_id');

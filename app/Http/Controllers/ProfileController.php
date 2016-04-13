@@ -29,35 +29,49 @@ class ProfileController extends Controller
     {
         {
             $profileinfo = User::find(Auth::user()->id);
-            $userhistory = DB::table('comments')     
-                ->select('users.name as username', 'books.id as bookid', 'books.title as bookstitle', 'comments.id', 'comments.content', 'comments.created_at')   
-                ->join('books', 'books.id', '=', 'comments.book_id')                
-                ->join('users', 'users.id', '=', 'comments.commenter_id')
-                ->where('comments.commenter_id', '=', (Auth::user()->id))
-                ->orderBy('comments.created_at')
-                ->paginate(8);
-     
-             return view('profile')
-                    ->with ('profileinfo', $profileinfo)
-                    ->with ('userhistory', $userhistory);
+           
+             return view('profile')->with ('profileinfo', $profileinfo);
         }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
- 
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+        public function commenthistory()
+        {
+            {
+               
+                $usercommenthistory = DB::table('comments')     
+                    ->select('users.name as username', 'books.id as bookid', 'books.title as bookstitle', 'comments.id', 'comments.content', 'comments.created_at')   
+                    ->join('books', 'books.id', '=', 'comments.book_id')                
+                    ->join('users', 'users.id', '=', 'comments.commenter_id')
+                    ->where('comments.commenter_id', '=', (Auth::user()->id))
+                    ->orderBy('comments.created_at')
+                    ->paginate(6);
+               
+                 return view('commentshistory')
+                        ->with ('usercommenthistory', $usercommenthistory);
+            }
+        }
+
+
+        public function postshistory()
+        {
+            {
+               
+                $userposthistory = DB::table('discussionposts')     
+                ->select('discussionposts.id as postid' ,'users.name as username', 'discussions.topic', 'discussionposts.discussion_post as mypost', 'discusser_id', 'discussionposts.created_at')   
+                ->join('discussions', 'discussions.id', '=', 'discussionposts.topic_id')                
+                ->join('users', 'users.id', '=', 'discussionposts.discusser_id')
+                ->where('discussionposts.discusser_id', '=', (Auth::user()->id))
+                ->orderBy('discussionposts.created_at')
+                ->paginate(5);
+               
+                 return view('postshistory')
+                        ->with ('userposthistory', $userposthistory);
+            }
+        }
+
+
+
     public function update(Request $request)
     {
       $user = User::find(Auth::user()->id);
@@ -79,8 +93,7 @@ class ProfileController extends Controller
           CommentsModel::destroy($id);
 
           Session::flash('comment_delete_message', 'Comment Deleted From Book!');
-          return Redirect::to('profile');
+          return Redirect::to('commentshistory');
         }
-
 
 }

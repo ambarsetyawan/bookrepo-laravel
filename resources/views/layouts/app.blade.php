@@ -79,6 +79,16 @@
                   <li><a href="{{ url('/request') }}"><i class="fa fa-retweet"></i></i> Request Book</a></li>
                   <li><a href="{{ url('contact') }}"><i class="fa fa-envelope-square"></i> Contact Admin</a></li>
                   <li><a href="{{ url('/discussions') }}"><i class="fa fa-rss-square"></i> Discussions</a></li>
+                  <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                              <i class="fa fa-clock-o"></i>  Your History <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                              <li><a href="{{ url('commentshistory') }}"><i class="fa fa-clock-o"></i> Book Comments </a></li>
+                              <li><a href="{{ url('postshistory') }}"><i class="fa fa-clock-o"></i> Discussion Posts </a></li>     
+                            </ul>
+                   </li>
 
                   @elseif (Auth::user()->admin!=1 & Auth::user()->ban_status==1)
                   <li><a href="{{ url('contact') }}"><i class="fa fa-envelope-square"></i> Contact Admin</a></li>
@@ -96,16 +106,14 @@
                               <li><a href="{{ url('addbook') }}"><i class="fa fa-plus"></i> Add Book</a></li>
                               <li><a href="{{ url('managebooks') }}"><i class="fa fa-book"></i> Manage Books</a></li>
                               <li><a href="{{ url('manageusers') }}"><i class="fa fa-users"></i> Manage Users</a></li>
-                              <li><a href="{{ url('managecomments') }}"><i class="fa fa-commenting"></i> Manage Comments</a></li>
-                            
-
+                              <li><a href="{{ url('managecomments') }}"><i class="fa fa-commenting"></i> Manage Comments</a></li>       
                             </ul>
                    </li>
 
                 
                  <li><a href="{{ url('recieverequests') }}"><i class="fa fa-exclamation"></i> Book Requests</a></li>
-                 <li><a href="{{ url('statistics') }}"><i class="fa fa-bar-chart"></i> Statistics</a></li> 
-                 <li><a href="{{ url('/discussions') }}"><i class="fa fa-rss-square"></i> Discussions</a></li>            
+                 <li><a href="{{ url('/discussions') }}"><i class="fa fa-rss-square"></i> Discussions</a></li>   
+                 <li><a href="{{ url('statistics') }}"><i class="fa fa-bar-chart"></i> Statistics</a></li>          
                   @endif
                 </ul>
 
