@@ -31,7 +31,7 @@
                 @if (count($usercommenthistory))
                     @foreach($usercommenthistory as $commenthistory)    
                         <tr>
-                          <td><a href ="/browsebooks/{{$commenthistory->bookid}}">{{$commenthistory->bookstitle}}</th>
+                          <td><strong><a href ="/browsebooks/{{$commenthistory->bookid}}">{{$commenthistory->bookstitle}}</a></strong></th>
                           <td>{{$commenthistory->content}}</th>
                           <td>{{$commenthistory->created_at}}</th>
                           <td>{{ Form::open(['route' => ['commentshistory', $commenthistory->id], 'method' => 'delete']) }}

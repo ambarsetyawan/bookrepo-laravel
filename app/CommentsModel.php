@@ -23,4 +23,12 @@ class CommentsModel extends Model
         {
             return $this->belongsTo('App\BookModel');
         }
+
+
+      public function checkvotes()
+        {
+           
+        }
+
+
 }
