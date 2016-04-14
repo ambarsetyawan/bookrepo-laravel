@@ -50,7 +50,7 @@
                              <thread>
                                    <tr align="center">
                                      <td><img src="/uploads/{{ $book->id }}.jpg" width="55" height="105"></th >
-                                     <td>{{ $book->title }}</th >
+                                     <td><a href ="/browsebooks/{{$book->id}}">{{ $book->title }}</a></th >
                                      <td>{{ $book->authur }}</th>
                                      <td><div class="showmore">{{ $book->description }}</div></th>
                                      <td>{{ $book->genre }}</th>

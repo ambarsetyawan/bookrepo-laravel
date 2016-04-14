@@ -21,7 +21,7 @@
                                 </thead>
                                 @foreach($TopBooks as $TopLikedBooks)      
                                 <tr>
-                                  <td>{{ $TopLikedBooks->bookstitle }}</th>
+                                  <td><a href ="/browsebooks/{{$TopLikedBooks->bookid}}">{{ $TopLikedBooks->bookstitle }}</th>
                                   <td>{{ $TopLikedBooks->totallikes }}</th>
                                 </tr>
                                 @endforeach

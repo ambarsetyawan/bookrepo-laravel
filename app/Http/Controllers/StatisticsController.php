@@ -19,7 +19,7 @@ class StatisticsController extends Controller
       $TotalTopics = \App\DiscussionModel::count();
       $TotalPosts = \App\DiscussionPostsModel::count();
       $TopBooks = DB::table('votes')     
-                ->select('books.title as bookstitle')
+                ->select('books.id as bookid', 'books.title as bookstitle')
                 ->selectRaw('votes.*, sum(votes.likes) as totallikes')
                 ->join('books', 'books.id', '=', 'votes.book_id')  
                 ->groupBy('bookstitle')

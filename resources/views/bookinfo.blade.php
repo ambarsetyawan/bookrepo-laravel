@@ -58,6 +58,7 @@
                                                 <div class="panel-heading"><i class="fa fa-info-circle"></i>   Ratings </div>
                                                                                              
                                                     <div class="panel-body">
+                                                    
                                                   @foreach($votes as $rating)      
 
                                                       Likes {{ $rating->booklikes }} -

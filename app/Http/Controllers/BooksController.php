@@ -23,13 +23,16 @@ class BooksController extends Controller
 
   public function GetBooks(){
     $AddedBooks =   \App\BookModel::Paginate(4);
-    return view('managebooks')->with('AddedBooks', $AddedBooks);
+    
+    return view('managebooks')
+            ->with('AddedBooks', $AddedBooks);
   }
 
 
   public function RetrieveBooks(){
     $AddedBooks =   \App\BookModel::Paginate(12);
-    return view('browsebooks') ->with('AddedBooks', $AddedBooks);
+    return view('browsebooks') 
+            ->with('AddedBooks', $AddedBooks);
   }
 
 

@@ -112,7 +112,17 @@
 
                 
                  <li><a href="{{ url('recieverequests') }}"><i class="fa fa-exclamation"></i> Book Requests</a></li>
-                 <li><a href="{{ url('/discussions') }}"><i class="fa fa-rss-square"></i> Discussions</a></li>   
+                 <li><a href="{{ url('/discussions') }}"><i class="fa fa-rss-square"></i> Discussions</a></li> 
+                <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <i class="fa fa-clock-o"></i>  Your History <span class="caret"></span>
+                          </a>
+
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ url('commentshistory') }}"><i class="fa fa-clock-o"></i> Book Comments </a></li>
+                            <li><a href="{{ url('postshistory') }}"><i class="fa fa-clock-o"></i> Discussion Posts </a></li>     
+                          </ul>
+                 </li>  
                  <li><a href="{{ url('statistics') }}"><i class="fa fa-bar-chart"></i> Statistics</a></li>          
                   @endif
                 </ul>

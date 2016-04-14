@@ -32,7 +32,7 @@
                @if (count($userposthistory))       
                     @foreach($userposthistory as $posthistory)    
                         <tr>
-                          <td>{{$posthistory->topic}}</th>
+                          <td><a href ="/discussions/{{$posthistory->topicid}}">{{$posthistory->topic}}</th>
                           <td>{{$posthistory->mypost}}</th>
                           <td>{{$posthistory->created_at}}</th>
                           <td>{{ Form::open(['route' => ['postshistory', $posthistory->postid], 'method' => 'delete']) }}

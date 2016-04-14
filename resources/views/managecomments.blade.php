@@ -35,7 +35,7 @@
                     @foreach($BookComments as $allcomments)    
                         <tr>
                           <td>{{$allcomments->username}}</th>
-                          <td>{{$allcomments->bookstitle}}</th>
+                          <td><a href ="/browsebooks/{{$allcomments->bookid}}">{{$allcomments->bookstitle}}</th>
                           <td>{{$allcomments->content}}</th>
                           <td>{{$allcomments->created_at}}</th>
                           <td>{{ Form::open(['route' => ['managecomments', $allcomments->id], 'method' => 'delete']) }}

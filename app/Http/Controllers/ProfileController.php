@@ -58,7 +58,7 @@ class ProfileController extends Controller
             {
                
                 $userposthistory = DB::table('discussionposts')     
-                ->select('discussionposts.id as postid' ,'users.name as username', 'discussions.topic', 'discussionposts.discussion_post as mypost', 'discusser_id', 'discussionposts.created_at')   
+                ->select('discussionposts.id as postid' ,'users.name as username','discussionposts.topic_id as topicid' , 'discussions.topic', 'discussionposts.discussion_post as mypost', 'discusser_id', 'discussionposts.created_at')   
                 ->join('discussions', 'discussions.id', '=', 'discussionposts.topic_id')                
                 ->join('users', 'users.id', '=', 'discussionposts.discusser_id')
                 ->where('discussionposts.discusser_id', '=', (Auth::user()->id))
