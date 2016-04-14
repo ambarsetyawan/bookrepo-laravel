@@ -21,6 +21,25 @@ use Session;
 class BooksController extends Controller
 {
 
+
+public function search(Request $request)
+{
+
+    $query = Input::get('query');
+    $searchbooks = DB::table('books')
+        ->where('title', 'LIKE', '%' . $query . '%')
+        ->Paginate(5);
+    $countresults = DB::table('books')
+        ->where('title', 'LIKE', '%' . $query . '%')
+        ->count();    
+       //  echo "<br>".$query; 
+       // var_dump($searchbooks);
+      
+     return view('searchresults', compact('searchbooks', 'query', 'countresults'));
+ }
+
+
+
   public function GetBooks(){
     $AddedBooks =   \App\BookModel::Paginate(4);
     

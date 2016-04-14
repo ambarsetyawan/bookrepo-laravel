@@ -8,12 +8,18 @@
         <div class="panel panel-default">
 
             <h2><i class="fa fa-book"></i> BROWSE BOOKS</h2>
-         
+              
         </div>
     </div>
 
-   
+   <div class="col-md-4 col-md-offset-8">
 
+       <form id="custom-search-form" class="form-search form-horizontal pull-right" action="{{ URL::action('BooksController@search') }}" method="get">
+                    <input type="text" class="search-query" name="query" placeholder="Search Book...">
+                    <button type="submit" class="btn btn-info">Search<i class="icon-search"></i></button>
+      </form>
+
+   </div>
 
  <div class="col-md-12 col-md-offset-0">
        
@@ -52,9 +58,7 @@
                                              Rate It - <a href="/browsebooks/voteup/{{ $book->id }}"><img src="/images/up.png"></a>  /      
                                                         <a href="/browsebooks/votedown/{{ $book->id }}"><img src="/images/down.png"></a>
 
-                                             
-                                     
-                                 
+                                                 
                         @endif
                         </div>
                 </div>
