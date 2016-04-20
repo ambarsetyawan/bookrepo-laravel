@@ -59,15 +59,26 @@
                                                                                              
                                                     <div class="panel-body">
                                                     
-                                                  @foreach($votes as $rating)      
+                                               
+                                                  @foreach($votes as $rating)  
 
+                                                   @if ($rating->booklikes>=1)   
                                                       Likes {{ $rating->booklikes }} -
-                                                     
+                                                   @else  
+                                                       Likes 0 -
+                                                    @endif  
+
+                                                    @if ($rating->bookdislikes>=1)   
                                                       Dislikes {{ $rating->bookdislikes }}
+                                                    @else  
+                                                       Dislikes 0
+                                                    @endif  
 
                                                    @endforeach
+
+                                                 
                                                     </div>
-                                      
+                                           
                                                 
                                         </div>
                                       </div>

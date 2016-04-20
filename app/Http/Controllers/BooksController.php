@@ -162,6 +162,16 @@ public function search(Request $request)
 
         public function voteup($id){
 
+        $upvote = \App\VotesModel::where( 'book_id', '=' ,$id)->where('voter_id', '=' , Auth::id());
+
+          if($upvote->exists()) 
+          {
+              Session::flash('already_voted_message', 'You Have Already Voted This Book! Your Vote Cannot Be Changed!');
+                 return Redirect::back();
+            }
+
+           else 
+            {
               $upvote = new \App\VotesModel;
               $upvote->voter_id = Auth::id();
               $upvote->book_id = $id;
@@ -171,46 +181,56 @@ public function search(Request $request)
               $upvote -> save();
 
               Session::flash('upvote_message', 'You Have Voted Up!');
-               return Redirect::to('browsebooks');
+                return Redirect::back();
+              }
+          }
+
+
+
+          public function votedown($id){
+
+          $downvote = \App\VotesModel::where( 'book_id', '=' ,$id)->where('voter_id', '=' , Auth::id());
+
+                if($downvote->exists()) 
+                {
+                    Session::flash('already_voted_message', 'You Have Already Voted This Book! Your Vote Cannot Be Changed!');
+                       return Redirect::back();
+                  }
+
+                 else 
+                  {
+                  $downvote = new \App\VotesModel;
+                  $downvote->voter_id = Auth::id();
+                  $downvote->book_id = $id;
+                  $downvote->likes = 0;
+                  $downvote->dislikes = 1;
+                 
+                  $downvote -> save();
+
+                  Session::flash('downvote_message', 'You Have Voted Down!');
+                     return Redirect::back();
+
+             }
+          }
+
+
+            public function destroy($id)
+            {
+              BookModel::destroy($id);
+
+              Session::flash('delete_message', 'Book Deleted!');
+              return Redirect::to('managebooks');
             }
 
 
-              public function votedown($id){
 
 
-              $downvote = new \App\VotesModel;
-              $downvote->voter_id = Auth::id();
-              $downvote->book_id = $id;
-              $downvote->likes = 0;
-              $downvote->dislikes = 1;
-             
-               $downvote -> save();
+           public function destroycomment($id)
+            {
+              CommentsModel::destroy($id);
 
-               Session::flash('downvote_message', 'You Have Voted Down!');
-                return Redirect::to('browsebooks');
-
-               //var_dump($downvote);
+              Session::flash('comment_delete_message', 'Book Deleted!');
+              return Redirect::back();
             }
-
-
-
-        public function destroy($id)
-        {
-          BookModel::destroy($id);
-
-          Session::flash('delete_message', 'Book Deleted!');
-          return Redirect::to('managebooks');
-        }
-
-
-
-
-       public function destroycomment($id)
-        {
-          CommentsModel::destroy($id);
-
-          Session::flash('comment_delete_message', 'Book Deleted!');
-          return Redirect::back();
-        }
 
 }

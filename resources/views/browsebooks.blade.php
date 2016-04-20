@@ -35,6 +35,12 @@
                             </div>
                         @endif
 
+                      @if(Session::has('already_voted_message'))
+                            <div class="alert alert-danger">
+                                {{ Session::get('already_voted_message') }}
+                            </div>
+                       @endif
+
 
         @foreach($AddedBooks as $key => $book)
             <div class="col-md-2 col-md-offset-0">
