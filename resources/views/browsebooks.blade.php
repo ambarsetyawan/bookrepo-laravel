@@ -12,14 +12,24 @@
         </div>
     </div>
 
-   <div class="col-md-4 col-md-offset-8">
+    <div class="col-md-1 col-md-offset-1">
 
-       <form id="custom-search-form" class="form-search form-horizontal pull-right" action="{{ URL::action('BooksController@search') }}" method="get">
-                    <input type="text" class="search-query" name="query" placeholder="Search Book...">
+       <form id="custom-search-form" class="form-search form-horizontal pull-right" action="{{ URL::action('BooksController@searchgenre') }}" method="get">
+                    <input type="text" class="search-query" name="genrequery" placeholder="Search By Genre...">
                     <button type="submit" class="btn btn-info">Search<i class="icon-search"></i></button>
       </form>
 
    </div>
+
+
+     <div class="col-md-1 col-md-offset-9">
+
+       <form id="custom-search-form" class="form-search form-horizontal pull-right" action="{{ URL::action('BooksController@search') }}" method="get">
+                    <input type="text" class="search-query" name="query" placeholder="Search By Title..." >
+                    <button type="submit" class="btn btn-info">Search<i class="icon-search"></i></button>
+      </form>
+
+ </div>
 
  <div class="col-md-12 col-md-offset-0">
        

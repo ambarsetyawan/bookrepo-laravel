@@ -150,6 +150,7 @@ Route::group(['middleware' => 'web'], function () {
     });
 
     Route::get('searchresults', array('uses' => 'BooksController@search', 'as' => 'searchresults'))->middleware(['ban']);
+    Route::get('searchgenreresults', array('uses' => 'BooksController@searchgenre', 'as' => 'searchgenreresults'))->middleware(['ban']);
     Route::get('browsebooks', 'BooksController@RetrieveBooks')->middleware(['ban']);
     Route::get('browsebooks/{id}', 'BooksController@showbookinfo')->middleware(['ban']);
     Route::post('browsebooks/{id}',array('uses' => 'CommentsController@postComment', 'as' => 'browsebooks/{id}'));

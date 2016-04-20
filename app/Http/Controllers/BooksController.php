@@ -38,6 +38,22 @@ public function search(Request $request)
      return view('searchresults', compact('searchbooks', 'query', 'countresults'));
  }
 
+public function searchgenre(Request $request)
+{
+
+    $genrequery = Input::get('genrequery');
+    $searchgenre = DB::table('books')
+        ->where('genre', 'LIKE', '%' . $genrequery . '%')
+        ->Paginate(5);
+    $countgenreresults = DB::table('books')
+        ->where('genre', 'LIKE', '%' . $genrequery . '%')
+        ->count();    
+        
+       //  echo "<br>".$genrequery; 
+       // var_dump($searchgenre);
+      
+     return view('searchgenreresults', compact('searchgenre', 'genrequery', 'countgenreresults'));
+ }
 
 
   public function GetBooks(){
