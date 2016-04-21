@@ -15,10 +15,10 @@ use Session;
 class RequestsController extends Controller
 {
 
+// Method for storing user request  
   public function store()
   {
       $rules = array(
-
         'username' => 'required',
         'email' => 'required',
         'booktitle' => 'required',
@@ -46,20 +46,21 @@ class RequestsController extends Controller
               Session::flash('successmessage', 'Request Sent!');
               return Redirect::to('request');
             }
-
     }
 
 
+// Method for retrieving requests 
     public function GetRequests(){
       $BookRequest =   \App\RequestModel::all();
       return view('recieverequests')->with('Requests', $BookRequest);
     }
 
 
+
+// Method for deleting request
     public function destroy($id)
     {
       RequestModel::destroy($id);
-
       Session::flash('delete_message', 'Request Deleted Successfully!');
       return Redirect::to('recieverequests');
     }

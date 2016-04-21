@@ -127,7 +127,6 @@ Route::group(['middleware' => 'web'], function () {
 
 // Profile route, connected controllers and methods
     Route::get('profile',array('uses' => 'ProfileController@show', 'as' => 'profile'))->middleware(['ban']);
-    Route::get('profile',array('uses' => 'ProfileController@show', 'as' => 'profile'))->middleware(['ban']);
     Route::post('profile',array('uses' => 'ProfileController@update', 'as' => 'profile'));
     Route::get('profile/{id}',array('uses' => 'ProfileController@showProfile', 'as' => 'profile'));
 

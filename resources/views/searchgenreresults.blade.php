@@ -41,20 +41,20 @@
 
                <p><strong><h3>No Results Found!</h3></strong></p>
               
-                @elseif (count($searchgenre) >= 1)
+           @elseif (count($searchgenre) >= 1)
 
                 <p><strong><h3>{{$countgenreresults}} Results Found!</h3></strong></p>
 
                      @foreach($searchgenre as $genreresults)  
-                     <tr>
+                        <tr>
                           <td><strong><a href ="/browsebooks/{{$genreresults->id}}">{{$genreresults->title}}</a></strong></th>
                           <td>{{$genreresults->authur}}</th>
                           <td>{{$genreresults->genre}}</th>
                           <td>{{$genreresults->published}}</th>
                         </tr>
 
-                 @endforeach
-                @endif
+                     @endforeach
+            @endif
 
              
 
@@ -62,12 +62,11 @@
          {!! $searchgenre->appends(Request::except("page"))->render() !!} 
                 </div>
 
-                  
 
             </div>
        <button class="btn btn-primary" onclick="history.go(-1)">
                       « Return Back
-                    </button>
+       </button>
         </div>
         
           

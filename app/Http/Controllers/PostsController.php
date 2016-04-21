@@ -12,6 +12,8 @@ use Session;
 
 class PostsController extends Controller
 {
+
+// Method for deleting user post history  	
        public function destroy($id)
         {
           DiscussionPostsModel::destroy($id);

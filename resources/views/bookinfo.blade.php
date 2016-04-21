@@ -62,30 +62,28 @@
                                                
                                                   @foreach($votes as $rating)  
 
-                                                   @if ($rating->booklikes>=1)   
-                                                      Likes {{ $rating->booklikes }} -
-                                                   @else  
-                                                       Likes 0 -
-                                                    @endif  
+                                                     @if ($rating->booklikes>=1)   
+                                                        Likes {{ $rating->booklikes }} -
+                                                     @else  
+                                                         Likes 0 -
+                                                      @endif  
 
-                                                    @if ($rating->bookdislikes>=1)   
-                                                      Dislikes {{ $rating->bookdislikes }}
-                                                    @else  
-                                                       Dislikes 0
-                                                    @endif  
+                                                      @if ($rating->bookdislikes>=1)   
+                                                        Dislikes {{ $rating->bookdislikes }}
+                                                      @else  
+                                                         Dislikes 0
+                                                      @endif  
 
-                                                   @endforeach
+                                                     @endforeach
 
                                                  
-                                                    </div>
-                                           
-                                                
-                                        </div>
+                                                    </div>       
+                                          </div>
                                       </div>
 
 
 
-                                                 <div class="col-md-8 col-md-offset-0">
+                                         <div class="col-md-8 col-md-offset-0">
                                             <div class="panel panel-default">
 
                                                 <div class="panel-heading"><i class="fa fa-info-circle"></i>   Buy It! (Right Click Link and Open In New Tab)</div>
@@ -109,50 +107,46 @@
                                                     </div>
                                                 </div>
                                         </div>
-
-
-
-                             </div>
-  </div>
+                               </div>
+                    </div>
 
 
                     <button class="btn btn-primary" onclick="history.go(-1)">
                       « Return Back
                     </button>
+
     </div>
+
+
+
 
 <div class="row" align="left">
         <div class="col-md-5 col-md-offset-0">
             <div class="panel panel-default">
                 <div class="panel-heading" align="center"><h2><i class="fa fa-commenting-o"></i> COMMENTS & REVIEWS <th></h2></div>
+                    <div class="panel-body">
 
-  <div class="panel-body">
+                      @if (count($errors) > 0)
+                          <div class="alert alert-danger">
+                              <ul>
+                                  @foreach ($errors->all() as $error)
+                                      <li>{{ $error }}</li>
+                                  @endforeach
+                              </ul>
+                          </div>
+                      @endif
 
+                      @if(Session::has('commentsuccess'))
+                          <div class="alert alert-success">
+                              {{ Session::get('commentsuccess') }}
+                          </div>
+                      @endif
 
-
-
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-    @if(Session::has('commentsuccess'))
-        <div class="alert alert-success">
-            {{ Session::get('commentsuccess') }}
-        </div>
-    @endif
-
-
-    @if(Session::has('comment_delete_message'))
-        <div class="alert alert-success">
-            {{ Session::get('comment_delete_message') }}
-        </div>
-    @endif
+                      @if(Session::has('comment_delete_message'))
+                          <div class="alert alert-success">
+                              {{ Session::get('comment_delete_message') }}
+                          </div>
+                      @endif
 
 
 @if (Auth::guest())
@@ -196,7 +190,6 @@
                                    At <b>{{$bookcomment->created_at}}</b></small> 
                                    <p>{{$bookcomment->content}}        
                                  <p>  ______________________________________________________________________________</p> 
-
                    @endif
 
                 </article>
@@ -208,34 +201,28 @@
                 <div align="center"><p><strong><h3>Be The First To Comment!</h3></strong></p></div>
         @endif  
     
-{!! $comments->render() !!} 
+        {!! $comments->render() !!} 
 
 
-{!! Form::open() !!}
-<!-- Content form input -->
-    <div class="form-group">
-      {!! Form::label('content', 'Share Your Review:') !!}
-      {!! Form::textarea('content', null, ['class' => 'form-control', 'rows' => 4, 'cols' => 40]) !!}
-    </div>
-   <div align="center"> {{ Form::submit('Submit', array('class' => 'btn btn-info')) }} </div>
+        {!! Form::open() !!}
+        <!-- Content form input -->
+            <div class="form-group">
+              {!! Form::label('content', 'Share Your Review:') !!}
+              {!! Form::textarea('content', null, ['class' => 'form-control', 'rows' => 4, 'cols' => 40]) !!}
+            </div>
+           <div align="center"> {{ Form::submit('Submit', array('class' => 'btn btn-info')) }} </div>
 
-    {!! Form::close() !!}
+            {!! Form::close() !!}
 
 @endif
 
 
-  </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
-</div>
-
   </div>
-
-</div>
-
-
-
-
 </div>
 @endsection

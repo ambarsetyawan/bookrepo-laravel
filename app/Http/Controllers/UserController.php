@@ -22,7 +22,7 @@ class UserController extends Controller
 
      protected $users;
 
-
+// Method for retrieving list of users on manageusers  
     public function GetUsers()
     {
       $Users = \App\User::where('admin', 0)
@@ -61,54 +61,39 @@ class UserController extends Controller
     }
 
 
-
-         public function destroy($id)
-        {
-          User::destroy($id);
-
-          Session::flash('delete_user_message', 'User Deleted!');
-          return Redirect::to('manageusers');
-        }
-
-
-
-        public function ban($id)
-        {
-
-              $banstatus = User::find($id);
-              $banstatus->ban_status = 1;
-              $banstatus->save();
-
-            Session::flash('ban_user_message', 'User Has Been Banned!');
-            return Redirect::to('manageusers');
-        }
-
-
-        public function unban($id)
-        {
-
-              $banstatus = User::find($id);
-              $banstatus->ban_status = 0;
-              $banstatus->save();
-
-            Session::flash('unban_user_message', 'User Has Been Unbanned!');
-            return Redirect::to('manageusers');
-        }
-
-
-
-    public function update(Request $request)
+// Method for deleting a user   
+     public function destroy($id)
     {
-      $user = User::find(Auth::user()->id);
+      User::destroy($id);
 
-      $user->password   = Hash::make(Input::get('password'));
-      $user->dob      = Input::get('dob');
-
-      $user->save();
-
-        Session::flash('profile_updated_message', 'Profile Updated!');
-        return Redirect::to('profile');
+      Session::flash('delete_user_message', 'User Deleted!');
+      return Redirect::to('manageusers');
     }
 
+
+// Method for banning a user   
+    public function ban($id)
+    {
+
+          $banstatus = User::find($id);
+          $banstatus->ban_status = 1;
+          $banstatus->save();
+
+        Session::flash('ban_user_message', 'User Has Been Banned!');
+        return Redirect::to('manageusers');
+    }
+
+
+// Method for unbanning a user  
+    public function unban($id)
+    {
+
+          $banstatus = User::find($id);
+          $banstatus->ban_status = 0;
+          $banstatus->save();
+
+        Session::flash('unban_user_message', 'User Has Been Unbanned!');
+        return Redirect::to('manageusers');
+    }
 
 }

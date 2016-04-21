@@ -67,13 +67,14 @@
 
                   <!-- Authentication Links -->
                 
+                 <!-- Guest User can view these links -->
                   @if (Auth::guest())
                   <li><a href="{{ url('/browsebooks') }}"><i class="fa fa-book"></i> Browse Books</a></li>
                   <li><a href="{{ url('/request') }}"><i class="fa fa-retweet"></i></i> Request Book</a></li>
                   <li><a href="{{ url('/contact') }}"><i class="fa fa-envelope-square"></i> Contact Admin</a></li>
                    <li><a href="{{ url('/discussions') }}"><i class="fa fa-rss-square"></i> Discussions</a></li>
 
-
+                  <!-- Standard User who is not banned can view these links -->
                   @elseif (Auth::user()->admin!=1 & Auth::user()->ban_status!=1)
                   <li><a href="{{ url('/browsebooks') }}"><i class="fa fa-book"></i> Browse Books</a></li>
                   <li><a href="{{ url('/request') }}"><i class="fa fa-retweet"></i></i> Request Book</a></li>
@@ -90,13 +91,14 @@
                             </ul>
                    </li>
 
+                  <!-- Standard User who is banned can view this links -->
                   @elseif (Auth::user()->admin!=1 & Auth::user()->ban_status==1)
                   <li><a href="{{ url('contact') }}"><i class="fa fa-envelope-square"></i> Contact Admin</a></li>
 
+                  <!-- Admin User can view these links -->
                   @elseif(Auth::user()->admin==1)
 
-                  <li><a href="{{ url('/browsebooks') }}"><i class="fa fa-book"></i> Browse Books</a></li>
-                 
+                  <li><a href="{{ url('/browsebooks') }}"><i class="fa fa-book"></i> Browse Books</a></li>            
                   <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                               <i class="fa fa-info"></i>   Management <span class="caret"></span>
@@ -109,15 +111,12 @@
                               <li><a href="{{ url('managecomments') }}"><i class="fa fa-commenting"></i> Manage Comments</a></li>       
                             </ul>
                    </li>
-
-                
                  <li><a href="{{ url('recieverequests') }}"><i class="fa fa-exclamation"></i> Book Requests</a></li>
                  <li><a href="{{ url('/discussions') }}"><i class="fa fa-rss-square"></i> Discussions</a></li> 
                 <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             <i class="fa fa-clock-o"></i>  Your History <span class="caret"></span>
                           </a>
-
                           <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ url('commentshistory') }}"><i class="fa fa-clock-o"></i> Book Comments </a></li>
                             <li><a href="{{ url('postshistory') }}"><i class="fa fa-clock-o"></i> Discussion Posts </a></li>     
@@ -127,13 +126,10 @@
                   @endif
                 </ul>
 
-
-
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
 
-
-                    <!-- Authentication Links -->
+                    <!-- Guest User can view these links -->
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}"><i class="fa fa-sign-in"></i> Login</a></li>
                         <li><a href="{{ url('/register') }}"><i class="fa fa-book"></i> Register</a></li>
@@ -145,13 +141,16 @@
 
                             <ul class="dropdown-menu" role="menu">
  
+                                <!-- Standard User who is not banned can view these links -->
                                 @if (Auth::user()->admin!=1 & Auth::user()->ban_status!=1)
                                 <li><a href="{{ url('/profile') }}"><i class="fa fa-file"></i> Your Profile</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> Logout</a></li>
 
+                                <!-- Standard User who is banned can view these links -->
                                 @elseif (Auth::user()->admin!=1 & Auth::user()->ban_status==1)
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> Logout</a></li>
 
+                                <!-- Admin User who is not banned can view these links -->
                                 @elseif(Auth::user()->admin==1 & Auth::user()->ban_status!=1)
                                 <li><a href="{{ url('/messages') }}"><i class="fa fa-pencil-square-o"></i> Messages</a></li>
                                 <li><a href="{{ url('/profile') }}"><i class="fa fa-file"></i> Profile</a></li>

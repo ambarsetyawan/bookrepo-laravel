@@ -25,6 +25,8 @@ class ProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+// Method for retrieving user profile         
     public function show()
     {
         {
@@ -35,10 +37,10 @@ class ProfileController extends Controller
     }
 
 
+// Method for retrieving user comment history  
         public function commenthistory()
         {
             {
-               
                 $usercommenthistory = DB::table('comments')     
                     ->select('users.name as username', 'books.id as bookid', 'books.title as bookstitle', 'comments.id', 'comments.content', 'comments.created_at')   
                     ->join('books', 'books.id', '=', 'comments.book_id')                
@@ -53,10 +55,10 @@ class ProfileController extends Controller
         }
 
 
+// Method for retrieving user posts history  
         public function postshistory()
         {
             {
-               
                 $userposthistory = DB::table('discussionposts')     
                 ->select('discussionposts.id as postid' ,'users.name as username','discussionposts.topic_id as topicid' , 'discussions.topic', 'discussionposts.discussion_post as mypost', 'discusser_id', 'discussionposts.created_at')   
                 ->join('discussions', 'discussions.id', '=', 'discussionposts.topic_id')                
@@ -72,22 +74,21 @@ class ProfileController extends Controller
 
 
 
-    public function update(Request $request)
-    {
-      $user = User::find(Auth::user()->id);
+// Method for updating user profile  
+        public function update(Request $request)
+        {
+          $user = User::find(Auth::user()->id);
 
-      $user->password   = Hash::make(Input::get('password'));
-      $user->dob      = Input::get('dob');
+          $user->password   = Hash::make(Input::get('password'));
+          $user->save();
 
-      $user->save();
-
-        Session::flash('profile_updated_message', 'Profile Updated!');
-        return Redirect::to('profile');
-    }
-
+            Session::flash('profile_updated_message', 'Profile Updated!');
+            return Redirect::to('profile');
+        }
 
 
 
+// Method for deleting user comment history    
       public function destroy($id)
         {
           CommentsModel::destroy($id);

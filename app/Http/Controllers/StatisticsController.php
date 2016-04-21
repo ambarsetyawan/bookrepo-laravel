@@ -9,6 +9,8 @@ use DB;
 
 class StatisticsController extends Controller
 {
+
+// Method for retrieving statistics using queries  
     public function GetStatistics()
     {
       $TotalUsers = \App\User::count();

@@ -10,72 +10,59 @@
   
                     <div class="panel-heading" align="center">       
                         <h3><i class="fa fa-info-circle"></i>  Discussion Topic </h3></div>
-                        <div class="panel-body">
+                              <div class="panel-body">
 
-                @foreach($titleposts as $topicpost)
-                 
+                      @foreach($titleposts as $topicpost)
+                       
 
-                          <article>
+                                <article>
 
-                         @if (Auth::user()->id == $topicpost->userid)
+                               @if (Auth::user()->id == $topicpost->userid)
 
-                              {{ Form::open(['route' => ['discussions', $topicpost->postid], 'method' => 'delete']) }}
-                                    <input type="hidden" name="_method" value="DELETE">
+                                            {{ Form::open(['route' => ['discussions', $topicpost->postid], 'method' => 'delete']) }}
+                                                  <input type="hidden" name="_method" value="DELETE">
 
-                             <p><small>Posted by <b>{{$topicpost->discussername}}</b> - 
-                              At <b>{{$topicpost->created_at}}</b></small> - <button type="submit" class="btn btn-danger btn-mini">Delete</button>
-                              
-                              {{ Form::close() }}
-
-
-
-                          @elseif (Auth::user()->admin==1)
-
-
-                             {{ Form::open(['route' => ['discussions', $topicpost->postid], 'method' => 'delete']) }}
-                                    <input type="hidden" name="_method" value="DELETE">
-
-                             <p><small>Posted by <b>{{$topicpost->discussername}}</b> - 
-                              At <b>{{$topicpost->created_at}}</b></small> - <button type="submit" class="btn btn-danger btn-mini">Delete</button>
-                              
-                              {{ Form::close() }}
+                                           <p><small>Posted by <b>{{$topicpost->discussername}}</b> - 
+                                            At <b>{{$topicpost->created_at}}</b></small> - <button type="submit" class="btn btn-danger btn-mini">Delete</button>
+                                            
+                                            {{ Form::close() }}
 
 
 
-                           @elseif (Auth::user()->name != $topicpost->userid)
-                           <p><small>Posted by <b>{{$topicpost->discussername}}</b> - 
-                              At <b>{{$topicpost->created_at}}</b></small>
-
-                              
-                              
-                          @endif
+                                @elseif (Auth::user()->admin==1)
 
 
-                              
+                                           {{ Form::open(['route' => ['discussions', $topicpost->postid], 'method' => 'delete']) }}
+                                                  <input type="hidden" name="_method" value="DELETE">
 
-                              <p>{{$topicpost->discussion_post}}        
-                              <p>  ________________________________________________________________________________________________________________</p>
-                          </article>
+                                           <p><small>Posted by <b>{{$topicpost->discussername}}</b> - 
+                                            At <b>{{$topicpost->created_at}}</b></small> - <button type="submit" class="btn btn-danger btn-mini">Delete</button>
+                                            
+                                            {{ Form::close() }}
 
-                
-             
-                
-                  @endforeach
 
-                        <div align="center">{!! $titleposts->render() !!}<br>  
-                          <button class="btn btn-primary" onclick="history.go(-1)">
-                              « Return Back
-                        </button>
-                      </div>
+
+                                @elseif (Auth::user()->name != $topicpost->userid)
+
+                                       <p><small>Posted by <b>{{$topicpost->discussername}}</b> - 
+                                          At <b>{{$topicpost->created_at}}</b></small>
+                                  
+                                @endif
+
+                                    <p>{{$topicpost->discussion_post}}        
+                                    <p>  ________________________________________________________________________________________________________________</p>
+                                </article>
+                      
+                        @endforeach
+
+                              <div align="center">{!! $titleposts->render() !!}<br>  
+                                <button class="btn btn-primary" onclick="history.go(-1)">
+                                    « Return Back
+                              </button>
+                            </div>
                         </div>
-
- 
-
                 </div>
         </div>
-
-
-
 
 
 
@@ -104,30 +91,22 @@
 
                       
       @if (Auth::guest())
+
             You Must Be Logged In To Submit A New Post!
+
       @elseif(Auth::user())
+
                  {!! Form::open() !!}
-
-
                   <div class="form-group">
                       {!! Form::textarea('discussion_post', null, ['class' => 'form-control', 'rows' => 4, 'cols' => 40]) !!}
                   </div>
-
-
                   {{ Form::submit('POST', array('class' => 'btn btn-info')) }}
-
                   {!! Form::close() !!}
 
-@endif
+      @endif
                        </div>
                 </div>
         </div>
-
-
-
-
-
-
     </div>
 </div>
 

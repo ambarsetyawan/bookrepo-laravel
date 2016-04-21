@@ -46,10 +46,7 @@
             <div class="panel panel-default">
 
                 <div class="panel-heading"><i class="fa fa-info-circle"></i>  Book Details </div>
-                    <div class="panel-body">
-                            
-
-
+                    <div class="panel-body">                        
                   <div class="form-group">
                       {!! Form::label('title', 'Title:') !!}
                       {!! Form::text('title', $data->title, ['class' => 'form-control']) !!}
@@ -88,39 +85,21 @@
 
                 <div class="panel-heading"><i class="fa fa-info-circle"></i>  Book Retail Link </div>
                     <div class="panel-body">
-
-
-               
-                  <!-- Title form input -->
-                   <div class="form-group">
-
-                      {!! Form::label('retail', 'Retail Link:') !!}
-                      {!! Form::text('retail', $data->retail, ['class' => 'form-control']) !!}
-              
-        
-                   </div>
-
+                         <div class="form-group">
+                            {!! Form::label('retail', 'Retail Link:') !!}
+                            {!! Form::text('retail', $data->retail, ['class' => 'form-control']) !!}
+                         </div>
                     </div>
                 </div>
         </div>
-
-
 
                 </div>
                   {{ Form::submit('UPDATE', array('class' => 'btn btn-info')) }}
 
                   {!! Form::close() !!}
             </div>
-
-
+          </div>
         </div>
-
-
-            
-
-
-            </div>
-
     </div>
 </div>
 @endsection

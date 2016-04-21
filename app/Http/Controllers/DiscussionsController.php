@@ -17,10 +17,11 @@ use App\DiscussionPostsModel;
 
 class DiscussionsController extends Controller
 {
-     public function GetTopics(){
+
+// Method for retrieving discussion topics  
+    public function GetTopics(){
     $Topics =   \App\DiscussionModel::Paginate(6);
     $TotalTopics =   \App\DiscussionModel::count();
-      // var_dump($TotalReplies);
             
     return view('discussions')
               ->with('Topics', $Topics)
@@ -28,6 +29,7 @@ class DiscussionsController extends Controller
   }
 
 
+// Method for storing discussion topics in database  
   public function store()
   {
       $rules = array(
@@ -35,7 +37,6 @@ class DiscussionsController extends Controller
       );
 
       $validator = Validator::make(Input::all(), $rules);
-
         if ($validator-> fails())
             {
               return redirect('discussions')
@@ -51,12 +52,11 @@ class DiscussionsController extends Controller
 
               Session::flash('new_thread_message', 'New Topic Has Been Created!');
               return Redirect::to('discussions');
-
-               // var_dump($newtopic);
             }
     }
 
 
+// Method for retrieving posts on discussion topics  
 		  public function showtopicposts($id)
 		  {
         Session::put('topicid', $id);
@@ -70,19 +70,15 @@ class DiscussionsController extends Controller
           ->orderBy('discussionposts.created_at')
           ->paginate(5);
      
-          // var_dump($topicposts);
-
 		      return view('discussionsposts')
                       ->with ('titleposts', $titleposts);
 		  }
 
 
 
-
-
+// Method for creating a new discussion topic  
 		  public function createtopicpost()
 		  {
-
 		  DiscussionPostsModel::create(array(
 		              'topic_id' => Session::get('topicid'),
 		              'discussion_post' => Input::get('discussion_post'),
@@ -95,8 +91,7 @@ class DiscussionsController extends Controller
 
 
 
-
-
+// Method for deleting discussion topics  
       public function destroy($id)
         {
           DiscussionModel::destroy($id);
@@ -104,15 +99,4 @@ class DiscussionsController extends Controller
           Session::flash('topic_delete_message', 'Topic Deleted!');
           return Redirect::to('discussions');
         }
-
-
-
-      // public function destroypost()
-      //   {
-      //     DiscussionPostsModel::destroy($id);
-
-      //     Session::flash('post_delete_message', 'Post Deleted!');
-      //     return Redirect::back();
-      //   }
-
 }
