@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\User;
 use App\CommentsModel;
+use App\VotesModel;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -96,5 +97,53 @@ class ProfileController extends Controller
           Session::flash('comment_delete_message', 'Comment Deleted From Book!');
           return Redirect::to('commentshistory');
         }
+
+
+
+// Method for retrieving books vote history  
+        public function votehistory()
+        {
+            {
+                $uservotehistory = DB::table('votes')     
+                    ->select('votes.id as id', 'votes.book_id as bookid', 'books.title as booktitle', 'books.genre as bookgenre','votes.likes as booklike', 'votes.dislikes as bookdislike', 'votes.created_at')   
+                    ->join('books', 'books.id', '=', 'votes.book_id')                
+                    ->where('votes.voter_id', '=', (Auth::user()->id))
+                    ->orderBy('votes.created_at')
+                    ->paginate(8);
+               
+                 return view('votehistory')
+                        ->with ('uservotehistory', $uservotehistory);
+            }
+        }
+
+
+
+// Method for liking a book   
+        public function likebook($id)
+        {
+
+              $booklike = VotesModel::find($id);
+              $booklike->likes = 1;
+              $booklike->dislikes = 0;
+              $booklike->save();
+
+            Session::flash('book_like_message', 'Vote Has Been Changed To Like!');
+            return Redirect::back();
+           // var_dump($booklike);
+        }
+
+
+// Method for disliking a book  
+        public function dislikebook($id)
+        {
+              $bookdislike = VotesModel::find($id);
+              $bookdislike->likes = 0;
+              $bookdislike->dislikes = 1;
+              $bookdislike->save();
+
+            Session::flash('book_dislike_message', 'Vote Has Been Changed To Dislike!');
+             return Redirect::back();
+        }
+
 
 }

@@ -87,7 +87,8 @@
 
                             <ul class="dropdown-menu" role="menu">
                               <li><a href="{{ url('commentshistory') }}"><i class="fa fa-clock-o"></i> Book Comments </a></li>
-                              <li><a href="{{ url('postshistory') }}"><i class="fa fa-clock-o"></i> Discussion Posts </a></li>     
+                              <li><a href="{{ url('postshistory') }}"><i class="fa fa-clock-o"></i> Discussion Posts </a></li>
+                              <li><a href="{{ url('votehistory') }}"><i class="fa fa-clock-o"></i> Book Votes </a></li>     
                             </ul>
                    </li>
 
@@ -119,7 +120,8 @@
                           </a>
                           <ul class="dropdown-menu" role="menu">
                             <li><a href="{{ url('commentshistory') }}"><i class="fa fa-clock-o"></i> Book Comments </a></li>
-                            <li><a href="{{ url('postshistory') }}"><i class="fa fa-clock-o"></i> Discussion Posts </a></li>     
+                            <li><a href="{{ url('postshistory') }}"><i class="fa fa-clock-o"></i> Discussion Posts </a></li> 
+                            <li><a href="{{ url('votehistory') }}"><i class="fa fa-clock-o"></i> Book Votes </a></li>      
                           </ul>
                  </li>  
                  <li><a href="{{ url('statistics') }}"><i class="fa fa-bar-chart"></i> Statistics</a></li>          

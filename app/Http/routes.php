@@ -130,12 +130,15 @@ Route::group(['middleware' => 'web'], function () {
     Route::post('profile',array('uses' => 'ProfileController@update', 'as' => 'profile'));
     Route::get('profile/{id}',array('uses' => 'ProfileController@showProfile', 'as' => 'profile'));
 
-
     Route::get('commentshistory',array('uses' => 'ProfileController@commenthistory', 'as' => 'commentshistory'))->middleware(['ban']);
     Route::delete('commentshistory/{id}',array('uses' => 'ProfileController@destroy', 'as' => 'commentshistory'));
 
     Route::get('postshistory',array('uses' => 'ProfileController@postshistory', 'as' => 'postshistory'))->middleware(['ban']);
     Route::delete('postshistory/{id}',array('uses' => 'PostsController@destroy', 'as' => 'postshistory'));
+
+    Route::get('votehistory',array('uses' => 'ProfileController@votehistory', 'as' => 'votehistory'))->middleware(['ban']);
+    Route::get('votehistory/like/{id}', 'ProfileController@likebook')->middleware(['auth', 'ban']);
+    Route::get('votehistory/dislike/{id}', 'ProfileController@dislikebook')->middleware(['auth', 'ban']);
 
 // Welcome route, connected controllers and methods
     Route::get('/', function () {

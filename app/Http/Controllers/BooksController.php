@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\BookModel;
 use App\User;
+use App\VotesModel;
 use App\CommentsModel;
 use App\CommentVotesModel;
 use App\Http\Requests;
@@ -170,7 +171,7 @@ public function searchgenre(Request $request)
 
       if($upvote->exists()) 
       {
-          Session::flash('already_voted_message', 'You Have Already Voted This Book! Your Vote Cannot Be Changed!');
+          Session::flash('already_voted_message', 'You Have Already Voted This Book! You Can Change Your Vote In Vote History Page!');
           return Redirect::back();
       }
      else 
@@ -195,7 +196,7 @@ public function searchgenre(Request $request)
 
       if($downvote->exists()) 
        {
-          Session::flash('already_voted_message', 'You Have Already Voted This Book! Your Vote Cannot Be Changed!');
+          Session::flash('already_voted_message', 'You Have Already Voted This Book! You Can Change Your Vote In Vote History Page!');
           return Redirect::back();
         }
        else 
