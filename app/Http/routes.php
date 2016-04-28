@@ -168,10 +168,18 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('discussions', 'DiscussionsController@GetTopics')->middleware(['auth', 'ban']);
     Route::post('discussions', 'DiscussionsController@store');
-    Route::get('discussions/{id}', 'DiscussionsController@showtopicposts')->middleware(['auth', 'ban']);
-    Route::post('discussions/{id}',array('uses' => 'DiscussionsController@createtopicpost', 'as' => 'discussions/{id}'));
-    Route::delete('discussions/delete/{id}',array('uses' => 'DiscussionsController@destroy', 'as' => 'discussions'));
-    Route::delete('discussions/{id}',array('uses' => 'PostsController@destroy', 'as' => 'discussions'));
+    Route::get('discussions/topic/{id}', 'DiscussionsController@showtopicposts')->middleware(['auth', 'ban']);
+    Route::post('discussions/topic/{id}',array('uses' => 'DiscussionsController@createtopicpost', 'as' => 'discussions/topic/{id}'));
+    Route::delete('discussions/topic/{id}',array('uses' => 'PostsController@destroypost', 'as' => 'discussions'));
+
+
+// Manage Topics route, connected controllers and methods
+    Route::get('managetopics', function () {
+    return view('managetopics');
+    })->middleware(['auth']);
+
+    Route::get('managetopics',array('uses' => 'ProfileController@managemytopics', 'as' => 'managetopics'))->middleware(['ban']);
+    Route::delete('managetopics/{id}',array('uses' => 'ProfileController@destroytopic', 'as' => 'managetopics'));
 
 // Password reset routes, connected controllers, middleware and methods
     Route::get('password/email', 'Auth\PasswordController@getEmail');

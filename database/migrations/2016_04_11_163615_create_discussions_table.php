@@ -18,6 +18,7 @@ class CreateDiscussionsTable extends Migration
       $table->string('creator_name');
       $table->timestamp('created_at');
       $table->timestamp('updated_at');
+      
   });
     }
 

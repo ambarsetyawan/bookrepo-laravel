@@ -89,14 +89,4 @@ class DiscussionsController extends Controller
 		   return Redirect::back();
 		  }
 
-
-
-// Method for deleting discussion topics  
-      public function destroy($id)
-        {
-          DiscussionModel::destroy($id);
-
-          Session::flash('topic_delete_message', 'Topic Deleted!');
-          return Redirect::to('discussions');
-        }
 }

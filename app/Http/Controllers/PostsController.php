@@ -14,11 +14,12 @@ class PostsController extends Controller
 {
 
 // Method for deleting user post history  	
-       public function destroy($id)
+       public function destroypost($id)
         {
           DiscussionPostsModel::destroy($id);
 
           Session::flash('post_delete_message', 'Post Deleted!');
           return Redirect::back();
         }
+
 }

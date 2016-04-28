@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\CommentsModel;
 use App\VotesModel;
+use App\DiscussionModel;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -74,7 +75,32 @@ class ProfileController extends Controller
         }
 
 
+// Method for retrieving user comment history  
+        public function managemytopics()
+        {
+            {
+                $mytopics = DB::table('discussions')     
+                    ->select('discussions.id as topicid', 'discussions.creator_name as topicadmin', 'discussions.topic as topictitle', 'discussions.created_at')                
+                    ->where('discussions.creator_name', '=', (Auth::user()->name))
+                    ->orderBy('discussions.created_at')
+                    ->paginate(6);
+               
+                 return view('managetopics')
+                        ->with ('mytopics', $mytopics);
+            }
+        }
 
+
+// Method for deleting discussion topics  
+      public function destroytopic($id)
+        {
+          DiscussionModel::destroy($id);
+
+          Session::flash('my_topic_delete_message', 'Topic Deleted!');
+         return Redirect::back();
+        }
+
+        
 // Method for updating user profile  
         public function update(Request $request)
         {

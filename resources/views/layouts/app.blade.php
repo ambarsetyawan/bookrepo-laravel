@@ -79,7 +79,15 @@
                   <li><a href="{{ url('/browsebooks') }}"><i class="fa fa-book"></i> Browse Books</a></li>
                   <li><a href="{{ url('/request') }}"><i class="fa fa-retweet"></i></i> Request Book</a></li>
                   <li><a href="{{ url('contact') }}"><i class="fa fa-envelope-square"></i> Contact Admin</a></li>
-                  <li><a href="{{ url('/discussions') }}"><i class="fa fa-rss-square"></i> Discussions</a></li>
+                         <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                             <i class="fa fa-comment-o"></i>  FORUM <span class="caret"></span>
+                          </a>
+                          <ul class="dropdown-menu" role="menu">
+                             <li><a href="{{ url('/discussions') }}"><i class="fa fa-rss-square"></i> Discussions Board</a></li> 
+                             <li><a href="{{ url('managetopics') }}"><i class="fa fa-cogs"></i> Manage Your Topics </a></li>     
+                          </ul>
+                 </li>  
                   <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                               <i class="fa fa-clock-o"></i>  Your History <span class="caret"></span>
@@ -113,7 +121,19 @@
                             </ul>
                    </li>
                  <li><a href="{{ url('recieverequests') }}"><i class="fa fa-exclamation"></i> Book Requests</a></li>
-                 <li><a href="{{ url('/discussions') }}"><i class="fa fa-rss-square"></i> Discussions</a></li> 
+
+                 <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <i class="fa fa-comment-o"></i>  FORUM <span class="caret"></span>
+                          </a>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a href="{{ url('/discussions') }}"><i class="fa fa-rss-square"></i> Discussions Board</a></li> 
+                            <li><a href="{{ url('managetopics') }}"><i class="fa fa-cogs"></i> Manage Your Topics </a></li>     
+                          </ul>
+                 </li>  
+
+                
+
                 <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             <i class="fa fa-clock-o"></i>  Your History <span class="caret"></span>

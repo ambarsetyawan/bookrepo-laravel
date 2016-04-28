@@ -12,6 +12,12 @@
                         <h3><i class="fa fa-info-circle"></i>  Discussion Topic </h3></div>
                               <div class="panel-body">
 
+                      @if(Session::has('post_delete_message'))
+                          <div class="alert alert-danger">
+                              {{ Session::get('post_delete_message') }}
+                          </div>
+                      @endif
+
                       @foreach($titleposts as $topicpost)
                        
 

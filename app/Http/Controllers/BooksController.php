@@ -231,7 +231,7 @@ public function searchgenre(Request $request)
     {
       CommentsModel::destroy($id);
 
-      Session::flash('comment_delete_message', 'Book Deleted!');
+      Session::flash('comment_delete_message', 'Comment Deleted!');
       return Redirect::back();
     }
 
